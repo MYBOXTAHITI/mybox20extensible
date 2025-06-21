@@ -1,0 +1,1731 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MY BOX TAHITI - FARE MITI Maison 20' Extensible</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="0.5" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="0.3" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>') repeat;
+            opacity: 0.1;
+        }
+        
+        .logo {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .tagline {
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            text-align: center;
+            min-width: 200px;
+        }
+        
+        .cta-primary {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+        }
+        
+        .cta-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.6);
+        }
+        
+        .cta-secondary {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+            backdrop-filter: blur(10px);
+        }
+        
+        .cta-secondary:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Carrousel Photos */
+        .carousel-section {
+            padding: 50px 0 30px;
+            background: #f8f9fa;
+        }
+        
+        .photo-carousel {
+            max-width: 750px;
+            margin: 0 auto;
+        }
+        
+        .carousel-container {
+            position: relative;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        .carousel-slide {
+            min-width: 100%;
+            height: 350px;
+            position: relative;
+        }
+        
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            background: #f0f0f0;
+        }
+        
+        .carousel-slide img[src*="drive.google.com"] {
+            background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+        }
+        
+        .carousel-slide::before {
+            content: "Chargement...";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #666;
+            font-size: 1.1rem;
+            z-index: 1;
+        }
+        
+        .carousel-slide img {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.6);
+            color: white;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+        
+        .carousel-btn:hover {
+            background: rgba(0,0,0,0.8);
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .carousel-btn.prev {
+            left: 20px;
+        }
+        
+        .carousel-btn.next {
+            right: 20px;
+        }
+        
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #ccc;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .dot.active {
+            background: #007bff;
+            transform: scale(1.2);
+        }
+        
+        .dot:hover {
+            background: #007bff;
+            opacity: 0.7;
+        }
+        
+        /* Video Section */
+        .video-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .video-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .video-placeholder {
+            background: rgba(0,0,0,0.3);
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .video-placeholder:hover {
+            transform: scale(1.02);
+        }
+        
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+        
+        .play-button:hover {
+            background: white;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        
+        /* Product Section */
+        .product-section {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .product-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+        
+        .product-info h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+        
+        .specs {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+        
+        .spec-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .spec-item:last-child {
+            border-bottom: none;
+        }
+        
+        .spec-item span:first-child {
+            color: #666;
+        }
+        
+        .spec-item span:last-child {
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .benefits {
+            list-style: none;
+            margin: 30px 0;
+        }
+        
+        .benefits li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+            color: #333;
+        }
+        
+        .benefits li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #28a745;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .price-calculator {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .price-calculator h3 {
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .price-display {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 20px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .price-breakdown {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        /* Section Titles */
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #333;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(45deg, #007bff, #0056b3);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+        
+        /* Pre-order Section */
+        .preorder-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #2C3E50, #3498DB);
+            color: white;
+        }
+        
+        .preorder-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .preorder-benefits {
+            background: rgba(255,255,255,0.1);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+        
+        /* Testimonials */
+        .testimonials-section {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+        
+        .testimonial {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .testimonial-text {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #555;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            color: #007bff;
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background: #f8f9fa;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 25px;
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background: linear-gradient(135deg, #0056b3, #004085);
+        }
+        
+        .faq-answer {
+            padding: 25px;
+            background: white;
+            display: none;
+            color: #666;
+            line-height: 1.8;
+        }
+        
+        .faq-answer.active {
+            display: block;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 20px;
+            color: #3498db;
+        }
+        
+        .footer-section p, .footer-section li {
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+        
+        .footer-section a:hover {
+            opacity: 1;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #34495e;
+            opacity: 0.8;
+        }
+        
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+        }
+        
+        /* Quote Modal */
+        .quote-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+        }
+        
+        .quote-modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        
+        .quote-close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+            right: 20px;
+            top: 15px;
+        }
+        
+        .quote-close:hover {
+            color: #000;
+        }
+        
+        .quote-form {
+            margin-top: 20px;
+        }
+        
+        .quote-form input, .quote-form select {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+        
+        .quote-form input:focus, .quote-form select:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+        
+        .quote-submit {
+            background: linear-gradient(45deg, #007bff, #0056b3);
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .quote-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .product-container, .preorder-container, .footer-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .logo {
+                font-size: 2.2rem;
+            }
+            
+            .tagline {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .carousel-slide {
+                height: 280px;
+            }
+            
+            .carousel-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+            
+            .carousel-btn.prev {
+                left: 15px;
+            }
+            
+            .carousel-btn.next {
+                right: 15px;
+            }
+            
+            .photo-carousel {
+                margin: 0 15px;
+            }
+            
+            .carousel-section {
+                padding: 40px 0 25px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .header {
+                padding: 40px 0;
+            }
+            
+            .logo {
+                font-size: 1.8rem;
+            }
+            
+            .carousel-slide {
+                height: 250px;
+            }
+            
+            .photo-carousel {
+                max-width: 100%;
+                margin: 0 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">MY BOX TAHITI</h1>
+            <p class="tagline">Votre maison préfabriquée 20' extensible<br>Clé en main* en Polynésie française</p>
+            <div class="cta-buttons">
+                <a href="#product" class="cta-button cta-primary">🏠 Découvrir le FARE MITI</a>
+                <a href="https://wa.me/68989785166?text=Bonjour%2C%20je%20souhaite%20un%20devis%20personnalisé%20pour%20le%20FARE%20MITI" class="cta-button cta-secondary" target="_blank">💬 Devis WhatsApp</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Carrousel Photos Section -->
+    <section class="carousel-section">
+        <div class="container">
+            <h2 class="section-title">Photos du FARE MITI</h2>
+            
+            <div class="photo-carousel">
+                <div class="carousel-container">
+                    <button class="carousel-btn prev" onclick="moveCarousel(-1)">❮</button>
+                    
+                    <div class="carousel-track" id="carouselTrack">
+                        <div class="carousel-slide active">
+                            <img src="https://lh3.googleusercontent.com/d/1AO1i1nGy6rsgEIMsLYqlcLknNWeDLrSr" 
+                                 alt="Cuisine FARE MITI" 
+                                 onerror="this.onerror=null; this.style.background='linear-gradient(45deg, #007bff, #0056b3)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.innerHTML='<div style=color:white;text-align:center><h3>🏠 Cuisine FARE MITI</h3><p>Photo en cours de chargement...</p></div>'">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="https://lh3.googleusercontent.com/d/1UGmU708ci7h6BRJnvo8ZSH_DueQUw1TM" 
+                                 alt="Salle de bain FARE MITI" 
+                                 onerror="this.onerror=null; this.style.background='linear-gradient(45deg, #28a745, #1e7e34)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.innerHTML='<div style=color:white;text-align:center><h3>🚿 Salle de bain</h3><p>Photo en cours de chargement...</p></div>'">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="https://lh3.googleusercontent.com/d/13S37Lahgj6kfvWn8zxzeQSC5xI-5fnMA" 
+                                 alt="Intérieur FARE MITI" 
+                                 onerror="this.onerror=null; this.style.background='linear-gradient(45deg, #fd7e14, #e55100)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.innerHTML='<div style=color:white;text-align:center><h3>🏡 Intérieur</h3><p>Photo en cours de chargement...</p></div>'">
+                        </div>
+                    </div>
+                    
+                    <button class="carousel-btn next" onclick="moveCarousel(1)">❯</button>
+                </div>
+                
+                <div class="carousel-dots">
+                    <span class="dot active" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="video-section">
+        <div class="container">
+            <h2 class="section-title">Découvrez votre future maison</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 50px; color: #666;">Visite complète de notre FARE MITI extensible de 35m²</p>
+            
+            <div class="video-container">
+                <div class="video-placeholder" onclick="playVideo()">
+                    <div style="background: linear-gradient(45deg, rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 800 450\"><rect width=\"800\" height=\"450\" fill=\"%23f8f9fa\"/><text x=\"400\" y=\"225\" text-anchor=\"middle\" fill=\"%23666\" font-family=\"Arial\" font-size=\"20\">🏠 Vidéo FARE MITI</text></svg>'); background-size: cover; height: 450px; border-radius: 15px; position: relative; display: flex; align-items: center; justify-content: center;">
+                        <div class="play-button">
+                            ▶️
+                        </div>
+                        <p style="margin-top: 20px;">Cliquez pour voir la vidéo FARE MITI</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Second Video Section -->
+    <section class="video-section" style="background: linear-gradient(135deg, #2C3E50, #3498DB);">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Processus de dépotage et installation</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 50px; color: rgba(255,255,255,0.9);">Découvrez le montage de votre FARE MITI</p>
+            
+            <div class="video-container">
+                <div class="video-placeholder" onclick="playSecondVideo()">
+                    <div style="background: linear-gradient(45deg, rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 800 450\"><rect width=\"800\" height=\"450\" fill=\"%23f8f9fa\"/><text x=\"400\" y=\"225\" text-anchor=\"middle\" fill=\"%23666\" font-family=\"Arial\" font-size=\"20\">🏗️ Installation</text></svg>'); background-size: cover; height: 450px; border-radius: 15px; position: relative; display: flex; align-items: center; justify-content: center;">
+                        <div class="play-button">
+                            ▶️
+                        </div>
+                        <p style="margin-top: 20px; color: white;">Cliquez pour voir le processus d'installation</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Section -->
+    <section id="product" class="product-section">
+        <div class="container">
+            <div class="product-container">
+                <div class="product-info">
+                    <h2>FARE MITI - Maison 20' Extensible</h2>
+                    <p style="font-size: 1.1rem; color: #666; margin-bottom: 30px;">
+                        Une solution d'habitat moderne et complète, livrée clé en main* avec cuisine équipée et salle de bain. 
+                        Montage rapide en 2-3 jours seulement.
+                    </p>
+                    
+                    <div class="specs">
+                        <div class="spec-item">
+                            <span><strong>Dimensions</strong></span>
+                            <span>5,5m × 6,45m × 2,52m</span>
+                        </div>
+                        <div class="spec-item">
+                            <span><strong>Surface habitable</strong></span>
+                            <span>35 m²</span>
+                        </div>
+                        <div class="spec-item">
+                            <span><strong>Chambre</strong></span>
+                            <span>11 m²</span>
+                        </div>
+                        <div class="spec-item">
+                            <span><strong>Hauteur sous plafond</strong></span>
+                            <span>2,50 m</span>
+                        </div>
+                        <div class="spec-item">
+                            <span><strong>Isolation</strong></span>
+                            <span>50mm laine de roche</span>
+                        </div>
+                        <div class="spec-item">
+                            <span><strong>Électricité</strong></span>
+                            <span>220V/50Hz incluse</span>
+                        </div>
+                        <div class="spec-item">
+                            <span><strong>Pilotis</strong></span>
+                            <span>16 plots béton inclus</span>
+                        </div>
+                        <div class="spec-item">
+                            <span><strong>Montage</strong></span>
+                            <span>Installation complète incluse</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-pricing">
+                    <div class="price-calculator">
+                        <h3>Calculateur de prix instantané</h3>
+                        <select id="zonePicker" onchange="updatePrice()" style="padding: 10px; margin: 15px 0; font-size: 1rem; border-radius: 5px; border: 1px solid #ddd;">
+                            <option value="">Sélectionnez votre zone</option>
+                            <optgroup label="🏙️ TAHITI - CENTRE">
+                                <option value="2926736">Papeete (ville-centre)</option>
+                                <option value="2926736">Pirae (Hamuta, Aorai, Nahoata)</option>
+                                <option value="2926736">Arue (Erima, Orofara, Orohiti)</option>
+                                <option value="2926736">Mahina</option>
+                                <option value="2926736">Faa'a (Pamatai, Naru, Tavararo)</option>
+                            </optgroup>
+                            <optgroup label="🌊 TAHITI - CÔTE OUEST">
+                                <option value="2961736">Punaauia</option>
+                                <option value="2971170">Paea</option>
+                                <option value="2971170">Papara</option>
+                                <option value="2971170">Mataiea</option>
+                            </optgroup>
+                            <optgroup label="🏔️ TAHITI - CÔTE EST">
+                                <option value="2926736">Papeno'o</option>
+                                <option value="2941736">Tiarei</option>
+                                <option value="2956736">Hitia'a</option>
+                                <option value="2976736">Mahaena</option>
+                            </optgroup>
+                            <optgroup label="🌴 TAHITI ITI - PRESQU'ÎLE">
+                                <option value="2991736">Papeari</option>
+                                <option value="2996736">Vairao</option>
+                                <option value="3021736">Toahotu</option>
+                                <option value="3031736">Teahupo'o</option>
+                                <option value="3046736">Afaahiti</option>
+                                <option value="3056736">Taravao</option>
+                                <option value="3071736">Pueu</option>
+                                <option value="3086736">Tautira</option>
+                            </optgroup>
+                            <optgroup label="🏝️ MOOREA">
+                                <option value="3081736">Centre de Moorea</option>
+                                <option value="3141736">Moorea zones éloignées</option>
+                            </optgroup>
+                            <optgroup label="🚢 AUTRES ÎLES">
+                                <option value="custom">Autres îles (devis personnalisé)</option>
+                            </optgroup>
+                        </select>
+                        <div class="price-display" id="priceDisplay">2 761 736 XPF</div>
+                        <div class="price-breakdown" id="priceBreakdown">Prix base fixe (hors transport)</div>
+                        
+                        <button onclick="openQuoteForm()" style="background: linear-gradient(45deg, #28a745, #20c997); color: white; border: none; padding: 15px 25px; border-radius: 50px; font-size: 1.1rem; font-weight: bold; cursor: pointer; margin-top: 20px; transition: all 0.3s ease; width: 100%; box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);" 
+                               onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(40, 167, 69, 0.4)'"
+                               onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(40, 167, 69, 0.3)'">
+                            📄 Générer mon devis PDF
+                        </button>
+                    </div>
+                    
+                    <div style="background: #fff3cd; border: 2px solid #ffeaa7; border-radius: 15px; padding: 25px; margin: 20px 0;">
+                        <h4 style="color: #856404; margin-bottom: 15px; font-size: 1.1rem;">✅ INCLUS DANS LE PRIX</h4>
+                        <ul style="font-size: 0.9rem; color: #155724; list-style: none; margin: 0 0 15px 0; padding: 0; background: #d4edda; padding: 15px; border-radius: 8px;">
+                            <li style="padding: 3px 0;">✅ Maison complète + cuisine + salle de bain</li>
+                            <li style="padding: 3px 0;">✅ 16 plots béton pour pilotis</li>
+                            <li style="padding: 3px 0;">✅ Permis de construire + formalités DCA</li>
+                            <li style="padding: 3px 0;">✅ Transport + dépotage + montage sur site</li>
+                            <li style="padding: 3px 0;">✅ Conformité normes + suivi projet</li>
+                        </ul>
+                        <h4 style="color: #856404; margin-bottom: 10px; font-size: 1.1rem;">⚠️ PRESTATIONS NON INCLUSES</h4>
+                        <p style="font-size: 0.95rem; color: #856404; margin-bottom: 10px;"><em>*Évaluation sur site pour un devis clé en main complet :</em></p>
+                        <ul style="font-size: 0.9rem; color: #856404; list-style: none; margin: 0; padding: 0;">
+                            <li style="padding: 3px 0;">❌ Connexion EDT (électricité)</li>
+                            <li style="padding: 3px 0;">❌ Raccordement eau potable</li>
+                            <li style="padding: 3px 0;">❌ Système d'assainissement</li>
+                            <li style="padding: 3px 0;">❌ Toiture supplémentaire/terrasse couverte</li>
+                            <li style="padding: 3px 0;">❌ Terrasse extérieure</li>
+                            <li style="padding: 3px 0;">❌ Puits perdus/évacuation eaux usées</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pre-order Section -->
+    <section class="preorder-section">
+        <div class="container">
+            <div class="preorder-container">
+                <div>
+                    <h2 class="section-title" style="color: white; text-align: left;">Précommandez votre FARE MITI</h2>
+                    <p style="font-size: 1.2rem; margin-bottom: 40px; opacity: 0.9;">
+                        Soyez parmi les premiers à recevoir votre maison préfabriquée. 
+                        Délai de réalisation : 8-11 semaines de la commande à la livraison.
+                    </p>
+                    <div class="cta-buttons">
+                        <a href="https://wa.me/68989785166?text=Bonjour%2C%20je%20souhaite%20précommander%20un%20FARE%20MITI" class="cta-button cta-primary" target="_blank">📦 Précommander Maintenant</a>
+                    </div>
+                </div>
+                
+                <div class="preorder-benefits">
+                    <h3 style="margin-bottom: 30px; color: white;">Avantages Précommande</h3>
+                    <ul class="benefits">
+                        <li>FARE MITI clé en main* montée sur pilotis inclus</li>
+                        <li>Montage rapide en 2-3 jours seulement</li>
+                        <li>Conformité DCA assurée par MY BOX TAHITI</li>
+                        <li>Qualité européenne - structure acier galvanisé</li>
+                        <li>Modulable - possibilité d'extension future</li>
+                        <li>Accompagnement du projet à la livraison</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <h2 class="section-title">Témoignages Clients</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; max-width: 1000px; margin: 0 auto;">
+                <div class="testimonial">
+                    <p class="testimonial-text">
+                        "Parfait pour nous deux ! Ma compagne et moi cherchions une solution rapide et de qualité. 
+                        Le FARE MITI de 35m² est parfaitement optimisé : cuisine fonctionnelle, salle de bain moderne. 
+                        Idéal pour un couple sans enfants !"
+                    </p>
+                    <div class="testimonial-author">— Teiva & Maeva, Moorea</div>
+                </div>
+                
+                <div class="testimonial">
+                    <p class="testimonial-text">
+                        "Service impeccable de MY BOX TAHITI ! En tant que célibataire, je voulais mon chez-moi rapidement. 
+                        La conformité DCA était assurée, aucun stress administratif. J'en ai fait un studio de location 
+                        courte durée très rentable !"
+                    </p>
+                    <div class="testimonial-author">— Jean-Michel P., Taiarapu</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section NOUVELLE VERSION -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">Questions Fréquentes</h2>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        Est-ce que c'est résistant aux intempéries ?
+                    </div>
+                    <div class="faq-answer">
+                        Oui. La maison est conçue avec une <strong>structure en acier galvanisé</strong> et des matériaux 
+                        <strong>traités contre la corrosion et l'humidité</strong>. Elle résiste au climat tropical, aux vents violents et à la pluie. 
+                        Durée du produit 10 à 15 ans et plus si bien entretenus.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        Est-ce que c'est bien isolé contre la chaleur ?
+                    </div>
+                    <div class="faq-answer">
+                        Oui. Les murs et la toiture sont isolés avec <strong>50 mm de laine de roche</strong>, un isolant thermique 
+                        performant adapté aux climats chauds et humides. Résultat : confort thermique intérieur optimisé.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        Dois-je avoir un permis de construire ?
+                    </div>
+                    <div class="faq-answer">
+                        Oui, mais <strong>MY BOX TAHITI s'occupe de cette démarche</strong> dans l'offre complète. 
+                        Vous n'avez rien à faire.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        Faut-il prévoir une dalle en béton ?
+                    </div>
+                    <div class="faq-answer">
+                        Non. La maison est livrée avec <strong>16 plots béton inclus</strong>, adaptés à tout terrain plat et stable. 
+                        Aucun terrassement lourd nécessaire.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        Est-ce possible en zone non viabilisée ?
+                    </div>
+                    <div class="faq-answer">
+                        Oui. La maison peut être installée sans raccordement immédiat : il est possible d'ajouter des 
+                        <strong>solutions autonomes</strong> (citerne, panneaux solaires, fosse, etc.).
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        Et si je veux déménager avec ma maison ?
+                    </div>
+                    <div class="faq-answer">
+                        Bonne nouvelle : le système est <strong>démontable et transportable</strong>. Vous pouvez la réinstaller 
+                        ailleurs en gardant les structures principales.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        Combien de temps pour la livraison ?
+                    </div>
+                    <div class="faq-answer">
+                        Le délai total est de 8 à 11 semaines : 6-8 semaines de fabrication en Chine + 
+                        2-3 semaines de transport maritime jusqu'en Polynésie française.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h3>MY BOX TAHITI</h3>
+                    <p>Spécialiste des maisons préfabriquées extensibles en Polynésie française.</p>
+                    <p>📱 WhatsApp : +689 89 78 51 66</p>
+                    <p>📧 myboxtahiti@gmail.com</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Produits</h3>
+                    <ul>
+                        <li><a href="#product">FARE MITI 35m²</a></li>
+                        <li><a href="#product">Extensions modulaires</a></li>
+                        <li><a href="#product">Terrasses et aménagements</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">Étude de faisabilité</a></li>
+                        <li><a href="#">Montage et installation</a></li>
+                        <li><a href="#">Service après-vente</a></li>
+                        <li><a href="#">Financement</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Zones de Livraison</h3>
+                    <ul>
+                        <li>Tahiti (tous districts)</li>
+                        <li>Tahiti Iti - Presqu'île</li>
+                        <li>Moorea (centre et zones éloignées)</li>
+                        <li>Îles Sous-le-Vent (devis)</li>
+                        <li>Autres îles (sur devis)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 MY BOX TAHITI. Tous droits réservés. | Maisons préfabriquées extensibles en Polynésie française</p>
+                <button onclick="openLegalModal()" style="background: none; border: none; color: #3498db; text-decoration: underline; cursor: pointer; margin-top: 10px; font-size: 0.9rem;">
+                    📝 MENTIONS LÉGALES
+                </button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/68989785166?text=Bonjour%2C%20je%20suis%20intéressé%20par%20le%20FARE%20MITI%20de%20MY%20BOX%20TAHITI" class="whatsapp-float" target="_blank" title="Nous contacter sur WhatsApp">
+        💬
+    </a>
+
+    <!-- Quote Modal -->
+    <div id="quoteModal" class="quote-modal">
+        <div class="quote-modal-content">
+            <span class="quote-close" onclick="closeQuoteForm()">&times;</span>
+            <h2 style="color: #333; margin-bottom: 20px; text-align: center;">📄 Générer votre devis FARE MITI</h2>
+            
+            <form class="quote-form" onsubmit="generateQuote(event)">
+                <input type="text" id="firstName" placeholder="Prénom *" required>
+                <input type="text" id="lastName" placeholder="Nom *" required>
+                <input type="email" id="email" placeholder="Email *" required>
+                <input type="tel" id="phone" placeholder="Téléphone *" required>
+                
+                <select id="island" required>
+                    <option value="">Sélectionnez votre zone *</option>
+                    <option value="Tahiti">🏝️ TAHITI</option>
+                    <option value="Moorea">🏝️ MOOREA</option>
+                    <option value="Autres îles">🚢 AUTRES ÎLES (devis sur demande)</option>
+                </select>
+                
+                <input type="text" id="commune" placeholder="Commune/District *" required>
+                <small style="color: #666; font-size: 0.9rem; margin-top: -5px; display: block;">
+                    Exemples Tahiti : Papeete, Pirae, Arue, Mahina, Faa'a, Punaauia, Paea, Papara, Mataiea, Papeno'o, Tiarei, Hitia'a, Mahaena, Papeari, Vairao, Toahotu, Teahupo'o, Afaahiti, Taravao, Pueu, Tautira
+                </small>
+                
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 15px 0;">
+                    <strong>Prix calculé :</strong> <span id="modalPrice">2 761 736 XPF</span><br>
+                    <small id="modalPriceDetails">Prix base fixe (hors transport)</small>
+                </div>
+                
+                <button type="submit" class="quote-submit">
+                    📥 Télécharger mon devis PDF
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Legal Modal -->
+    <div id="legalModal" class="quote-modal">
+        <div class="quote-modal-content" style="max-width: 700px; max-height: 80vh; overflow-y: auto;">
+            <span class="quote-close" onclick="closeLegalModal()">&times;</span>
+            <h2 style="color: #333; margin-bottom: 20px; text-align: center;">📝 MENTIONS LÉGALES</h2>
+            
+            <div style="text-align: left; line-height: 1.6; color: #555;">
+                <p style="text-align: center; margin-bottom: 20px; color: #007bff;"><strong>Dernière mise à jour : juin 2025</strong></p>
+                
+                <h3 style="color: #007bff; margin: 25px 0 15px 0;">1. Éditeur du site</h3>
+                <p><strong>Nom commercial</strong> : MY BOX TAHITI</p>
+                <p><strong>Statut</strong> : Entrepreneur individuel (personne physique)</p>
+                <p><strong>Nom du responsable</strong> : Hauata Jean-Baptiste</p>
+                <p><strong>Adresse</strong> : Domaine Vaitarua, PK 57.7 côté montagne, Afaahiti, Polynésie française</p>
+                <p><strong>Email</strong> : myboxtahiti@gmail.com</p>
+                <p><strong>Téléphone</strong> : +689 89 78 51 66</p>
+                <p><strong>N° Tahiti</strong> : 710194</p>
+                
+                <h3 style="color: #007bff; margin: 25px 0 15px 0;">2. Hébergement du site</h3>
+                <p>Ce site est hébergé par <strong>GitHub Pages</strong>, un service de GitHub, Inc.</p>
+                <p><strong>Adresse</strong> : 88 Colin P. Kelly Jr Street, San Francisco, CA 94107, États-Unis</p>
+                <p><strong>Site web</strong> : https://pages.github.com</p>
+                
+                <h3 style="color: #007bff; margin: 25px 0 15px 0;">3. Propriété intellectuelle</h3>
+                <p>L'ensemble des éléments présents sur ce site (textes, images, vidéos, logos, design, structure) sont la propriété exclusive de MY BOX TAHITI, sauf mention contraire. Toute reproduction, représentation, modification, diffusion ou exploitation, totale ou partielle, sans autorisation écrite préalable est strictement interdite.</p>
+                
+                <h3 style="color: #007bff; margin: 25px 0 15px 0;">4. Données personnelles</h3>
+                <p>Les données collectées via les formulaires sont utilisées uniquement pour traiter vos demandes et rester en contact avec vous. Conformément à la loi « Informatique et Libertés » et au RGPD, vous disposez d'un droit d'accès, de rectification, d'opposition, de suppression et de portabilité de vos données. Ces droits peuvent être exercés à l'adresse suivante : myboxtahiti@gmail.com</p>
+                
+                <h3 style="color: #007bff; margin: 25px 0 15px 0;">5. Cookies et statistiques</h3>
+                <p>Ce site utilise des cookies nécessaires à son bon fonctionnement, ainsi que des outils de mesure d'audience (comme Google Analytics). En poursuivant votre navigation, vous acceptez leur utilisation. Vous pouvez demander à tout moment la suppression de vos données anonymisées.</p>
+                
+                <h3 style="color: #007bff; margin: 25px 0 15px 0;">6. Limitation de responsabilité</h3>
+                <p>MY BOX TAHITI décline toute responsabilité en cas de dommages directs ou indirects liés à l'accès ou à l'utilisation du site, ou à l'impossibilité d'y accéder temporairement. Le contenu est fourni à titre informatif, sans garantie d'exactitude ou d'exhaustivité.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Price Calculator
+        function updatePrice() {
+            const zonePicker = document.getElementById('zonePicker');
+            const priceDisplay = document.getElementById('priceDisplay');
+            const priceBreakdown = document.getElementById('priceBreakdown');
+            
+            const basePrice = 2761736; // Prix de base mis à jour
+            const selectedValue = zonePicker.value;
+            
+            if (selectedValue === 'custom') {
+                priceDisplay.textContent = 'Sur devis';
+                priceBreakdown.textContent = 'Contactez-nous pour un devis personnalisé';
+            } else if (selectedValue) {
+                const totalPrice = parseInt(selectedValue);
+                const transport = totalPrice - basePrice;
+                priceDisplay.textContent = totalPrice.toLocaleString('fr-FR') + ' XPF';
+                priceBreakdown.textContent = `Base fixe: ${basePrice.toLocaleString('fr-FR')} XPF + Transport: ${transport.toLocaleString('fr-FR')} XPF`;
+            } else {
+                priceDisplay.textContent = basePrice.toLocaleString('fr-FR') + ' XPF';
+                priceBreakdown.textContent = 'Prix base fixe (hors transport)';
+            }
+            
+            // Update modal price
+            const modalPrice = document.getElementById('modalPrice');
+            const modalPriceDetails = document.getElementById('modalPriceDetails');
+            if (modalPrice && modalPriceDetails) {
+                modalPrice.textContent = priceDisplay.textContent;
+                modalPriceDetails.textContent = priceBreakdown.textContent;
+            }
+        }
+
+        // Quote Modal Functions
+        function openQuoteForm() {
+            const modal = document.getElementById('quoteModal');
+            modal.style.display = 'block';
+            
+            // Update modal with current price
+            updatePrice();
+        }
+
+        function closeQuoteForm() {
+            const modal = document.getElementById('quoteModal');
+            modal.style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const quoteModal = document.getElementById('quoteModal');
+            const legalModal = document.getElementById('legalModal');
+            if (event.target === quoteModal) {
+                quoteModal.style.display = 'none';
+            }
+            if (event.target === legalModal) {
+                legalModal.style.display = 'none';
+            }
+        }
+
+        // Legal Modal Functions
+        function openLegalModal() {
+            const modal = document.getElementById('legalModal');
+            modal.style.display = 'block';
+        }
+
+        function closeLegalModal() {
+            const modal = document.getElementById('legalModal');
+            modal.style.display = 'none';
+        }
+
+        // Generate Quote PDF
+        function generateQuote(event) {
+            event.preventDefault();
+            
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const island = document.getElementById('island').value;
+            const commune = document.getElementById('commune').value;
+            
+            // Récupérer le prix sélectionné dans le calculateur pour synchronisation
+            const zonePicker = document.getElementById('zonePicker');
+            const selectedZoneValue = zonePicker.value;
+            const basePrice = 2746736; // Prix de base original (sans les 15000 XPF supplémentaires)
+            
+            let totalPriceNum;
+            let transportCost;
+            
+            if (island === 'Tahiti') {
+                // Si une zone spécifique est sélectionnée dans le calculateur, utiliser ce prix
+                if (selectedZoneValue && selectedZoneValue !== 'custom') {
+                    totalPriceNum = parseInt(selectedZoneValue);
+                    transportCost = totalPriceNum - basePrice;
+                } else {
+                    // Prix par défaut pour Tahiti centre
+                    totalPriceNum = 2911736; // Prix corrigé sans les 15000 XPF en double
+                    transportCost = 165000;
+                }
+            } else if (island === 'Moorea') {
+                // Prix pour Moorea selon la zone sélectionnée
+                if (selectedZoneValue && selectedZoneValue !== 'custom') {
+                    totalPriceNum = parseInt(selectedZoneValue);
+                    transportCost = totalPriceNum - basePrice;
+                } else {
+                    // Prix par défaut pour Moorea centre
+                    totalPriceNum = 3066736; // Prix corrigé sans les 15000 XPF en double
+                    transportCost = 320000;
+                }
+            } else {
+                // Autres îles - prix sur devis
+                alert('Pour les autres îles, veuillez nous contacter directement sur WhatsApp pour un devis personnalisé.');
+                return;
+            }
+            
+            // Create PDF content matching the exact format
+            const quoteDate = new Date().toLocaleDateString('fr-FR');
+            const pdfContent = `
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <meta charset="UTF-8">
+                    <title>Devis MY BOX TAHITI - ${firstName} ${lastName}</title>
+                    <style>
+                        body { font-family: Arial, sans-serif; margin: 20px; color: #333; line-height: 1.4; }
+                        .header { margin-bottom: 30px; }
+                        .header h1 { color: #007bff; font-size: 24px; margin: 0; font-weight: bold; }
+                        .header-info { margin-top: 10px; font-size: 14px; }
+                        .client-section { background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 20px 0; }
+                        .client-section h3 { margin: 0 0 10px 0; color: #007bff; }
+                        .specs-section { margin: 20px 0; }
+                        .specs-section h3 { color: #007bff; margin-bottom: 10px; text-transform: uppercase; }
+                        .price-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+                        .price-table th { background: #007bff; color: white; padding: 12px; text-align: left; font-weight: bold; }
+                        .price-table td { border: 1px solid #ddd; padding: 10px; }
+                        .price-table .total-row { background: #f8f9fa; font-weight: bold; }
+                        .phases-section { margin: 30px 0; }
+                        .phase-item { background: #f0f8ff; margin: 10px 0; padding: 15px; border-left: 4px solid #007bff; }
+                        .phase-title { font-weight: bold; color: #007bff; margin-bottom: 5px; }
+                        .phase-amount { font-weight: bold; color: #333; }
+                        .total-general { background: #007bff; color: white; padding: 15px; text-align: center; font-size: 18px; font-weight: bold; margin: 20px 0; }
+                        .timeline { background: #fff3cd; padding: 20px; border-radius: 8px; margin: 20px 0; }
+                        .timeline h3 { color: #856404; margin-bottom: 15px; }
+                        .signature-section { margin-top: 40px; border-top: 2px solid #007bff; padding-top: 20px; }
+                        .non-included { background: #fff3cd; padding: 15px; border-radius: 8px; margin: 20px 0; }
+                        .non-included h3 { color: #856404; margin-bottom: 10px; }
+                        .non-included ul { margin: 0; padding-left: 20px; }
+                    </style>
+                </head>
+                <body>
+                    <div class="header">
+                        <h1>DEVIS MY BOX TAHITI</h1>
+                        <div class="header-info">
+                            <strong>Date :</strong> ${quoteDate}<br>
+                            <strong>Contact :</strong> Hauata Jean-Baptiste<br>
+                            <strong>WhatsApp/Téléphone :</strong> +689 89 78 51 66<br>
+                            <strong>Email :</strong> myboxtahiti@gmail.com<br>
+                            <strong>Web :</strong> https://myboxtahiti.github.io/myboxtahiti/
+                        </div>
+                    </div>
+                    
+                    <div class="client-section">
+                        <h3>INFORMATIONS CLIENT</h3>
+                        <strong>Client(e) :</strong> ${firstName} ${lastName}<br>
+                        <strong>Téléphone :</strong> ${phone}<br>
+                        <strong>Email :</strong> ${email}<br>
+                        <strong>Lieu :</strong> ${commune}, ${island}
+                    </div>
+                    
+                    <div class="specs-section">
+                        <h3>MAISON PRÉFABRIQUÉE 20' EXTENSIBLE PERSONNALISÉE</h3>
+                        <p><strong>Spécifications :</strong></p>
+                        <p>Dimensions : 5,5m × 6,45m × 2,52m (hauteur sous plafond 2,50m)<br>
+                        Surface habitable : 35 m² dont 1 chambre de 11 m²<br>
+                        Container d'expédition 20HC et à l'intérieur le kit 20 extensible<br>
+                        Inclus : cuisine équipée, salle de bain complète, électricité 220V/50Hz</p>
+                    </div>
+                    
+                    <h3 style="color: #007bff; margin: 30px 0 15px 0;">DÉTAIL DES PRIX</h3>
+                    <table class="price-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 70%;">Description</th>
+                                <th style="width: 30%;">Montant (XPF)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Maison 20' extensible (valeur CAF + frais virement international)</td>
+                                <td>1 492 338</td>
+                            </tr>
+                            <tr>
+                                <td>Formalités douanières et mise à disposition zone portuaire</td>
+                                <td>649 983</td>
+                            </tr>
+                            <tr>
+                                <td>Commission MY BOX TAHITI<br><small>Correspondance fournisseur, conformité normes DCA, suivi projet</small></td>
+                                <td>120 000</td>
+                            </tr>
+                            <tr>
+                                <td>16 plots béton pour pilotis</td>
+                                <td>368 000</td>
+                            </tr>
+                            <tr>
+                                <td>Permis de construire</td>
+                                <td>51 415</td>
+                            </tr>
+                            <tr>
+                                <td>Transport ${commune} (${island}) + Dépotage + Pose</td>
+                                <td>${transportCost.toLocaleString('fr-FR')}</td>
+                            </tr>
+                            <tr>
+                                <td>Montage sur site</td>
+                                <td>65 000</td>
+                            </tr>
+                            <tr class="total-row">
+                                <td><strong>TOTAL TTC :</strong></td>
+                                <td><strong>${totalPriceNum.toLocaleString('fr-FR')} XPF</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="non-included">
+                        <h3>PRESTATIONS NON INCLUSES (évaluation sur site)</h3>
+                        <ul>
+                            <li>Connexion EDT (électricité)</li>
+                            <li>Raccordement eau potable</li>
+                            <li>Système d'assainissement</li>
+                            <li>Toiture supplémentaire</li>
+                            <li>Terrasse</li>
+                            <li>Puits perdus/évacuation eaux usées</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="phases-section">
+                        <h3 style="color: #007bff; margin-bottom: 20px;">Synthèse des échéances proposées avec totaux</h3>
+                        
+                        <div class="phase-item">
+                            <div class="phase-title">🔹 Phase 1 - À la signature du devis</div>
+                            <div class="phase-amount">1 612 338 XPF</div>
+                            <div style="margin-top: 5px; font-size: 14px; color: #666;">Maison extensible + commission MY BOX + frais de virement international</div>
+                        </div>
+                        
+                        <div class="phase-item">
+                            <div class="phase-title">🔹 Phase 2 - 1 semaine avant l'arrivée du conteneur au port</div>
+                            <div class="phase-amount">649 983 XPF</div>
+                            <div style="margin-top: 5px; font-size: 14px; color: #666;">Formalités douanières et mise à disposition en zone portuaire</div>
+                        </div>
+                        
+                        <div class="phase-item">
+                            <div class="phase-title">🔹 Phase 3 - Préparation du chantier</div>
+                            <div class="phase-amount">419 415 XPF</div>
+                            <div style="margin-top: 5px; font-size: 14px; color: #666;">Plots béton pour pilotis + permis de construire</div>
+                        </div>
+                        
+                        <div class="phase-item">
+                            <div class="phase-title">🔹 Phase 4 - Avant livraison & pose sur site</div>
+                            <div class="phase-amount">${(transportCost + 65000).toLocaleString('fr-FR')} XPF</div>
+                            <div style="margin-top: 5px; font-size: 14px; color: #666;">Transport, dépotage, pose et montage sur site</div>
+                        </div>
+                    </div>
+                    
+                    <div class="total-general">
+                        💵 TOTAL GÉNÉRAL TTC : ${totalPriceNum.toLocaleString('fr-FR')} XPF
+                    </div>
+                    
+                    <div class="timeline">
+                        <h3>⏱️ DÉLAIS DE RÉALISATION</h3>
+                        <p><strong>Production + expédition :</strong> 4-6 semaines<br>
+                        <strong>Transit maritime :</strong> 4-5 semaines<br>
+                        <strong>Montage sur site :</strong> 2-3 jours</p>
+                        <p style="margin-top: 15px;"><strong>Validité du devis :</strong> 10 jours</p>
+                    </div>
+                    
+                    <div class="signature-section">
+                        <h3 style="color: #007bff;">Bon pour validation :</h3>
+                        <p><strong>Client(e) :</strong> ${firstName} ${lastName}<br>
+                        <strong>Téléphone :</strong> ${phone}<br>
+                        <strong>Lieu :</strong> ${commune}, ${island}</p>
+                        
+                        <div style="margin-top: 40px; display: flex; justify-content: space-between;">
+                            <div>
+                                <p><strong>Signature client :</strong></p>
+                                <div style="border-bottom: 2px solid #333; width: 200px; margin-top: 30px;"></div>
+                                <p style="margin-top: 5px; font-size: 12px;">Lu et approuvé</p>
+                            </div>
+                            <div>
+                                <p><strong>MY BOX TAHITI :</strong></p>
+                                <div style="border-bottom: 2px solid #333; width: 200px; margin-top: 30px;"></div>
+                                <p style="margin-top: 5px; font-size: 12px;">Hauata Jean-Baptiste</p>
+                            </div>
+                        </div>
+                    </div>
+                </body>
+                </html>
+            `;
+            
+            // Create and download PDF for client
+            const blob = new Blob([pdfContent], { type: 'text/html' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            const fileName = `Devis_MY_BOX_TAHITI_${firstName}_${lastName}_${quoteDate.replace(/\//g, '-')}.html`;
+            a.download = fileName;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+            
+            // Send copy to MY BOX TAHITI email
+            sendQuoteToOwner(firstName, lastName, email, phone, island, commune, totalPriceNum, quoteDate, pdfContent);
+            
+            // Close modal and show success message
+            closeQuoteForm();
+            alert('📥 Votre devis professionnel a été téléchargé et une copie a été envoyée à MY BOX TAHITI pour le suivi !');
+        }
+
+        // Function to send quote copy to owner
+        function sendQuoteToOwner(firstName, lastName, clientEmail, phone, island, commune, totalPrice, quoteDate, pdfContent) {
+            // Prepare email data
+            const subject = `[NOUVEAU DEVIS] ${firstName} ${lastName} - ${commune}, ${island} - ${totalPrice.toLocaleString('fr-FR')} XPF`;
+            const emailBody = `
+NOUVEAU DEVIS GÉNÉRÉ VIA LE SITE WEB MY BOX TAHITI
+
+📋 INFORMATIONS CLIENT :
+- Nom : ${firstName} ${lastName}
+- Email : ${clientEmail}
+- Téléphone : ${phone}
+- Localisation : ${commune}, ${island}
+- Prix total : ${totalPrice.toLocaleString('fr-FR')} XPF
+- Date du devis : ${quoteDate}
+
+🚀 ACTION REQUISE :
+- Contacter le client dans les 24h
+- Vérifier la faisabilité sur site
+- Préparer le suivi commercial
+
+📧 Le devis complet est en pièce jointe de cet email.
+
+---
+Email automatique généré depuis https://myboxtahiti.github.io/myboxtahiti/
+            `.trim();
+
+            // Try to send email using mailto (will open default email client)
+            try {
+                const mailtoLink = `mailto:myboxtahiti@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
+                
+                // For user notification, we'll show a different approach
+                console.log('Quote data prepared for email:', {
+                    to: 'myboxtahiti@gmail.com',
+                    subject: subject,
+                    body: emailBody,
+                    attachment: 'Devis PDF'
+                });
+                
+                // Alternative: Create a notification for manual follow-up
+                showEmailNotification(firstName, lastName, clientEmail, phone, island, commune, totalPrice);
+                
+            } catch (error) {
+                console.error('Email sending error:', error);
+                showEmailNotification(firstName, lastName, clientEmail, phone, island, commune, totalPrice);
+            }
+        }
+
+        // Show notification for manual email follow-up
+        function showEmailNotification(firstName, lastName, clientEmail, phone, island, commune, totalPrice) {
+            // Create notification popup
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #28a745;
+                color: white;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+                z-index: 10000;
+                max-width: 400px;
+                font-family: Arial, sans-serif;
+            `;
+            
+            notification.innerHTML = `
+                <h4 style="margin: 0 0 10px 0;">📧 Nouveau devis généré !</h4>
+                <p style="margin: 5px 0; font-size: 14px;"><strong>Client :</strong> ${firstName} ${lastName}</p>
+                <p style="margin: 5px 0; font-size: 14px;"><strong>Contact :</strong> ${phone}</p>
+                <p style="margin: 5px 0; font-size: 14px;"><strong>Zone :</strong> ${commune}, ${island}</p>
+                <p style="margin: 5px 0; font-size: 14px;"><strong>Montant :</strong> ${totalPrice.toLocaleString('fr-FR')} XPF</p>
+                <button onclick="this.parentElement.remove(); sendWhatsAppNotification('${firstName}', '${lastName}', '${phone}', '${commune}', '${island}', '${totalPrice}')" 
+                        style="background: white; color: #28a745; border: none; padding: 8px 15px; border-radius: 5px; margin-top: 10px; cursor: pointer; font-weight: bold;">
+                    📱 Contacter sur WhatsApp
+                </button>
+                <button onclick="this.parentElement.remove()" 
+                        style="background: rgba(255,255,255,0.2); color: white; border: 1px solid white; padding: 8px 15px; border-radius: 5px; margin: 10px 0 0 10px; cursor: pointer;">
+                    ✕ Fermer
+                </button>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Auto-remove after 10 seconds
+            setTimeout(() => {
+                if (notification.parentElement) {
+                    notification.remove();
+                }
+            }, 10000);
+        }
+
+        // Function to send WhatsApp notification
+        function sendWhatsAppNotification(firstName, lastName, phone, commune, island, totalPrice) {
+            const message = `🏠 NOUVEAU DEVIS GÉNÉRÉ VIA LE SITE WEB
+
+👤 Client: ${firstName} ${lastName}
+📱 Téléphone: ${phone}
+📍 Zone: ${commune}, ${island}
+💰 Montant: ${totalPrice.toLocaleString('fr-FR')} XPF
+
+✅ Action: Contacter le client pour le suivi du devis FARE MITI`;
+            
+            const whatsappUrl = `https://wa.me/68989785166?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // FAQ Toggle
+        function toggleFaq(element) {
+            const answer = element.nextElementSibling;
+            const isActive = answer.classList.contains('active');
+            
+            // Close all other FAQs
+            document.querySelectorAll('.faq-answer').forEach(faq => {
+                faq.classList.remove('active');
+            });
+            
+            // Toggle current FAQ
+            if (!isActive) {
+                answer.classList.add('active');
+            }
+        }
+
+        // Carrousel functionality
+        function initCarousel() {
+            const slides = document.querySelectorAll('.carousel-slide');
+            const dots = document.querySelectorAll('.dot');
+            let currentSlideIndex = 0;
+            
+            if (slides.length === 0) return;
+            
+            function showSlide(index) {
+                const track = document.getElementById('carouselTrack');
+                if (!track) return;
+                
+                const slideWidth = slides[0].offsetWidth;
+                track.style.transform = `translateX(-${index * slideWidth}px)`;
+                
+                // Update dots
+                dots.forEach(dot => dot.classList.remove('active'));
+                if (dots[index]) {
+                    dots[index].classList.add('active');
+                }
+                
+                currentSlideIndex = index;
+            }
+            
+            window.moveCarousel = function(direction) {
+                currentSlideIndex += direction;
+                
+                if (currentSlideIndex >= slides.length) {
+                    currentSlideIndex = 0;
+                } else if (currentSlideIndex < 0) {
+                    currentSlideIndex = slides.length - 1;
+                }
+                
+                showSlide(currentSlideIndex);
+            }
+            
+            window.currentSlide = function(index) {
+                showSlide(index - 1);
+            }
+            
+            // Auto-play carousel
+            setInterval(() => {
+                window.moveCarousel(1);
+            }, 5000);
+            
+            // Touch/swipe support for mobile
+            let startX = 0;
+            const carousel = document.querySelector('.carousel-container');
+            
+            if (carousel) {
+                carousel.addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].clientX;
+                });
+                
+                carousel.addEventListener('touchend', (e) => {
+                    const endX = e.changedTouches[0].clientX;
+                    const diffX = startX - endX;
+                    
+                    if (Math.abs(diffX) > 50) {
+                        if (diffX > 0) {
+                            window.moveCarousel(1); // Swipe left
+                        } else {
+                            window.moveCarousel(-1); // Swipe right
+                        }
+                    }
+                });
+            }
+        }
+        
+        // Initialize carousel when DOM is loaded
+        document.addEventListener('DOMContentLoaded', initCarousel);
+
+        // Video play - Intégration YouTube réelle avec nouveau lien
+        function playVideo() {
+            const placeholder = document.querySelector('.video-placeholder');
+            placeholder.innerHTML = `
+                <iframe width="100%" height="450" 
+                        src="https://www.youtube.com/embed/HRVD_7U3ccA?autoplay=1&rel=0&modestbranding=1" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen
+                        style="border-radius: 15px;">
+                </iframe>
+            `;
+        }
+
+        // Second video play - Processus de fabrication
+        function playSecondVideo() {
+            const placeholders = document.querySelectorAll('.video-placeholder');
+            const secondPlaceholder = placeholders[1]; // Deuxième vidéo
+            secondPlaceholder.innerHTML = `
+                <iframe width="100%" height="450" 
+                        src="https://www.youtube.com/embed/hM8cwt_Bd2A?autoplay=1&rel=0&modestbranding=1" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen
+                        style="border-radius: 15px;">
+                </iframe>
+            `;
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
