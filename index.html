@@ -240,10 +240,21 @@
             position: relative;
             cursor: pointer;
             transition: transform 0.3s ease;
+            min-height: 450px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url('https://img.youtube.com/vi/HRVD_7U3ccA/maxresdefault.jpg');
+            background-size: cover;
+            background-position: center;
         }
         
         .video-placeholder:hover {
             transform: scale(1.02);
+        }
+        
+        .video-placeholder.second-video {
+            background-image: url('https://img.youtube.com/vi/hM8cwt_Bd2A/maxresdefault.jpg');
         }
         
         .play-button {
@@ -261,6 +272,7 @@
             font-size: 30px;
             color: #333;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
         
         .play-button:hover {
@@ -647,6 +659,13 @@
                 height: 280px;
             }
             
+            .carousel-slide img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 0;
+            }
+            
             .carousel-btn {
                 width: 40px;
                 height: 40px;
@@ -667,6 +686,17 @@
             
             .carousel-section {
                 padding: 40px 0 25px;
+            }
+            
+            .video-placeholder {
+                min-height: 250px;
+                margin: 0 10px;
+            }
+            
+            .play-button {
+                width: 60px;
+                height: 60px;
+                font-size: 24px;
             }
         }
         
@@ -690,6 +720,20 @@
             .photo-carousel {
                 max-width: 100%;
                 margin: 0 10px;
+            }
+            
+            .video-placeholder {
+                min-height: 200px;
+                margin: 0 5px;
+            }
+            
+            .video-container {
+                margin: 0 10px;
+            }
+            
+            .carousel-slide img {
+                border-radius: 0;
+                background-color: #f8f9fa;
             }
         }
     </style>
@@ -720,17 +764,20 @@
                         <div class="carousel-slide active">
                             <img src="https://lh3.googleusercontent.com/d/1AO1i1nGy6rsgEIMsLYqlcLknNWeDLrSr" 
                                  alt="Cuisine FARE MITI" 
-                                 onerror="this.onerror=null; this.style.background='linear-gradient(45deg, #007bff, #0056b3)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.innerHTML='<div style=color:white;text-align:center><h3>🏠 Cuisine FARE MITI</h3><p>Photo en cours de chargement...</p></div>'">
+                                 loading="eager"
+                                 onerror="this.onerror=null; this.style.background='linear-gradient(45deg, #007bff, #0056b3)'; this.style.color='white'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='16px'; this.style.textAlign='center'; this.innerHTML='🏠<br>Cuisine FARE MITI<br><small>Image en cours de chargement...</small>'">
                         </div>
                         <div class="carousel-slide">
                             <img src="https://lh3.googleusercontent.com/d/1UGmU708ci7h6BRJnvo8ZSH_DueQUw1TM" 
                                  alt="Salle de bain FARE MITI" 
-                                 onerror="this.onerror=null; this.style.background='linear-gradient(45deg, #28a745, #1e7e34)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.innerHTML='<div style=color:white;text-align:center><h3>🚿 Salle de bain</h3><p>Photo en cours de chargement...</p></div>'">
+                                 loading="lazy"
+                                 onerror="this.onerror=null; this.style.background='linear-gradient(45deg, #28a745, #1e7e34)'; this.style.color='white'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='16px'; this.style.textAlign='center'; this.innerHTML='🚿<br>Salle de bain<br><small>Image en cours de chargement...</small>'">
                         </div>
                         <div class="carousel-slide">
                             <img src="https://lh3.googleusercontent.com/d/13S37Lahgj6kfvWn8zxzeQSC5xI-5fnMA" 
                                  alt="Intérieur FARE MITI" 
-                                 onerror="this.onerror=null; this.style.background='linear-gradient(45deg, #fd7e14, #e55100)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.innerHTML='<div style=color:white;text-align:center><h3>🏡 Intérieur</h3><p>Photo en cours de chargement...</p></div>'">
+                                 loading="lazy"
+                                 onerror="this.onerror=null; this.style.background='linear-gradient(45deg, #fd7e14, #e55100)'; this.style.color='white'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='16px'; this.style.textAlign='center'; this.innerHTML='🏡<br>Intérieur<br><small>Image en cours de chargement...</small>'">
                         </div>
                     </div>
                     
@@ -754,11 +801,8 @@
             
             <div class="video-container">
                 <div class="video-placeholder" onclick="playVideo()">
-                    <div style="background: linear-gradient(45deg, rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 800 450\"><rect width=\"800\" height=\"450\" fill=\"%23f8f9fa\"/><text x=\"400\" y=\"225\" text-anchor=\"middle\" fill=\"%23666\" font-family=\"Arial\" font-size=\"20\">🏠 Vidéo FARE MITI</text></svg>'); background-size: cover; height: 450px; border-radius: 15px; position: relative; display: flex; align-items: center; justify-content: center;">
-                        <div class="play-button">
-                            ▶️
-                        </div>
-                        <p style="margin-top: 20px;">Cliquez pour voir la vidéo FARE MITI</p>
+                    <div class="play-button">
+                        ▶️
                     </div>
                 </div>
             </div>
@@ -772,12 +816,9 @@
             <p style="font-size: 1.2rem; margin-bottom: 50px; color: rgba(255,255,255,0.9);">Découvrez le montage de votre FARE MITI</p>
             
             <div class="video-container">
-                <div class="video-placeholder" onclick="playSecondVideo()">
-                    <div style="background: linear-gradient(45deg, rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 800 450\"><rect width=\"800\" height=\"450\" fill=\"%23f8f9fa\"/><text x=\"400\" y=\"225\" text-anchor=\"middle\" fill=\"%23666\" font-family=\"Arial\" font-size=\"20\">🏗️ Installation</text></svg>'); background-size: cover; height: 450px; border-radius: 15px; position: relative; display: flex; align-items: center; justify-content: center;">
-                        <div class="play-button">
-                            ▶️
-                        </div>
-                        <p style="margin-top: 20px; color: white;">Cliquez pour voir le processus d'installation</p>
+                <div class="video-placeholder second-video" onclick="playSecondVideo()">
+                    <div class="play-button">
+                        ▶️
                     </div>
                 </div>
             </div>
@@ -1491,107 +1532,198 @@
             alert('📥 Votre devis professionnel a été téléchargé et une copie a été envoyée à MY BOX TAHITI pour le suivi !');
         }
 
-        // Function to send quote copy to owner
+        // Function to send quote copy to owner - AMÉLIORÉE
         function sendQuoteToOwner(firstName, lastName, clientEmail, phone, island, commune, totalPrice, quoteDate, pdfContent) {
-            // Prepare email data
+            // Préparer les données détaillées pour MY BOX TAHITI
             const subject = `[NOUVEAU DEVIS] ${firstName} ${lastName} - ${commune}, ${island} - ${totalPrice.toLocaleString('fr-FR')} XPF`;
             const emailBody = `
-NOUVEAU DEVIS GÉNÉRÉ VIA LE SITE WEB MY BOX TAHITI
+🏠 NOUVEAU DEVIS GÉNÉRÉ VIA LE SITE WEB MY BOX TAHITI
 
 📋 INFORMATIONS CLIENT :
-- Nom : ${firstName} ${lastName}
+- Nom complet : ${firstName} ${lastName}
 - Email : ${clientEmail}
 - Téléphone : ${phone}
 - Localisation : ${commune}, ${island}
-- Prix total : ${totalPrice.toLocaleString('fr-FR')} XPF
+- Prix total calculé : ${totalPrice.toLocaleString('fr-FR')} XPF
 - Date du devis : ${quoteDate}
+- Heure : ${new Date().toLocaleTimeString('fr-FR')}
 
-🚀 ACTION REQUISE :
-- Contacter le client dans les 24h
-- Vérifier la faisabilité sur site
-- Préparer le suivi commercial
+🚀 ACTIONS RECOMMANDÉES :
+1. Contacter le client dans les 24h via WhatsApp
+2. Vérifier la faisabilité technique sur site
+3. Confirmer les détails du transport
+4. Préparer le suivi commercial personnalisé
 
-📧 Le devis complet est en pièce jointe de cet email.
+📧 Le devis PDF complet est disponible en téléchargement.
+🌐 Généré depuis : https://myboxtahiti.github.io/myboxtahiti/
 
 ---
-Email automatique généré depuis https://myboxtahiti.github.io/myboxtahiti/
+Système automatisé MY BOX TAHITI - ${new Date().toLocaleString('fr-FR')}
             `.trim();
 
-            // Try to send email using mailto (will open default email client)
+            // Créer le lien mailto avec toutes les informations
+            const mailtoLink = `mailto:myboxtahiti@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
+            
+            // Tenter d'ouvrir le client email par défaut
             try {
-                const mailtoLink = `mailto:myboxtahiti@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
-                
-                // For user notification, we'll show a different approach
-                console.log('Quote data prepared for email:', {
-                    to: 'myboxtahiti@gmail.com',
-                    subject: subject,
-                    body: emailBody,
-                    attachment: 'Devis PDF'
-                });
-                
-                // Alternative: Create a notification for manual follow-up
-                showEmailNotification(firstName, lastName, clientEmail, phone, island, commune, totalPrice);
-                
+                window.open(mailtoLink, '_blank');
             } catch (error) {
-                console.error('Email sending error:', error);
-                showEmailNotification(firstName, lastName, clientEmail, phone, island, commune, totalPrice);
+                console.error('Erreur ouverture email:', error);
             }
+            
+            // Toujours afficher la notification de suivi
+            showEmailNotification(firstName, lastName, clientEmail, phone, island, commune, totalPrice);
+            
+            // Créer également un fichier de sauvegarde local pour MY BOX TAHITI
+            createBackupFile(firstName, lastName, clientEmail, phone, island, commune, totalPrice, quoteDate);
         }
 
-        // Show notification for manual email follow-up
+        // Créer un fichier de sauvegarde pour MY BOX TAHITI
+        function createBackupFile(firstName, lastName, clientEmail, phone, island, commune, totalPrice, quoteDate) {
+            const backupData = {
+                timestamp: new Date().toISOString(),
+                client: {
+                    nom: `${firstName} ${lastName}`,
+                    email: clientEmail,
+                    telephone: phone,
+                    localisation: `${commune}, ${island}`
+                },
+                devis: {
+                    prixTotal: totalPrice,
+                    date: quoteDate,
+                    statut: 'Nouveau'
+                }
+            };
+            
+            const backupContent = `
+MY BOX TAHITI - LEAD CLIENT
+============================
+Date/Heure: ${new Date().toLocaleString('fr-FR')}
+Client: ${firstName} ${lastName}
+Contact: ${phone} | ${clientEmail}
+Zone: ${commune}, ${island}
+Prix: ${totalPrice.toLocaleString('fr-FR')} XPF
+
+Action requise: Contacter le client pour suivi.
+WhatsApp: https://wa.me/689${phone.replace(/\D/g, '').slice(-8)}
+
+----
+Données JSON:
+${JSON.stringify(backupData, null, 2)}
+            `;
+            
+            // Créer et télécharger le fichier de sauvegarde
+            const blob = new Blob([backupContent], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `Lead_${firstName}_${lastName}_${Date.now()}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+        }
+
+        // Show notification for manual email follow-up - AMÉLIORÉE
         function showEmailNotification(firstName, lastName, clientEmail, phone, island, commune, totalPrice) {
-            // Create notification popup
+            // Formater le numéro pour WhatsApp client
+            const cleanPhone = phone.replace(/\D/g, '');
+            let clientWhatsApp = '';
+            if (cleanPhone.length >= 8) {
+                const phoneForWhatsApp = cleanPhone.length === 8 ? '689' + cleanPhone : cleanPhone;
+                clientWhatsApp = `https://wa.me/${phoneForWhatsApp}`;
+            }
+            
+            // Créer la notification popup améliorée
             const notification = document.createElement('div');
             notification.style.cssText = `
                 position: fixed;
                 top: 20px;
                 right: 20px;
-                background: #28a745;
+                background: linear-gradient(135deg, #28a745, #20c997);
                 color: white;
-                padding: 20px;
-                border-radius: 10px;
-                box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+                padding: 25px;
+                border-radius: 15px;
+                box-shadow: 0 8px 25px rgba(40, 167, 69, 0.4);
                 z-index: 10000;
-                max-width: 400px;
+                max-width: 420px;
                 font-family: Arial, sans-serif;
+                border: 2px solid rgba(255,255,255,0.2);
             `;
             
             notification.innerHTML = `
-                <h4 style="margin: 0 0 10px 0;">📧 Nouveau devis généré !</h4>
-                <p style="margin: 5px 0; font-size: 14px;"><strong>Client :</strong> ${firstName} ${lastName}</p>
-                <p style="margin: 5px 0; font-size: 14px;"><strong>Contact :</strong> ${phone}</p>
-                <p style="margin: 5px 0; font-size: 14px;"><strong>Zone :</strong> ${commune}, ${island}</p>
-                <p style="margin: 5px 0; font-size: 14px;"><strong>Montant :</strong> ${totalPrice.toLocaleString('fr-FR')} XPF</p>
-                <button onclick="this.parentElement.remove(); sendWhatsAppNotification('${firstName}', '${lastName}', '${phone}', '${commune}', '${island}', '${totalPrice}')" 
-                        style="background: white; color: #28a745; border: none; padding: 8px 15px; border-radius: 5px; margin-top: 10px; cursor: pointer; font-weight: bold;">
-                    📱 Contacter sur WhatsApp
-                </button>
+                <h4 style="margin: 0 0 15px 0; font-size: 18px;">📧 Nouveau lead généré !</h4>
+                <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 8px; margin: 15px 0;">
+                    <p style="margin: 5px 0; font-size: 14px;"><strong>👤 Client :</strong> ${firstName} ${lastName}</p>
+                    <p style="margin: 5px 0; font-size: 14px;"><strong>📱 Contact :</strong> ${phone}</p>
+                    <p style="margin: 5px 0; font-size: 14px;"><strong>📧 Email :</strong> ${clientEmail}</p>
+                    <p style="margin: 5px 0; font-size: 14px;"><strong>📍 Zone :</strong> ${commune}, ${island}</p>
+                    <p style="margin: 5px 0; font-size: 14px;"><strong>💰 Montant :</strong> ${totalPrice.toLocaleString('fr-FR')} XPF</p>
+                </div>
+                
+                <div style="display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap;">
+                    <button onclick="this.parentElement.parentElement.remove(); sendWhatsAppNotification('${firstName}', '${lastName}', '${phone}', '${commune}', '${island}', ${totalPrice})" 
+                            style="background: white; color: #28a745; border: none; padding: 10px 15px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 12px; flex: 1; min-width: 120px;">
+                        📱 Notifier via WhatsApp
+                    </button>
+                    ${clientWhatsApp ? `<button onclick="window.open('${clientWhatsApp}', '_blank'); this.parentElement.parentElement.remove();" 
+                            style="background: #25D366; color: white; border: none; padding: 10px 15px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 12px; flex: 1; min-width: 120px;">
+                        💬 Contacter client
+                    </button>` : ''}
+                </div>
+                
                 <button onclick="this.parentElement.remove()" 
-                        style="background: rgba(255,255,255,0.2); color: white; border: 1px solid white; padding: 8px 15px; border-radius: 5px; margin: 10px 0 0 10px; cursor: pointer;">
+                        style="background: rgba(255,255,255,0.2); color: white; border: 1px solid rgba(255,255,255,0.3); padding: 8px 15px; border-radius: 8px; margin: 10px auto 0; cursor: pointer; display: block; font-size: 12px;">
                     ✕ Fermer
                 </button>
             `;
             
             document.body.appendChild(notification);
             
-            // Auto-remove after 10 seconds
+            // Auto-remove après 15 secondes (plus long pour laisser le temps de réagir)
             setTimeout(() => {
                 if (notification.parentElement) {
-                    notification.remove();
+                    notification.style.opacity = '0';
+                    notification.style.transform = 'translateX(100%)';
+                    setTimeout(() => notification.remove(), 300);
                 }
-            }, 10000);
+            }, 15000);
         }
 
-        // Function to send WhatsApp notification
+        // Function to send WhatsApp notification - AMÉLIORÉE
         function sendWhatsAppNotification(firstName, lastName, phone, commune, island, totalPrice) {
-            const message = `🏠 NOUVEAU DEVIS GÉNÉRÉ VIA LE SITE WEB
+            // Nettoyer et formater le numéro de téléphone
+            const cleanPhone = phone.replace(/\D/g, ''); // Enlever tous les caractères non-numériques
+            let formattedPhone = cleanPhone;
+            
+            // Si le numéro commence par 689, c'est déjà au bon format
+            if (!cleanPhone.startsWith('689')) {
+                // Ajouter le code pays 689 pour la Polynésie française
+                if (cleanPhone.length === 8) {
+                    formattedPhone = '689' + cleanPhone;
+                } else if (cleanPhone.length === 11 && cleanPhone.startsWith('689')) {
+                    formattedPhone = cleanPhone;
+                }
+            }
+            
+            // Convertir totalPrice en nombre si c'est une chaîne
+            const priceNum = typeof totalPrice === 'string' ? parseInt(totalPrice.replace(/\D/g, '')) : totalPrice;
+            
+            const message = `🏠 NOUVEAU LEAD MY BOX TAHITI
 
 👤 Client: ${firstName} ${lastName}
 📱 Téléphone: ${phone}
 📍 Zone: ${commune}, ${island}
-💰 Montant: ${totalPrice.toLocaleString('fr-FR')} XPF
+💰 Montant devis: ${priceNum.toLocaleString('fr-FR')} XPF
+⏰ Généré: ${new Date().toLocaleString('fr-FR')}
 
-✅ Action: Contacter le client pour le suivi du devis FARE MITI`;
+✅ Actions:
+1. Appeler le client dans les 2h
+2. Vérifier faisabilité site
+3. Confirmer détails transport
+4. Programmer visite si nécessaire
+
+🌐 Site: https://myboxtahiti.github.io/myboxtahiti/`;
             
             const whatsappUrl = `https://wa.me/68989785166?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
@@ -1613,13 +1745,34 @@ Email automatique généré depuis https://myboxtahiti.github.io/myboxtahiti/
             }
         }
 
-        // Carrousel functionality
+        // Carrousel functionality - AMÉLIORÉE POUR MOBILE
         function initCarousel() {
             const slides = document.querySelectorAll('.carousel-slide');
             const dots = document.querySelectorAll('.dot');
             let currentSlideIndex = 0;
             
             if (slides.length === 0) return;
+            
+            // Précharger les images pour mobile
+            slides.forEach((slide, index) => {
+                const img = slide.querySelector('img');
+                if (img) {
+                    // Vérifier si l'image se charge correctement
+                    const testImg = new Image();
+                    testImg.onload = function() {
+                        img.style.opacity = '1';
+                    };
+                    testImg.onerror = function() {
+                        // Si l'image ne se charge pas, activer le fallback
+                        img.onerror();
+                    };
+                    testImg.src = img.src;
+                    
+                    // Style initial pour le chargement
+                    img.style.opacity = '0.7';
+                    img.style.transition = 'opacity 0.3s ease';
+                }
+            });
             
             function showSlide(index) {
                 const track = document.getElementById('carouselTrack');
@@ -1653,33 +1806,59 @@ Email automatique généré depuis https://myboxtahiti.github.io/myboxtahiti/
                 showSlide(index - 1);
             }
             
-            // Auto-play carousel
-            setInterval(() => {
-                window.moveCarousel(1);
-            }, 5000);
+            // Auto-play carousel (pausé sur mobile pour économiser la batterie)
+            if (!window.matchMedia('(max-width: 768px)').matches) {
+                setInterval(() => {
+                    window.moveCarousel(1);
+                }, 5000);
+            }
             
-            // Touch/swipe support for mobile
+            // Touch/swipe support amélioré pour mobile
             let startX = 0;
+            let startY = 0;
+            let isScrolling = false;
             const carousel = document.querySelector('.carousel-container');
             
             if (carousel) {
                 carousel.addEventListener('touchstart', (e) => {
                     startX = e.touches[0].clientX;
-                });
+                    startY = e.touches[0].clientY;
+                    isScrolling = false;
+                }, { passive: true });
+                
+                carousel.addEventListener('touchmove', (e) => {
+                    const currentX = e.touches[0].clientX;
+                    const currentY = e.touches[0].clientY;
+                    const diffY = Math.abs(currentY - startY);
+                    const diffX = Math.abs(currentX - startX);
+                    
+                    // Déterminer si c'est un scroll vertical ou swipe horizontal
+                    if (diffY > diffX && diffY > 10) {
+                        isScrolling = true;
+                    }
+                }, { passive: true });
                 
                 carousel.addEventListener('touchend', (e) => {
+                    if (isScrolling) return; // Ne pas traiter si c'était un scroll
+                    
                     const endX = e.changedTouches[0].clientX;
                     const diffX = startX - endX;
                     
                     if (Math.abs(diffX) > 50) {
+                        e.preventDefault();
                         if (diffX > 0) {
                             window.moveCarousel(1); // Swipe left
                         } else {
                             window.moveCarousel(-1); // Swipe right
                         }
                     }
-                });
+                }, { passive: false });
             }
+            
+            // Ajuster le carousel lors du redimensionnement de l'écran
+            window.addEventListener('resize', () => {
+                showSlide(currentSlideIndex);
+            });
         }
         
         // Initialize carousel when DOM is loaded
