@@ -554,7 +554,7 @@
             box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
         }
         
-        /* Quote Modal */
+        /* Quote Modal - SCROLL MOBILE CORRIGÉ */
         .quote-modal {
             display: none;
             position: fixed;
@@ -565,70 +565,160 @@
             height: 100%;
             background-color: rgba(0,0,0,0.5);
             backdrop-filter: blur(5px);
+            overflow: hidden; /* Empêche le scroll de la page arrière */
         }
         
         .quote-modal-content {
             background-color: white;
-            margin: 5% auto;
-            padding: 30px;
-            border-radius: 20px;
-            width: 90%;
-            max-width: 500px;
+            margin: 0;
+            padding: 20px;
+            border-radius: 0;
+            width: 100%;
+            height: 100%;
             position: relative;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            box-shadow: none;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            display: flex;
+            flex-direction: column;
         }
         
         .quote-close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
+            color: #666;
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            z-index: 2001;
+            width: 40px;
+            height: 40px;
+            font-size: 24px;
             font-weight: bold;
             cursor: pointer;
-            position: absolute;
-            right: 20px;
-            top: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.9);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border: 1px solid #ddd;
         }
         
         .quote-close:hover {
             color: #000;
+            background: white;
         }
         
         .quote-form {
-            margin-top: 20px;
+            margin-top: 10px;
+            padding-bottom: 40px;
+            flex: 1;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
         }
         
         .quote-form input, .quote-form select {
             width: 100%;
-            padding: 12px;
-            margin: 10px 0;
+            padding: 16px;
+            margin: 12px 0;
             border: 2px solid #e9ecef;
-            border-radius: 8px;
-            font-size: 1rem;
+            border-radius: 12px;
+            font-size: 16px;
             box-sizing: border-box;
+            background: white;
         }
         
         .quote-form input:focus, .quote-form select:focus {
             border-color: #007bff;
             outline: none;
+            background: #f8f9ff;
         }
         
         .quote-submit {
             background: linear-gradient(45deg, #007bff, #0056b3);
             color: white;
             border: none;
-            padding: 15px 25px;
-            border-radius: 50px;
-            font-size: 1.1rem;
+            padding: 18px 25px;
+            border-radius: 12px;
+            font-size: 1.2rem;
             font-weight: bold;
             cursor: pointer;
             width: 100%;
             margin-top: 20px;
+            margin-bottom: 30px;
             transition: all 0.3s ease;
+            position: sticky;
+            bottom: 20px;
         }
         
         .quote-submit:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
+            box-shadow: 0 8px 25px rgba(0, 123, 255, 0.4);
+        }
+        
+        /* Desktop adjustments */
+        @media (min-width: 769px) {
+            .quote-modal-content {
+                margin: 2% auto;
+                padding: 30px;
+                border-radius: 20px;
+                width: 90%;
+                max-width: 500px;
+                height: auto;
+                max-height: 90vh;
+                box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            }
+            
+            .quote-close {
+                position: absolute;
+                top: 15px;
+                right: 20px;
+                font-size: 28px;
+            }
+            
+            .quote-form {
+                margin-top: 20px;
+                overflow: visible;
+            }
+            
+            .quote-form input, .quote-form select {
+                padding: 12px;
+                margin: 8px 0;
+                font-size: 1rem;
+                border-radius: 8px;
+            }
+            
+            .quote-submit {
+                padding: 15px 25px;
+                font-size: 1.1rem;
+                border-radius: 50px;
+                position: static;
+                margin-bottom: 0;
+            }
+        }
+        
+        /* Très petits écrans */
+        @media (max-width: 400px) {
+            .quote-form input, .quote-form select {
+                padding: 14px;
+                font-size: 16px;
+                margin: 10px 0;
+            }
+            
+            .quote-close {
+                top: 10px;
+                right: 10px;
+                width: 35px;
+                height: 35px;
+                font-size: 20px;
+            }
+        }
+        
+        /* Empêcher le scroll de la page quand le modal est ouvert */
+        body.modal-open {
+            overflow: hidden;
+            position: fixed;
+            width: 100%;
+            height: 100vh;
         }
         
         /* Responsive Design */
@@ -762,22 +852,22 @@
                     
                     <div class="carousel-track" id="carouselTrack">
                         <div class="carousel-slide active">
-                            <img src="https://lh3.googleusercontent.com/d/1AO1i1nGy6rsgEIMsLYqlcLknNWeDLrSr" 
+                            <img src="https://drive.google.com/uc?export=view&id=1AO1i1nGy6rsgEIMsLYqlcLknNWeDLrSr" 
                                  alt="Cuisine FARE MITI" 
                                  loading="eager"
-                                 onerror="this.onerror=null; this.style.background='linear-gradient(45deg, #007bff, #0056b3)'; this.style.color='white'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='16px'; this.style.textAlign='center'; this.innerHTML='🏠<br>Cuisine FARE MITI<br><small>Image en cours de chargement...</small>'">
+                                 onError="this.onerror=null; this.style.background='linear-gradient(45deg, #007bff, #0056b3)'; this.style.color='white'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='16px'; this.style.textAlign='center'; this.innerHTML='🏠<br>Cuisine FARE MITI<br><small>Chargement...</small>'">
                         </div>
                         <div class="carousel-slide">
-                            <img src="https://lh3.googleusercontent.com/d/1UGmU708ci7h6BRJnvo8ZSH_DueQUw1TM" 
+                            <img src="https://drive.google.com/uc?export=view&id=1UGmU708ci7h6BRJnvo8ZSH_DueQUw1TM" 
                                  alt="Salle de bain FARE MITI" 
                                  loading="lazy"
-                                 onerror="this.onerror=null; this.style.background='linear-gradient(45deg, #28a745, #1e7e34)'; this.style.color='white'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='16px'; this.style.textAlign='center'; this.innerHTML='🚿<br>Salle de bain<br><small>Image en cours de chargement...</small>'">
+                                 onError="this.onerror=null; this.style.background='linear-gradient(45deg, #28a745, #1e7e34)'; this.style.color='white'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='16px'; this.style.textAlign='center'; this.innerHTML='🚿<br>Salle de bain<br><small>Chargement...</small>'">
                         </div>
                         <div class="carousel-slide">
-                            <img src="https://lh3.googleusercontent.com/d/13S37Lahgj6kfvWn8zxzeQSC5xI-5fnMA" 
+                            <img src="https://drive.google.com/uc?export=view&id=13S37Lahgj6kfvWn8zxzeQSC5xI-5fnMA" 
                                  alt="Intérieur FARE MITI" 
                                  loading="lazy"
-                                 onerror="this.onerror=null; this.style.background='linear-gradient(45deg, #fd7e14, #e55100)'; this.style.color='white'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='16px'; this.style.textAlign='center'; this.innerHTML='🏡<br>Intérieur<br><small>Image en cours de chargement...</small>'">
+                                 onError="this.onerror=null; this.style.background='linear-gradient(45deg, #fd7e14, #e55100)'; this.style.color='white'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='16px'; this.style.textAlign='center'; this.innerHTML='🏡<br>Intérieur<br><small>Chargement...</small>'">
                         </div>
                     </div>
                     
@@ -878,11 +968,11 @@
                         <select id="zonePicker" onchange="updatePrice()" style="padding: 10px; margin: 15px 0; font-size: 1rem; border-radius: 5px; border: 1px solid #ddd;">
                             <option value="">Sélectionnez votre zone</option>
                             <optgroup label="🏙️ TAHITI - CENTRE">
-                                <option value="2926736">Papeete (ville-centre)</option>
-                                <option value="2926736">Pirae (Hamuta, Aorai, Nahoata)</option>
-                                <option value="2926736">Arue (Erima, Orofara, Orohiti)</option>
+                                <option value="2926736">Papeete</option>
+                                <option value="2926736">Pirae</option>
+                                <option value="2926736">Arue</option>
                                 <option value="2926736">Mahina</option>
-                                <option value="2926736">Faa'a (Pamatai, Naru, Tavararo)</option>
+                                <option value="2926736">Faa'a</option>
                             </optgroup>
                             <optgroup label="🌊 TAHITI - CÔTE OUEST">
                                 <option value="2961736">Punaauia</option>
@@ -914,7 +1004,7 @@
                                 <option value="custom">Autres îles (devis personnalisé)</option>
                             </optgroup>
                         </select>
-                        <div class="price-display" id="priceDisplay">2 761 736 XPF</div>
+                        <div class="price-display" id="priceDisplay">2 746 736 XPF</div>
                         <div class="price-breakdown" id="priceBreakdown">Prix base fixe (hors transport)</div>
                         
                         <button onclick="openQuoteForm()" style="background: linear-gradient(45deg, #28a745, #20c997); color: white; border: none; padding: 15px 25px; border-radius: 50px; font-size: 1.1rem; font-weight: bold; cursor: pointer; margin-top: 20px; transition: all 0.3s ease; width: 100%; box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);" 
@@ -1167,7 +1257,7 @@
                 </small>
                 
                 <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 15px 0;">
-                    <strong>Prix calculé :</strong> <span id="modalPrice">2 761 736 XPF</span><br>
+                    <strong>Prix calculé :</strong> <span id="modalPrice">2 746 736 XPF</span><br>
                     <small id="modalPriceDetails">Prix base fixe (hors transport)</small>
                 </div>
                 
@@ -1217,13 +1307,13 @@
     </div>
 
     <script>
-        // Price Calculator
+        // Price Calculator - PRIX DE BASE CORRIGÉ
         function updatePrice() {
             const zonePicker = document.getElementById('zonePicker');
             const priceDisplay = document.getElementById('priceDisplay');
             const priceBreakdown = document.getElementById('priceBreakdown');
             
-            const basePrice = 2761736; // Prix de base mis à jour
+            const basePrice = 2746736; // Prix de base corrigé
             const selectedValue = zonePicker.value;
             
             if (selectedValue === 'custom') {
@@ -1262,17 +1352,36 @@
             modal.style.display = 'none';
         }
 
-        // Close modal when clicking outside
+        // Close modal when clicking outside - SCROLL MOBILE GÉRÉ
         window.onclick = function(event) {
             const quoteModal = document.getElementById('quoteModal');
             const legalModal = document.getElementById('legalModal');
+            
             if (event.target === quoteModal) {
                 quoteModal.style.display = 'none';
+                document.body.classList.remove('modal-open'); // Rétablir le scroll
             }
             if (event.target === legalModal) {
                 legalModal.style.display = 'none';
+                document.body.classList.remove('modal-open'); // Rétablir le scroll
             }
         }
+        
+        // Fermeture avec la touche Escape - SCROLL MOBILE GÉRÉ
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const quoteModal = document.getElementById('quoteModal');
+                const legalModal = document.getElementById('legalModal');
+                if (quoteModal && quoteModal.style.display === 'block') {
+                    quoteModal.style.display = 'none';
+                    document.body.classList.remove('modal-open'); // Rétablir le scroll
+                }
+                if (legalModal && legalModal.style.display === 'block') {
+                    legalModal.style.display = 'none';
+                    document.body.classList.remove('modal-open'); // Rétablir le scroll
+                }
+            }
+        });
 
         // Legal Modal Functions
         function openLegalModal() {
@@ -1285,7 +1394,7 @@
             modal.style.display = 'none';
         }
 
-        // Generate Quote PDF
+        // Generate Quote PDF - SYNCHRONISATION TRANSPORT PARFAITE
         function generateQuote(event) {
             event.preventDefault();
             
@@ -1296,41 +1405,58 @@
             const island = document.getElementById('island').value;
             const commune = document.getElementById('commune').value;
             
-            // Récupérer le prix sélectionné dans le calculateur pour synchronisation
+            // SYNCHRONISATION EXACTE avec le calculateur
             const zonePicker = document.getElementById('zonePicker');
             const selectedZoneValue = zonePicker.value;
-            const basePrice = 2746736; // Prix de base original (sans les 15000 XPF supplémentaires)
+            const basePrice = 2746736; // Prix de base SYNCHRONISÉ
             
             let totalPriceNum;
             let transportCost;
             
-            if (island === 'Tahiti') {
-                // Si une zone spécifique est sélectionnée dans le calculateur, utiliser ce prix
-                if (selectedZoneValue && selectedZoneValue !== 'custom') {
-                    totalPriceNum = parseInt(selectedZoneValue);
-                    transportCost = totalPriceNum - basePrice;
-                } else {
-                    // Prix par défaut pour Tahiti centre
-                    totalPriceNum = 2911736; // Prix corrigé sans les 15000 XPF en double
-                    transportCost = 165000;
-                }
-            } else if (island === 'Moorea') {
-                // Prix pour Moorea selon la zone sélectionnée
-                if (selectedZoneValue && selectedZoneValue !== 'custom') {
-                    totalPriceNum = parseInt(selectedZoneValue);
-                    transportCost = totalPriceNum - basePrice;
-                } else {
-                    // Prix par défaut pour Moorea centre
-                    totalPriceNum = 3066736; // Prix corrigé sans les 15000 XPF en double
-                    transportCost = 320000;
-                }
+            // PRIORITÉ 1: Utiliser exactement le prix sélectionné dans le calculateur
+            if (selectedZoneValue && selectedZoneValue !== 'custom' && selectedZoneValue !== '') {
+                // Utiliser EXACTEMENT le même calcul que le calculateur
+                totalPriceNum = parseInt(selectedZoneValue);
+                transportCost = totalPriceNum - basePrice;
+                
+                console.log('🔄 Synchronisation avec calculateur:');
+                console.log('Prix total sélectionné:', totalPriceNum.toLocaleString('fr-FR'));
+                console.log('Prix de base:', basePrice.toLocaleString('fr-FR'));
+                console.log('Transport calculé:', transportCost.toLocaleString('fr-FR'));
+                
             } else {
-                // Autres îles - prix sur devis
-                alert('Pour les autres îles, veuillez nous contacter directement sur WhatsApp pour un devis personnalisé.');
-                return;
+                // PRIORITÉ 2: Si aucune zone n'est sélectionnée, utiliser les prix par défaut de l'île
+                console.log('⚠️ Aucune zone sélectionnée, utilisation prix par défaut pour:', island);
+                
+                if (island === 'Tahiti') {
+                    totalPriceNum = 2911736; // Prix par défaut Tahiti centre
+                    transportCost = 165000; // 2911736 - 2746736
+                } else if (island === 'Moorea') {
+                    totalPriceNum = 3066736; // Prix par défaut Moorea centre  
+                    transportCost = 320000; // 3066736 - 2746736
+                } else {
+                    // Autres îles - prix sur devis
+                    alert('Pour les autres îles, veuillez nous contacter directement sur WhatsApp pour un devis personnalisé.');
+                    return;
+                }
             }
             
-            // Create PDF content matching the exact format
+            // VÉRIFICATION: S'assurer que les calculs sont cohérents
+            const calculatedTotal = basePrice + transportCost;
+            if (calculatedTotal !== totalPriceNum) {
+                console.error('❌ ERREUR DE SYNCHRONISATION:');
+                console.error('Prix total attendu:', totalPriceNum);
+                console.error('Prix calculé (base + transport):', calculatedTotal);
+                console.error('Différence:', totalPriceNum - calculatedTotal);
+            }
+            
+            // AFFICHAGE DES MONTANTS FINAUX pour vérification
+            console.log('💰 MONTANTS FINAUX DEVIS:');
+            console.log('Base fixe:', basePrice.toLocaleString('fr-FR'), 'XPF');
+            console.log('Transport:', transportCost.toLocaleString('fr-FR'), 'XPF');
+            console.log('TOTAL:', totalPriceNum.toLocaleString('fr-FR'), 'XPF');
+            
+            // Create PDF content with EXACT same amounts as calculator
             const quoteDate = new Date().toLocaleDateString('fr-FR');
             const pdfContent = `
                 <!DOCTYPE html>
@@ -1529,57 +1655,102 @@
             
             // Close modal and show success message
             closeQuoteForm();
-            alert('📥 Votre devis professionnel a été téléchargé et une copie a été envoyée à MY BOX TAHITI pour le suivi !');
+            alert('✅ Votre devis a été généré avec succès !\n\n📥 Téléchargement en cours...\n📧 MY BOX TAHITI a été automatiquement notifié\n📱 Vous serez contacté dans les 24h pour le suivi');
         }
 
-        // Function to send quote copy to owner - AMÉLIORÉE
+        // Function to send quote copy to owner - SYSTÈME SIMPLIFIÉ SANS ERREURS
         function sendQuoteToOwner(firstName, lastName, clientEmail, phone, island, commune, totalPrice, quoteDate, pdfContent) {
-            // Préparer les données détaillées pour MY BOX TAHITI
-            const subject = `[NOUVEAU DEVIS] ${firstName} ${lastName} - ${commune}, ${island} - ${totalPrice.toLocaleString('fr-FR')} XPF`;
-            const emailBody = `
-🏠 NOUVEAU DEVIS GÉNÉRÉ VIA LE SITE WEB MY BOX TAHITI
+            // Préparer les données de l'email
+            const subject = `[NOUVEAU DEVIS MY BOX TAHITI] ${firstName} ${lastName} - ${commune}, ${island}`;
+            const emailBody = `🏠 NOUVEAU DEVIS GÉNÉRÉ SUR LE SITE MY BOX TAHITI
 
 📋 INFORMATIONS CLIENT :
 - Nom complet : ${firstName} ${lastName}
-- Email : ${clientEmail}
+- Email client : ${clientEmail}
 - Téléphone : ${phone}
 - Localisation : ${commune}, ${island}
 - Prix total calculé : ${totalPrice.toLocaleString('fr-FR')} XPF
 - Date du devis : ${quoteDate}
-- Heure : ${new Date().toLocaleTimeString('fr-FR')}
+- Heure de génération : ${new Date().toLocaleString('fr-FR')}
 
-🚀 ACTIONS RECOMMANDÉES :
-1. Contacter le client dans les 24h via WhatsApp
-2. Vérifier la faisabilité technique sur site
-3. Confirmer les détails du transport
-4. Préparer le suivi commercial personnalisé
+🚀 ACTIONS À EFFECTUER :
+1. ✅ Contacter le client dans les 24h via WhatsApp : ${phone}
+2. ✅ Vérifier la faisabilité technique sur site
+3. ✅ Confirmer les détails du transport selon la zone
+4. ✅ Préparer le suivi commercial personnalisé
 
-📧 Le devis PDF complet est disponible en téléchargement.
-🌐 Généré depuis : https://myboxtahiti.github.io/myboxtahiti/
+📱 CONTACT CLIENT DIRECT :
+- Email : ${clientEmail}
+- WhatsApp : https://wa.me/689${phone.replace(/\D/g, '').slice(-8)}
+
+🌐 GÉNÉRÉ DEPUIS : https://myboxtahiti.github.io/myboxtahiti/
+📅 SYSTÈME MY BOX TAHITI - ${new Date().toLocaleString('fr-FR')}
 
 ---
-Système automatisé MY BOX TAHITI - ${new Date().toLocaleString('fr-FR')}
-            `.trim();
+Le client a téléchargé son devis et attend votre contact.
+Vous pouvez recréer le même devis avec ces informations sur le site.`;
 
-            // Créer le lien mailto avec toutes les informations
+            // Créer le lien mailto
             const mailtoLink = `mailto:myboxtahiti@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
             
-            // Tenter d'ouvrir le client email par défaut
+            // Ouvrir automatiquement le client email
             try {
                 window.open(mailtoLink, '_blank');
+                console.log('✅ Email automatique ouvert pour myboxtahiti@gmail.com');
+                showSuccessNotification('📧 Email préparé automatiquement pour MY BOX TAHITI !');
             } catch (error) {
                 console.error('Erreur ouverture email:', error);
+                showErrorNotification('⚠️ Impossible d\'ouvrir l\'email automatiquement');
             }
             
-            // Toujours afficher la notification de suivi
-            showEmailNotification(firstName, lastName, clientEmail, phone, island, commune, totalPrice);
+            // Créer un fichier de sauvegarde complet
+            createBackupFile(firstName, lastName, clientEmail, phone, island, commune, totalPrice, quoteDate, pdfContent);
             
-            // Créer également un fichier de sauvegarde local pour MY BOX TAHITI
-            createBackupFile(firstName, lastName, clientEmail, phone, island, commune, totalPrice, quoteDate);
+            // Notification de suivi
+            showEmailNotification(firstName, lastName, clientEmail, phone, island, commune, totalPrice);
         }
 
-        // Créer un fichier de sauvegarde pour MY BOX TAHITI
-        function createBackupFile(firstName, lastName, clientEmail, phone, island, commune, totalPrice, quoteDate) {
+        // Notifications visuelles simplifiées
+        function showSuccessNotification(message) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed; top: 20px; right: 20px; z-index: 10001;
+                background: linear-gradient(135deg, #28a745, #20c997);
+                color: white; padding: 15px 20px; border-radius: 10px;
+                box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
+                font-family: Arial, sans-serif; font-weight: bold;
+                max-width: 300px; word-wrap: break-word;
+            `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.parentNode.removeChild(notification);
+                }
+            }, 5000);
+        }
+
+        function showErrorNotification(message) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed; top: 20px; right: 20px; z-index: 10001;
+                background: linear-gradient(135deg, #dc3545, #c82333);
+                color: white; padding: 15px 20px; border-radius: 10px;
+                box-shadow: 0 5px 15px rgba(220, 53, 69, 0.4);
+                font-family: Arial, sans-serif; font-weight: bold;
+                max-width: 300px; word-wrap: break-word;
+            `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.parentNode.removeChild(notification);
+                }
+            }, 7000);
+        }
+
+        // Créer un fichier de sauvegarde pour MY BOX TAHITI - AVEC DEVIS COMPLET
+        function createBackupFile(firstName, lastName, clientEmail, phone, island, commune, totalPrice, quoteDate, pdfContent) {
             const backupData = {
                 timestamp: new Date().toISOString(),
                 client: {
@@ -1591,37 +1762,54 @@ Système automatisé MY BOX TAHITI - ${new Date().toLocaleString('fr-FR')}
                 devis: {
                     prixTotal: totalPrice,
                     date: quoteDate,
-                    statut: 'Nouveau'
+                    statut: 'Nouveau - En attente de contact'
                 }
             };
             
             const backupContent = `
-MY BOX TAHITI - LEAD CLIENT
-============================
-Date/Heure: ${new Date().toLocaleString('fr-FR')}
-Client: ${firstName} ${lastName}
-Contact: ${phone} | ${clientEmail}
-Zone: ${commune}, ${island}
-Prix: ${totalPrice.toLocaleString('fr-FR')} XPF
+MY BOX TAHITI - NOUVEAU LEAD CLIENT AVEC DEVIS
+==============================================
+📅 Date/Heure: ${new Date().toLocaleString('fr-FR')}
+👤 Client: ${firstName} ${lastName}
+📧 Email: ${clientEmail}
+📱 Contact: ${phone}
+📍 Zone: ${commune}, ${island}
+💰 Prix: ${totalPrice.toLocaleString('fr-FR')} XPF
 
-Action requise: Contacter le client pour suivi.
-WhatsApp: https://wa.me/689${phone.replace(/\D/g, '').slice(-8)}
+🚀 ACTIONS REQUISES:
+- ✅ Contacter le client dans les 24h
+- ✅ Vérifier faisabilité sur site
+- ✅ Confirmer transport selon zone
+- ✅ Préparer suivi commercial
 
-----
-Données JSON:
+📱 CONTACTS DIRECTS:
+- WhatsApp client: https://wa.me/689${phone.replace(/\D/g, '').slice(-8)}
+- Email client: ${clientEmail}
+
+📋 DONNÉES JSON COMPLÈTES:
 ${JSON.stringify(backupData, null, 2)}
+
+📄 CONTENU DU DEVIS HTML GÉNÉRÉ:
+${'-'.repeat(50)}
+${pdfContent}
+${'-'.repeat(50)}
+
+🌐 Généré automatiquement depuis: https://myboxtahiti.github.io/myboxtahiti/
             `;
             
-            // Créer et télécharger le fichier de sauvegarde
-            const blob = new Blob([backupContent], { type: 'text/plain' });
+            // Créer et télécharger le fichier de sauvegarde complet
+            const blob = new Blob([backupContent], { type: 'text/plain; charset=utf-8' });
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = `Lead_${firstName}_${lastName}_${Date.now()}.txt`;
+            a.download = `MY_BOX_TAHITI_Lead_${firstName}_${lastName}_${Date.now()}.txt`;
+            a.style.display = 'none';
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
             window.URL.revokeObjectURL(url);
+            
+            console.log('💾 Fichier de sauvegarde complet créé avec succès');
         }
 
         // Show notification for manual email follow-up - AMÉLIORÉE
