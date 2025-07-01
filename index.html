@@ -1046,7 +1046,7 @@
                     <div class="inclusion-header not-included">
                         ⚠️ PRESTATIONS NON INCLUSES
                     </div>
-                    <p class="inclusion-note">*Évaluation sur site pour un devis clé en main complet :</p>
+                    <p class="inclusion-note">*nécessite un déplacement sur site pour évaluation ou photos/videos</p>
                     <ul class="inclusion-list">
                         <li class="inclusion-item not-included">
                             ❌ Connexion EDT (électricité)
@@ -1059,9 +1059,6 @@
                         </li>
                         <li class="inclusion-item not-included">
                             ❌ Terrasse extérieure
-                        </li>
-                        <li class="inclusion-item not-included">
-                            ❌ Puits perdus/évacuation eaux usées
                         </li>
                     </ul>
                 </div>
@@ -1530,7 +1527,6 @@
                 <li class="inclusion-item not-included">❌ Raccordement eau potable</li>
                 <li class="inclusion-item not-included">❌ Système d'assainissement</li>
                 <li class="inclusion-item not-included">❌ Terrasse extérieure</li>
-                <li class="inclusion-item not-included">❌ Puits perdus/évacuation eaux usées</li>
             `;
             
             // Ajouter les options NON sélectionnées
@@ -1790,13 +1786,13 @@
                     
                     <div class="non-included">
                         <h3>❌ PRESTATIONS NON INCLUSES ${transportChecked ? '(à évaluer sur site)' : ''}</h3>
+                        <p style="font-style: italic; color: #856404; margin-bottom: 15px;">* nécessite un déplacement sur site pour évaluation ou photos/videos</p>
                         <ul>
                             ${transportChecked ? '<li>Transport vers lieu de livraison + Dépotage + Pose</li>' : ''}
                             <li>Connexion EDT (électricité)</li>
                             <li>Raccordement eau potable</li>
                             <li>Système d'assainissement</li>
                             <li>Terrasse extérieure</li>
-                            <li>Puits perdus/évacuation eaux usées</li>
                             ${!plotsChecked ? '<li>16 plots béton pour pilotis</li>' : ''}
                             ${!montageChecked && zoneMontage.includes(location) ? '<li>Montage sur site</li>' : ''}
                             ${!permisChecked ? '<li>Permis de construire</li>' : ''}
@@ -1838,9 +1834,9 @@
                     
                     <div class="timeline">
                         <h3>⏱️ DÉLAIS DE RÉALISATION</h3>
-                        <p><strong>Production + expédition :</strong> 6-8 semaines<br>
-                        <strong>Transit maritime :</strong> 2-3 semaines<br>
-                        <strong>Montage sur site :</strong> ${montageChecked ? '2-3 jours (inclus)' : 'non inclus'}</p>
+                        <p><strong>Production en usine :</strong> 8 semaines<br>
+                        <strong>Transit maritime :</strong> 5 semaines<br>
+                        <strong>Montage du kit sur site :</strong> 3 jours (inclus)</p>
                         <p style="margin-top: 15px;"><strong>Validité du devis :</strong> 10 jours</p>
                     </div>
                     
@@ -1881,7 +1877,7 @@
             
             // Close modal and show success message
             closeQuoteForm();
-            alert('✅ Votre devis a été généré avec succès !\n\n📥 Téléchargement en cours...\n📧 MY BOX TAHITI a été automatiquement notifié\n📱 Vous serez contacté dans les 24h pour le suivi');
+            // alert('✅ Votre devis a été généré avec succès !\n\n📥 Téléchargement en cours...\n📧 MY BOX TAHITI a été automatiquement notifié\n📱 Vous serez contacté dans les 24h pour le suivi');
         }
 
         // Send Email via Web3Forms
@@ -1946,15 +1942,14 @@ ${transportChecked ? '• Transport vers lieu de livraison + Dépotage + Pose' :
 • Raccordement eau potable
 • Système d'assainissement
 • Terrasse extérieure
-• Puits perdus/évacuation eaux usées
 ${!plotsChecked ? '• 16 plots béton pour pilotis' : ''}
 ${!montageChecked && zoneMontage.includes(location) ? '• Montage sur site' : ''}
 ${!permisChecked ? '• Permis de construire' : ''}
 
 ⏱️ DÉLAIS
-• Production + expédition : 6-8 semaines
-• Transit maritime : 2-3 semaines
-• Montage sur site : ${montageChecked ? '2-3 jours (inclus)' : 'non inclus'}
+• Production en usine : 8 semaines
+• Transit maritime : 5 semaines
+• Montage du kit sur site : 3 jours (inclus)
 
 ${organisme ? `💼 ORGANISME PUBLIC DÉTECTÉ
 Modalités de paiement adaptées aux organismes publics disponibles.
