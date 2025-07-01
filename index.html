@@ -10,30 +10,31 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Arial', sans-serif;
             line-height: 1.6;
             color: #333;
+            background: #f8f9fa;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        
+
         /* Header */
-        .header {
+        .hero-section {
             background: linear-gradient(135deg, #1e3c72, #2a5298);
             color: white;
-            padding: 60px 0;
             text-align: center;
+            padding: 100px 0 80px;
             position: relative;
             overflow: hidden;
         }
-        
-        .header::before {
+
+        .hero-section::before {
             content: '';
             position: absolute;
             top: 0;
@@ -43,8 +44,8 @@
             background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="0.5" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="0.3" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>') repeat;
             opacity: 0.1;
         }
-        
-        .logo {
+
+        .hero-section h1 {
             font-size: 3rem;
             font-weight: bold;
             margin-bottom: 10px;
@@ -52,15 +53,15 @@
             position: relative;
             z-index: 2;
         }
-        
-        .tagline {
+
+        .hero-section p {
             font-size: 1.4rem;
             margin-bottom: 30px;
             opacity: 0.95;
             position: relative;
             z-index: 2;
         }
-        
+
         .cta-buttons {
             display: flex;
             gap: 20px;
@@ -70,169 +71,370 @@
             position: relative;
             z-index: 2;
         }
-        
-        .cta-button {
-            display: inline-block;
+
+        .btn-primary {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+            color: white;
             padding: 15px 30px;
-            text-decoration: none;
+            border: none;
             border-radius: 50px;
             font-weight: bold;
             font-size: 1.1rem;
             transition: all 0.3s ease;
             text-align: center;
             min-width: 200px;
-        }
-        
-        .cta-primary {
-            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
-            color: white;
+            text-decoration: none;
+            display: inline-block;
             box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
         }
-        
-        .cta-primary:hover {
+
+        .btn-primary:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(255, 107, 107, 0.6);
         }
-        
-        .cta-secondary {
+
+        .btn-secondary {
             background: rgba(255,255,255,0.1);
             color: white;
             border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50px;
+            padding: 15px 30px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            text-align: center;
+            min-width: 200px;
+            text-decoration: none;
+            display: inline-block;
             backdrop-filter: blur(10px);
         }
-        
-        .cta-secondary:hover {
+
+        .btn-secondary:hover {
             background: rgba(255,255,255,0.2);
             transform: translateY(-2px);
         }
 
-        /* Carrousel Photos */
+        /* Carousel Section */
         .carousel-section {
-            padding: 50px 0 30px;
             background: #f8f9fa;
+            padding: 60px 0;
         }
-        
-        .photo-carousel {
-            max-width: 750px;
+
+        .product-carousel {
+            max-width: 800px;
             margin: 0 auto;
         }
-        
+
         .carousel-container {
             position: relative;
-            background: white;
-            border-radius: 20px;
+            width: 100%;
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+            background: white;
         }
-        
+
         .carousel-track {
             display: flex;
-            transition: transform 0.5s ease;
+            transition: transform 0.5s ease-in-out;
         }
-        
+
         .carousel-slide {
             min-width: 100%;
-            height: 350px;
             position: relative;
+            display: flex;
+            flex-direction: column;
         }
-        
+
         .carousel-slide img {
             width: 100%;
-            height: 100%;
+            height: 450px;
             object-fit: cover;
+            background: white;
             display: block;
-            background: #f0f0f0;
         }
-        
-        .carousel-slide img[src*="drive.google.com"] {
-            background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+
+        .slide-caption {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2rem;
         }
-        
-        .carousel-slide::before {
-            content: "Chargement...";
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: #666;
-            font-size: 1.1rem;
-            z-index: 1;
-        }
-        
-        .carousel-slide img {
-            position: relative;
-            z-index: 2;
-        }
-        
+
         .carousel-btn {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(0,0,0,0.6);
+            background: rgba(30, 60, 114, 0.9);
             color: white;
             border: none;
-            width: 45px;
-            height: 45px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
-            font-size: 18px;
+            font-size: 28px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 100;
+            transition: all 0.3s;
+            z-index: 10;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
-        
+
         .carousel-btn:hover {
-            background: rgba(0,0,0,0.8);
+            background: rgba(30, 60, 114, 1);
             transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
         }
-        
-        .carousel-btn.prev {
+
+        .carousel-prev {
             left: 20px;
         }
-        
-        .carousel-btn.next {
+
+        .carousel-next {
             right: 20px;
         }
-        
+
         .carousel-dots {
             display: flex;
             justify-content: center;
-            gap: 10px;
-            margin-top: 20px;
+            gap: 12px;
+            padding: 25px;
+            background: white;
         }
-        
+
         .dot {
             width: 14px;
             height: 14px;
             border-radius: 50%;
-            background: #ccc;
+            background: #ddd;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s;
         }
-        
+
         .dot.active {
-            background: #007bff;
-            transform: scale(1.2);
+            background: #1e3c72;
+            transform: scale(1.3);
         }
-        
+
         .dot:hover {
-            background: #007bff;
-            opacity: 0.7;
+            background: #2a5298;
         }
-        
-        /* Video Section */
-        .video-section {
-            padding: 80px 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+
+        /* Main Content */
+        .main-content {
+            background: white;
+            padding: 60px 0;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        /* Product Info */
+        .product-info h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .product-description {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .specs-table {
+            background: #f8f9fa;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .specs-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 20px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .specs-row:last-child {
+            border-bottom: none;
+        }
+
+        .specs-row:nth-child(even) {
+            background: white;
+        }
+
+        .specs-label {
+            font-weight: 600;
+            color: #666;
+        }
+
+        .specs-value {
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Calculator */
+        .calculator-section {
+            background: #1e3c72;
             color: white;
+            padding: 40px;
+            border-radius: 15px;
+            position: sticky;
+            top: 20px;
+        }
+
+        .calculator-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
             text-align: center;
         }
-        
-        .video-container {
-            max-width: 800px;
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: white;
+            color: #333;
+        }
+
+        .price-display {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .price-amount {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .price-note {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .generate-pdf {
+            background: #10ac84;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .generate-pdf:hover {
+            background: #0e9c75;
+            transform: translateY(-2px);
+        }
+
+        /* Inclusions Section */
+        .inclusions-section {
+            background: white;
+            padding: 60px 0;
+        }
+
+        .inclusions-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .inclusion-box {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 2rem;
+        }
+
+        .inclusion-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .inclusion-header.included {
+            color: #10ac84;
+        }
+
+        .inclusion-header.not-included {
+            color: #ff6b6b;
+        }
+
+        .inclusion-list {
+            list-style: none;
+        }
+
+        .inclusion-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .inclusion-item:last-child {
+            border-bottom: none;
+        }
+
+        .inclusion-item.included {
+            color: #10ac84;
+        }
+
+        .inclusion-item.not-included {
+            color: #666;
+        }
+
+        .inclusion-note {
+            font-style: italic;
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Videos Section */
+        .videos-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 0;
+        }
+
+        .videos-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1000px;
             margin: 0 auto;
+        }
+
+        .video-container {
             position: relative;
         }
-        
+
         .video-placeholder {
             background: rgba(0,0,0,0.3);
             border-radius: 15px;
@@ -240,23 +442,24 @@
             position: relative;
             cursor: pointer;
             transition: transform 0.3s ease;
-            min-height: 450px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-image: url('https://img.youtube.com/vi/HRVD_7U3ccA/maxresdefault.jpg');
-            background-size: cover;
-            background-position: center;
+            min-height: 300px;
         }
-        
+
         .video-placeholder:hover {
             transform: scale(1.02);
         }
-        
-        .video-placeholder.second-video {
-            background-image: url('https://img.youtube.com/vi/hM8cwt_Bd2A/maxresdefault.jpg');
+
+        .video-thumbnail {
+            width: 100%;
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        
+
         .play-button {
             position: absolute;
             top: 50%;
@@ -274,106 +477,57 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
-        
+
         .play-button:hover {
             background: white;
             transform: translate(-50%, -50%) scale(1.1);
         }
-        
-        /* Product Section */
-        .product-section {
-            padding: 80px 0;
-            background: white;
-        }
-        
-        .product-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: start;
-        }
-        
-        .product-info h2 {
-            color: #333;
-            margin-bottom: 20px;
-            font-size: 2rem;
-        }
-        
-        .specs {
-            background: #f8f9fa;
-            border-radius: 15px;
-            padding: 30px;
-            margin: 30px 0;
-        }
-        
-        .spec-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 12px 0;
-            border-bottom: 1px solid #e9ecef;
-        }
-        
-        .spec-item:last-child {
-            border-bottom: none;
-        }
-        
-        .spec-item span:first-child {
-            color: #666;
-        }
-        
-        .spec-item span:last-child {
-            font-weight: bold;
-            color: #333;
-        }
-        
-        .benefits {
-            list-style: none;
-            margin: 30px 0;
-        }
-        
-        .benefits li {
-            padding: 10px 0;
-            padding-left: 30px;
-            position: relative;
-            color: #333;
-        }
-        
-        .benefits li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: #28a745;
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-        
-        .price-calculator {
-            background: linear-gradient(135deg, #007bff, #0056b3);
+
+        /* Preorder Section */
+        .preorder-section {
+            background: linear-gradient(135deg, #2C3E50, #3498DB);
             color: white;
-            padding: 30px;
-            border-radius: 20px;
+            padding: 80px 0;
             text-align: center;
-            margin: 30px 0;
         }
-        
-        .price-calculator h3 {
-            margin-bottom: 20px;
-            font-size: 1.5rem;
-        }
-        
-        .price-display {
+
+        .preorder-content h2 {
             font-size: 2.5rem;
-            font-weight: bold;
-            margin: 20px 0;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 1rem;
         }
-        
-        .price-breakdown {
-            font-size: 0.9rem;
+
+        .preorder-content p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
             opacity: 0.9;
         }
-        
-        /* Section Titles */
+
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+            text-align: left;
+        }
+
+        .advantage-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .advantage-item h4 {
+            margin-bottom: 0.5rem;
+            color: #ffd700;
+        }
+
+        /* Testimonials */
+        .testimonials-section {
+            background: white;
+            padding: 80px 0;
+        }
+
         .section-title {
             text-align: center;
             font-size: 2.5rem;
@@ -381,154 +535,122 @@
             color: #333;
             position: relative;
         }
-        
+
         .section-title::after {
             content: '';
             display: block;
             width: 60px;
             height: 4px;
-            background: linear-gradient(45deg, #007bff, #0056b3);
+            background: linear-gradient(45deg, #1e3c72, #2a5298);
             margin: 15px auto;
             border-radius: 2px;
         }
-        
-        /* Pre-order Section */
-        .preorder-section {
-            padding: 80px 0;
-            background: linear-gradient(135deg, #2C3E50, #3498DB);
-            color: white;
-        }
-        
-        .preorder-container {
+
+        .testimonials-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
         }
-        
-        .preorder-benefits {
-            background: rgba(255,255,255,0.1);
-            padding: 40px;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-        }
-        
-        /* Testimonials */
-        .testimonials-section {
-            padding: 80px 0;
-            background: #f8f9fa;
-        }
-        
+
         .testimonial {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 4px solid #1e3c72;
         }
-        
+
         .testimonial-text {
-            font-size: 1.2rem;
             font-style: italic;
-            margin-bottom: 20px;
-            color: #555;
+            margin-bottom: 1rem;
+            color: #666;
         }
-        
+
         .testimonial-author {
             font-weight: bold;
-            color: #007bff;
+            color: #1e3c72;
         }
-        
-        /* FAQ Section */
+
+        /* FAQ */
         .faq-section {
-            padding: 80px 0;
-            background: white;
-        }
-        
-        .faq-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .faq-item {
             background: #f8f9fa;
-            margin-bottom: 20px;
-            border-radius: 15px;
-            overflow: hidden;
+            padding: 80px 0;
         }
-        
-        .faq-question {
-            padding: 25px;
-            background: linear-gradient(135deg, #007bff, #0056b3);
-            color: white;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-        
-        .faq-question:hover {
-            background: linear-gradient(135deg, #0056b3, #004085);
-        }
-        
-        .faq-answer {
-            padding: 25px;
+
+        .faq-item {
             background: white;
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .faq-question {
+            background: #1e3c72;
+            color: white;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+
+        .faq-question:hover {
+            background: #2a5298;
+        }
+
+        .faq-answer {
+            padding: 20px;
             display: none;
             color: #666;
-            line-height: 1.8;
         }
-        
+
         .faq-answer.active {
             display: block;
         }
-        
+
         /* Footer */
         .footer {
             background: #2c3e50;
             color: white;
-            padding: 60px 0 30px;
+            padding: 60px 0 20px;
         }
-        
-        .footer-container {
+
+        .footer-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
+            gap: 3rem;
+            margin-bottom: 2rem;
         }
-        
+
         .footer-section h3 {
-            margin-bottom: 20px;
+            margin-bottom: 1rem;
             color: #3498db;
         }
-        
-        .footer-section p, .footer-section li {
-            margin-bottom: 10px;
-            opacity: 0.9;
-        }
-        
+
         .footer-section ul {
             list-style: none;
         }
-        
-        .footer-section a {
-            color: white;
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: #bdc3c7;
             text-decoration: none;
-            opacity: 0.9;
-            transition: opacity 0.3s ease;
+            transition: color 0.3s;
         }
-        
-        .footer-section a:hover {
-            opacity: 1;
+
+        .footer-section ul li a:hover {
+            color: white;
         }
-        
+
         .footer-bottom {
             text-align: center;
-            padding-top: 30px;
+            padding-top: 2rem;
             border-top: 1px solid #34495e;
-            opacity: 0.8;
+            color: #95a5a6;
         }
-        
+
         /* WhatsApp Float */
         .whatsapp-float {
             position: fixed;
@@ -548,13 +670,13 @@
             z-index: 1000;
             transition: all 0.3s ease;
         }
-        
+
         .whatsapp-float:hover {
             transform: scale(1.1);
             box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
         }
-        
-        /* Quote Modal - SCROLL MOBILE CORRIGÉ */
+
+        /* Quote Modal */
         .quote-modal {
             display: none;
             position: fixed;
@@ -565,545 +687,458 @@
             height: 100%;
             background-color: rgba(0,0,0,0.5);
             backdrop-filter: blur(5px);
-            overflow: hidden; /* Empêche le scroll de la page arrière */
         }
-        
+
         .quote-modal-content {
             background-color: white;
-            margin: 0;
-            padding: 20px;
-            border-radius: 0;
-            width: 100%;
-            height: 100%;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 500px;
             position: relative;
-            box-shadow: none;
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
-            display: flex;
-            flex-direction: column;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
         }
-        
+
         .quote-close {
             color: #666;
-            position: fixed;
+            position: absolute;
             top: 15px;
-            right: 15px;
-            z-index: 2001;
-            width: 40px;
-            height: 40px;
-            font-size: 24px;
+            right: 20px;
+            font-size: 28px;
             font-weight: bold;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.9);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            border: 1px solid #ddd;
         }
-        
+
         .quote-close:hover {
             color: #000;
-            background: white;
         }
-        
+
         .quote-form {
-            margin-top: 10px;
-            padding-bottom: 40px;
-            flex: 1;
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
+            margin-top: 20px;
         }
-        
+
         .quote-form input, .quote-form select {
             width: 100%;
-            padding: 16px;
-            margin: 12px 0;
+            padding: 12px;
+            margin: 8px 0;
             border: 2px solid #e9ecef;
-            border-radius: 12px;
-            font-size: 16px;
+            border-radius: 8px;
+            font-size: 1rem;
             box-sizing: border-box;
-            background: white;
         }
-        
+
         .quote-form input:focus, .quote-form select:focus {
-            border-color: #007bff;
+            border-color: #1e3c72;
             outline: none;
             background: #f8f9ff;
         }
-        
+
         .quote-submit {
-            background: linear-gradient(45deg, #007bff, #0056b3);
+            background: linear-gradient(45deg, #1e3c72, #2a5298);
             color: white;
             border: none;
-            padding: 18px 25px;
-            border-radius: 12px;
-            font-size: 1.2rem;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-size: 1.1rem;
             font-weight: bold;
             cursor: pointer;
             width: 100%;
             margin-top: 20px;
-            margin-bottom: 30px;
             transition: all 0.3s ease;
-            position: sticky;
-            bottom: 20px;
         }
-        
+
         .quote-submit:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 123, 255, 0.4);
+            box-shadow: 0 8px 25px rgba(30, 60, 114, 0.4);
         }
-        
-        /* Desktop adjustments */
-        @media (min-width: 769px) {
-            .quote-modal-content {
-                margin: 2% auto;
-                padding: 30px;
-                border-radius: 20px;
-                width: 90%;
-                max-width: 500px;
-                height: auto;
-                max-height: 90vh;
-                box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-            }
-            
-            .quote-close {
-                position: absolute;
-                top: 15px;
-                right: 20px;
-                font-size: 28px;
-            }
-            
-            .quote-form {
-                margin-top: 20px;
-                overflow: visible;
-            }
-            
-            .quote-form input, .quote-form select {
-                padding: 12px;
-                margin: 8px 0;
-                font-size: 1rem;
-                border-radius: 8px;
-            }
-            
-            .quote-submit {
-                padding: 15px 25px;
-                font-size: 1.1rem;
-                border-radius: 50px;
-                position: static;
-                margin-bottom: 0;
-            }
-        }
-        
-        /* Très petits écrans */
-        @media (max-width: 400px) {
-            .quote-form input, .quote-form select {
-                padding: 14px;
-                font-size: 16px;
-                margin: 10px 0;
-            }
-            
-            .quote-close {
-                top: 10px;
-                right: 10px;
-                width: 35px;
-                height: 35px;
-                font-size: 20px;
-            }
-        }
-        
-        /* Empêcher le scroll de la page quand le modal est ouvert */
-        body.modal-open {
-            overflow: hidden;
-            position: fixed;
-            width: 100%;
-            height: 100vh;
-        }
-        
-        /* Responsive Design */
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .product-container, .preorder-container, .footer-container {
+            .content-grid, .inclusions-grid, .videos-grid {
                 grid-template-columns: 1fr;
-                gap: 40px;
+                gap: 2rem;
             }
-            
+
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+
+            .calculator-section {
+                position: static;
+            }
+
             .cta-buttons {
                 flex-direction: column;
                 align-items: center;
             }
-            
-            .logo {
-                font-size: 2.2rem;
-            }
-            
-            .tagline {
-                font-size: 1.2rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .carousel-slide {
-                height: 280px;
-            }
-            
-            .carousel-slide img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                border-radius: 0;
-            }
-            
-            .carousel-btn {
-                width: 40px;
-                height: 40px;
-                font-size: 16px;
-            }
-            
-            .carousel-btn.prev {
-                left: 15px;
-            }
-            
-            .carousel-btn.next {
-                right: 15px;
-            }
-            
-            .photo-carousel {
-                margin: 0 15px;
-            }
-            
-            .carousel-section {
-                padding: 40px 0 25px;
-            }
-            
-            .video-placeholder {
-                min-height: 250px;
+
+            .product-carousel {
+                max-width: 100%;
                 margin: 0 10px;
             }
-            
+
+            .carousel-slide img {
+                height: 300px;
+            }
+
+            .carousel-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 20px;
+            }
+
+            .carousel-prev {
+                left: 10px;
+            }
+
+            .carousel-next {
+                right: 10px;
+            }
+
+            .slide-caption {
+                padding: 15px;
+                font-size: 1rem;
+            }
+
+            .quote-modal-content {
+                margin: 10% auto;
+                padding: 20px;
+                width: 95%;
+            }
+
+            .video-thumbnail {
+                height: 250px;
+            }
+
             .play-button {
                 width: 60px;
                 height: 60px;
                 font-size: 24px;
             }
         }
-        
-        @media (max-width: 480px) {
-            .container {
-                padding: 0 15px;
-            }
-            
-            .header {
-                padding: 40px 0;
-            }
-            
-            .logo {
-                font-size: 1.8rem;
-            }
-            
-            .carousel-slide {
-                height: 250px;
-            }
-            
-            .photo-carousel {
-                max-width: 100%;
-                margin: 0 10px;
-            }
-            
-            .video-placeholder {
-                min-height: 200px;
-                margin: 0 5px;
-            }
-            
-            .video-container {
-                margin: 0 10px;
-            }
-            
-            .carousel-slide img {
-                border-radius: 0;
-                background-color: #f8f9fa;
-            }
-        }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
+    <!-- Hero Section -->
+    <section class="hero-section">
         <div class="container">
-            <h1 class="logo">MY BOX TAHITI</h1>
-            <p class="tagline">Votre maison préfabriquée 20' extensible<br>Clé en main* en Polynésie française</p>
+            <h1>MY BOX TAHITI</h1>
+            <p>Votre maison préfabriquée 20' extensible<br>Clé en main* en Polynésie française</p>
             <div class="cta-buttons">
-                <a href="#product" class="cta-button cta-primary">🏠 Découvrir le FARE MITI</a>
-                <a href="https://wa.me/68989785166?text=Bonjour%2C%20je%20souhaite%20un%20devis%20personnalisé%20pour%20le%20FARE%20MITI" class="cta-button cta-secondary" target="_blank">💬 Devis WhatsApp</a>
+                <a href="#calculator" class="btn-primary">🏠 Découvrir le FARE MITI</a>
+                <a href="https://wa.me/68989785166?text=Bonjour%2C%20je%20souhaite%20un%20devis%20personnalisé%20pour%20le%20FARE%20MITI" class="btn-secondary" target="_blank">💬 Devis WhatsApp</a>
             </div>
         </div>
-    </header>
+    </section>
 
-    <!-- Carrousel Photos Section -->
+    <!-- Carousel Section -->
     <section class="carousel-section">
         <div class="container">
             <h2 class="section-title">Photos du FARE MITI</h2>
             
-            <div class="photo-carousel">
+            <div class="product-carousel">
                 <div class="carousel-container">
-                    <button class="carousel-btn prev" onclick="moveCarousel(-1)">❮</button>
-                    
                     <div class="carousel-track" id="carouselTrack">
                         <div class="carousel-slide active">
-                            <img src="https://drive.google.com/uc?export=view&id=1AO1i1nGy6rsgEIMsLYqlcLknNWeDLrSr" 
-                                 alt="Cuisine FARE MITI" 
-                                 loading="eager"
-                                 onError="this.onerror=null; this.style.background='linear-gradient(45deg, #007bff, #0056b3)'; this.style.color='white'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='16px'; this.style.textAlign='center'; this.innerHTML='🏠<br>Cuisine FARE MITI<br><small>Chargement...</small>'">
+                            <img src="https://i.ibb.co/kgjWh6qW/CUISINE-SALON-SDB.jpg" alt="Cuisine Salon SDB FARE MITI" loading="eager">
+                            <div class="slide-caption">Cuisine, salon et salle de bain</div>
                         </div>
                         <div class="carousel-slide">
-                            <img src="https://drive.google.com/uc?export=view&id=1UGmU708ci7h6BRJnvo8ZSH_DueQUw1TM" 
-                                 alt="Salle de bain FARE MITI" 
-                                 loading="lazy"
-                                 onError="this.onerror=null; this.style.background='linear-gradient(45deg, #28a745, #1e7e34)'; this.style.color='white'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='16px'; this.style.textAlign='center'; this.innerHTML='🚿<br>Salle de bain<br><small>Chargement...</small>'">
+                            <img src="https://i.ibb.co/pBg4ncZ1/20-extensible.png" alt="Structure 20 extensible" loading="lazy">
+                            <div class="slide-caption">Structure modulaire 20' extensible</div>
                         </div>
                         <div class="carousel-slide">
-                            <img src="https://drive.google.com/uc?export=view&id=13S37Lahgj6kfvWn8zxzeQSC5xI-5fnMA" 
-                                 alt="Intérieur FARE MITI" 
-                                 loading="lazy"
-                                 onError="this.onerror=null; this.style.background='linear-gradient(45deg, #fd7e14, #e55100)'; this.style.color='white'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='16px'; this.style.textAlign='center'; this.innerHTML='🏡<br>Intérieur<br><small>Chargement...</small>'">
+                            <img src="https://i.ibb.co/nM5PLxbQ/PHOTO-SDB-1.jpg" alt="Salle de bain FARE MITI" loading="lazy">
+                            <div class="slide-caption">Salle de bain moderne</div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="https://i.ibb.co/JFsM5K7Y/CUISINE.jpg" alt="Cuisine FARE MITI" loading="lazy">
+                            <div class="slide-caption">Cuisine équipée</div>
                         </div>
                     </div>
-                    
-                    <button class="carousel-btn next" onclick="moveCarousel(1)">❯</button>
-                </div>
-                
-                <div class="carousel-dots">
-                    <span class="dot active" onclick="currentSlide(1)"></span>
-                    <span class="dot" onclick="currentSlide(2)"></span>
-                    <span class="dot" onclick="currentSlide(3)"></span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Video Section -->
-    <section class="video-section">
-        <div class="container">
-            <h2 class="section-title">Découvrez votre future maison</h2>
-            <p style="font-size: 1.2rem; margin-bottom: 50px; color: #666;">Visite complète de notre FARE MITI extensible de 35m²</p>
-            
-            <div class="video-container">
-                <div class="video-placeholder" onclick="playVideo()">
-                    <div class="play-button">
-                        ▶️
+                    <button class="carousel-btn carousel-prev" onclick="changeSlide(-1)">‹</button>
+                    <button class="carousel-btn carousel-next" onclick="changeSlide(1)">›</button>
+                    <div class="carousel-dots">
+                        <span class="dot active" onclick="currentSlide(1)"></span>
+                        <span class="dot" onclick="currentSlide(2)"></span>
+                        <span class="dot" onclick="currentSlide(3)"></span>
+                        <span class="dot" onclick="currentSlide(4)"></span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Second Video Section -->
-    <section class="video-section" style="background: linear-gradient(135deg, #2C3E50, #3498DB);">
+    <!-- Main Content -->
+    <section id="calculator" class="main-content">
         <div class="container">
-            <h2 class="section-title" style="color: white;">Processus de dépotage et installation</h2>
-            <p style="font-size: 1.2rem; margin-bottom: 50px; color: rgba(255,255,255,0.9);">Découvrez le montage de votre FARE MITI</p>
-            
-            <div class="video-container">
-                <div class="video-placeholder second-video" onclick="playSecondVideo()">
-                    <div class="play-button">
-                        ▶️
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Product Section -->
-    <section id="product" class="product-section">
-        <div class="container">
-            <div class="product-container">
+            <div class="content-grid">
+                <!-- Product Information -->
                 <div class="product-info">
                     <h2>FARE MITI - Maison 20' Extensible</h2>
-                    <p style="font-size: 1.1rem; color: #666; margin-bottom: 30px;">
+                    <p class="product-description">
                         Une solution d'habitat moderne et complète, livrée clé en main* avec cuisine équipée et salle de bain. 
                         Montage rapide en 2-3 jours seulement.
                     </p>
                     
-                    <div class="specs">
-                        <div class="spec-item">
-                            <span><strong>Dimensions</strong></span>
-                            <span>5,5m × 6,45m × 2,52m</span>
+                    <div class="specs-table">
+                        <div class="specs-row">
+                            <span class="specs-label">Dimensions</span>
+                            <span class="specs-value">5,5m × 6,45m × 2,52m</span>
                         </div>
-                        <div class="spec-item">
-                            <span><strong>Surface habitable</strong></span>
-                            <span>35 m²</span>
+                        <div class="specs-row">
+                            <span class="specs-label">Surface habitable</span>
+                            <span class="specs-value">35 m²</span>
                         </div>
-                        <div class="spec-item">
-                            <span><strong>Chambre</strong></span>
-                            <span>11 m²</span>
+                        <div class="specs-row">
+                            <span class="specs-label">Chambre</span>
+                            <span class="specs-value">11 m²</span>
                         </div>
-                        <div class="spec-item">
-                            <span><strong>Hauteur sous plafond</strong></span>
-                            <span>2,50 m</span>
+                        <div class="specs-row">
+                            <span class="specs-label">Hauteur sous plafond</span>
+                            <span class="specs-value">2,50 m</span>
                         </div>
-                        <div class="spec-item">
-                            <span><strong>Isolation</strong></span>
-                            <span>50mm laine de roche</span>
+                        <div class="specs-row">
+                            <span class="specs-label">Isolation</span>
+                            <span class="specs-value">50mm laine de roche</span>
                         </div>
-                        <div class="spec-item">
-                            <span><strong>Électricité</strong></span>
-                            <span>220V/50Hz incluse</span>
+                        <div class="specs-row">
+                            <span class="specs-label">Électricité</span>
+                            <span class="specs-value">220V/50Hz incluse</span>
                         </div>
-                        <div class="spec-item">
-                            <span><strong>Pilotis</strong></span>
-                            <span>16 plots béton inclus</span>
+                        <div class="specs-row">
+                            <span class="specs-label">Pilotis</span>
+                            <span class="specs-value">16 plots béton inclus</span>
                         </div>
-                        <div class="spec-item">
-                            <span><strong>Montage</strong></span>
-                            <span>Installation complète incluse</span>
+                        <div class="specs-row">
+                            <span class="specs-label">Montage</span>
+                            <span class="specs-value">Installation complète incluse</span>
                         </div>
                     </div>
                 </div>
-                
-                <div class="product-pricing">
-                    <div class="price-calculator">
-                        <h3>Calculateur de prix instantané</h3>
-                        <select id="zonePicker" onchange="updatePrice()" style="padding: 10px; margin: 15px 0; font-size: 1rem; border-radius: 5px; border: 1px solid #ddd;">
+
+                <!-- Calculator -->
+                <div class="calculator-section">
+                    <h3>Calculateur de prix instantané</h3>
+                    
+                    <div class="form-group">
+                        <select id="location" onchange="updatePrice()">
                             <option value="">Sélectionnez votre zone</option>
                             <optgroup label="🏙️ TAHITI - CENTRE">
-                                <option value="2926736">Papeete</option>
-                                <option value="2926736">Pirae</option>
-                                <option value="2926736">Arue</option>
-                                <option value="2926736">Mahina</option>
-                                <option value="2926736">Faa'a</option>
+                                <option value="papeete">Papeete</option>
+                                <option value="pirae">Pirae</option>
+                                <option value="arue">Arue</option>
+                                <option value="mahina">Mahina</option>
+                                <option value="faaa">Faa'a</option>
                             </optgroup>
                             <optgroup label="🌊 TAHITI - CÔTE OUEST">
-                                <option value="2961736">Punaauia</option>
-                                <option value="2971170">Paea</option>
-                                <option value="2971170">Papara</option>
-                                <option value="2971170">Mataiea</option>
+                                <option value="punaauia">Punaauia</option>
+                                <option value="paea">Paea</option>
+                                <option value="papara">Papara</option>
+                                <option value="mataiea">Mataiea</option>
                             </optgroup>
                             <optgroup label="🏔️ TAHITI - CÔTE EST">
-                                <option value="2926736">Papeno'o</option>
-                                <option value="2941736">Tiarei</option>
-                                <option value="2956736">Hitia'a</option>
-                                <option value="2976736">Mahaena</option>
+                                <option value="papenoo">Papeno'o</option>
+                                <option value="tiarei">Tiarei</option>
+                                <option value="hitiaa">Hitia'a</option>
+                                <option value="mahaena">Mahaena</option>
                             </optgroup>
                             <optgroup label="🌴 TAHITI ITI - PRESQU'ÎLE">
-                                <option value="2991736">Papeari</option>
-                                <option value="2996736">Vairao</option>
-                                <option value="3021736">Toahotu</option>
-                                <option value="3031736">Teahupo'o</option>
-                                <option value="3046736">Afaahiti</option>
-                                <option value="3056736">Taravao</option>
-                                <option value="3071736">Pueu</option>
-                                <option value="3086736">Tautira</option>
+                                <option value="papeari">Papeari</option>
+                                <option value="vairao">Vairao</option>
+                                <option value="toahotu">Toahotu</option>
+                                <option value="teahupoo">Teahupo'o</option>
+                                <option value="afaahiti">Afaahiti</option>
+                                <option value="taravao">Taravao</option>
+                                <option value="pueu">Pueu</option>
+                                <option value="tautira">Tautira</option>
                             </optgroup>
                             <optgroup label="🏝️ MOOREA">
-                                <option value="3081736">Centre de Moorea</option>
-                                <option value="3141736">Moorea zones éloignées</option>
+                                <option value="moorea_centre">Centre de Moorea</option>
+                                <option value="moorea_eloigne">Moorea zones éloignées</option>
                             </optgroup>
                             <optgroup label="🚢 AUTRES ÎLES">
-                                <option value="custom">Autres îles (devis personnalisé)</option>
+                                <option value="autres">Autres îles (devis personnalisé)</option>
                             </optgroup>
                         </select>
-                        <div class="price-display" id="priceDisplay">2 746 736 XPF</div>
-                        <div class="price-breakdown" id="priceBreakdown">Prix base fixe (hors transport)</div>
-                        
-                        <button onclick="openQuoteForm()" style="background: linear-gradient(45deg, #28a745, #20c997); color: white; border: none; padding: 15px 25px; border-radius: 50px; font-size: 1.1rem; font-weight: bold; cursor: pointer; margin-top: 20px; transition: all 0.3s ease; width: 100%; box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);" 
-                               onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(40, 167, 69, 0.4)'"
-                               onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(40, 167, 69, 0.3)'">
-                            📄 Générer mon devis PDF
-                        </button>
                     </div>
-                    
-                    <div style="background: #fff3cd; border: 2px solid #ffeaa7; border-radius: 15px; padding: 25px; margin: 20px 0;">
-                        <h4 style="color: #856404; margin-bottom: 15px; font-size: 1.1rem;">✅ INCLUS DANS LE PRIX</h4>
-                        <ul style="font-size: 0.9rem; color: #155724; list-style: none; margin: 0 0 15px 0; padding: 0; background: #d4edda; padding: 15px; border-radius: 8px;">
-                            <li style="padding: 3px 0;">✅ Maison complète + cuisine + salle de bain</li>
-                            <li style="padding: 3px 0;">✅ 16 plots béton pour pilotis</li>
-                            <li style="padding: 3px 0;">✅ Permis de construire + formalités DCA</li>
-                            <li style="padding: 3px 0;">✅ Transport + dépotage + montage sur site</li>
-                            <li style="padding: 3px 0;">✅ Conformité normes + suivi projet</li>
-                        </ul>
-                        <h4 style="color: #856404; margin-bottom: 10px; font-size: 1.1rem;">⚠️ PRESTATIONS NON INCLUSES</h4>
-                        <p style="font-size: 0.95rem; color: #856404; margin-bottom: 10px;"><em>*Évaluation sur site pour un devis clé en main complet :</em></p>
-                        <ul style="font-size: 0.9rem; color: #856404; list-style: none; margin: 0; padding: 0;">
-                            <li style="padding: 3px 0;">❌ Connexion EDT (électricité)</li>
-                            <li style="padding: 3px 0;">❌ Raccordement eau potable</li>
-                            <li style="padding: 3px 0;">❌ Système d'assainissement</li>
-                            <li style="padding: 3px 0;">❌ Toiture supplémentaire/terrasse couverte</li>
-                            <li style="padding: 3px 0;">❌ Terrasse extérieure</li>
-                            <li style="padding: 3px 0;">❌ Puits perdus/évacuation eaux usées</li>
-                        </ul>
+
+                    <div class="form-group" id="montageOption" style="display: none;">
+                        <label style="display: flex; align-items: center; gap: 10px; color: white; cursor: pointer;">
+                            <input type="checkbox" id="montage" onchange="updatePrice()" style="transform: scale(1.2);"> 
+                            Inclure le montage
+                        </label>
                     </div>
+
+                    <div class="form-group" id="transportOption" style="display: none;">
+                        <label style="display: flex; align-items: center; gap: 10px; color: white; cursor: pointer;">
+                            <input type="checkbox" id="transport" onchange="updatePrice()" style="transform: scale(1.2);"> 
+                            Sans le transport
+                        </label>
+                    </div>
+
+                    <div class="form-group" id="permisOption" style="display: none;">
+                        <label style="display: flex; align-items: center; gap: 10px; color: white; cursor: pointer;">
+                            <input type="checkbox" id="permis" onchange="updatePrice()" style="transform: scale(1.2);"> 
+                            Inclure Permis de construire / Déclaration de travaux
+                        </label>
+                    </div>
+
+                    <div class="form-group" id="plotsOption" style="display: none;">
+                        <label style="display: flex; align-items: center; gap: 10px; color: white; cursor: pointer;">
+                            <input type="checkbox" id="plots" onchange="updatePrice()" style="transform: scale(1.2);"> 
+                            Plots pilotis
+                        </label>
+                        <div class="plots-info" style="margin-top: 5px; font-size: 0.9rem; color: rgba(255,255,255,0.8);">
+                            <small>• Nécessaire pour terrain non stable<br>
+                            • 16 plots de fondation inclus</small>
+                        </div>
+                    </div>
+
+                    <div id="autresIlesInfo" style="display: none;" class="autres-iles-notice" style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 8px; margin: 15px 0; font-size: 0.9rem;">
+                        <p><strong>Autres îles :</strong> Merci d'envoyer votre demande par mail pour le transport. Le montage et le kit sont calculés dans le prix, seul le transport de Papeete aux autres îles est à définir.</p>
+                    </div>
+
+                    <div class="price-display">
+                        <div class="price-amount" id="priceAmount">2 262 321 XPF</div>
+                        <div class="price-note" id="priceNote">(sans transport et options)</div>
+                    </div>
+
+                    <button class="generate-pdf" onclick="showQuoteForm()">
+                        📄 Générer mon devis PDF
+                    </button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Pre-order Section -->
-    <section class="preorder-section">
+    <!-- Inclusions Section -->
+    <section class="inclusions-section">
         <div class="container">
-            <div class="preorder-container">
-                <div>
-                    <h2 class="section-title" style="color: white; text-align: left;">Précommandez votre FARE MITI</h2>
-                    <p style="font-size: 1.2rem; margin-bottom: 40px; opacity: 0.9;">
-                        Soyez parmi les premiers à recevoir votre maison préfabriquée. 
-                        Délai de réalisation : 8-11 semaines de la commande à la livraison.
-                    </p>
-                    <div class="cta-buttons">
-                        <a href="https://wa.me/68989785166?text=Bonjour%2C%20je%20souhaite%20précommander%20un%20FARE%20MITI" class="cta-button cta-primary" target="_blank">📦 Précommander Maintenant</a>
+            <div class="inclusions-grid">
+                <!-- Included -->
+                <div class="inclusion-box">
+                    <div class="inclusion-header included">
+                        ✅ INCLUS DANS LE PRIX
                     </div>
+                    <ul class="inclusion-list">
+                        <li class="inclusion-item included">
+                            ✅ Maison complète + cuisine + salle de bain
+                        </li>
+                        <li class="inclusion-item included">
+                            ✅ 16 plots béton pour pilotis
+                        </li>
+                        <li class="inclusion-item included">
+                            ✅ Permis de construire + formalités DCA
+                        </li>
+                        <li class="inclusion-item included">
+                            ✅ Transport + dépotage + montage sur site
+                        </li>
+                        <li class="inclusion-item included">
+                            ✅ Conformité normes + suivi projet
+                        </li>
+                    </ul>
                 </div>
-                
-                <div class="preorder-benefits">
-                    <h3 style="margin-bottom: 30px; color: white;">Avantages Précommande</h3>
-                    <ul class="benefits">
-                        <li>FARE MITI clé en main* montée sur pilotis inclus</li>
-                        <li>Montage rapide en 2-3 jours seulement</li>
-                        <li>Conformité DCA assurée par MY BOX TAHITI</li>
-                        <li>Qualité européenne - structure acier galvanisé</li>
-                        <li>Modulable - possibilité d'extension future</li>
-                        <li>Accompagnement du projet à la livraison</li>
+
+                <!-- Not Included -->
+                <div class="inclusion-box">
+                    <div class="inclusion-header not-included">
+                        ⚠️ PRESTATIONS NON INCLUSES
+                    </div>
+                    <p class="inclusion-note">*Évaluation sur site pour un devis clé en main complet :</p>
+                    <ul class="inclusion-list">
+                        <li class="inclusion-item not-included">
+                            ❌ Connexion EDT (électricité)
+                        </li>
+                        <li class="inclusion-item not-included">
+                            ❌ Raccordement eau potable
+                        </li>
+                        <li class="inclusion-item not-included">
+                            ❌ Système d'assainissement
+                        </li>
+                        <li class="inclusion-item not-included">
+                            ❌ Terrasse extérieure
+                        </li>
+                        <li class="inclusion-item not-included">
+                            ❌ Puits perdus/évacuation eaux usées
+                        </li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
+    <!-- Preorder Section -->
+    <section class="preorder-section">
+        <div class="container">
+            <div class="preorder-content">
+                <h2>Précommandez votre FARE MITI</h2>
+                <p>
+                    Soyez parmi les premiers à recevoir votre maison préfabriquée. 
+                    Délai de réalisation : 8-11 semaines de la commande à la livraison.
+                </p>
+                
+                <div class="advantages-grid">
+                    <div class="advantage-item">
+                        <h4>FARE MITI clé en main* montée sur pilotis inclus</h4>
+                    </div>
+                    <div class="advantage-item">
+                        <h4>Montage rapide en 2-3 jours seulement</h4>
+                    </div>
+                    <div class="advantage-item">
+                        <h4>Conformité DCA assurée par MY BOX TAHITI</h4>
+                    </div>
+                    <div class="advantage-item">
+                        <h4>Qualité européenne - structure acier galvanisé</h4>
+                    </div>
+                    <div class="advantage-item">
+                        <h4>Modulable - possibilité d'extension future</h4>
+                    </div>
+                    <div class="advantage-item">
+                        <h4>Accompagnement du projet à la livraison</h4>
+                    </div>
+                </div>
+
+                <a href="https://wa.me/68989785166?text=Bonjour%2C%20je%20souhaite%20précommander%20un%20FARE%20MITI" class="btn-primary" target="_blank" style="font-size: 1.2rem; padding: 15px 40px;">
+                    📦 Précommander Maintenant
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
     <section class="testimonials-section">
         <div class="container">
             <h2 class="section-title">Témoignages Clients</h2>
-            
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; max-width: 1000px; margin: 0 auto;">
+            <div class="testimonials-grid">
                 <div class="testimonial">
                     <p class="testimonial-text">
                         "Parfait pour nous deux ! Ma compagne et moi cherchions une solution rapide et de qualité. 
                         Le FARE MITI de 35m² est parfaitement optimisé : cuisine fonctionnelle, salle de bain moderne. 
                         Idéal pour un couple sans enfants !"
                     </p>
-                    <div class="testimonial-author">— Teiva & Maeva, Moorea</div>
+                    <p class="testimonial-author">— Teiva & Maeva, Moorea</p>
                 </div>
-                
                 <div class="testimonial">
                     <p class="testimonial-text">
                         "Service impeccable de MY BOX TAHITI ! En tant que célibataire, je voulais mon chez-moi rapidement. 
                         La conformité DCA était assurée, aucun stress administratif. J'en ai fait un studio de location 
                         courte durée très rentable !"
                     </p>
-                    <div class="testimonial-author">— Jean-Michel P., Taiarapu</div>
+                    <p class="testimonial-author">— Jean-Michel P., Taiarapu</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FAQ Section NOUVELLE VERSION -->
+    <!-- FAQ -->
     <section class="faq-section">
         <div class="container">
             <h2 class="section-title">Questions Fréquentes</h2>
-            
             <div class="faq-container">
                 <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
                         Est-ce que c'est résistant aux intempéries ?
                     </div>
                     <div class="faq-answer">
@@ -1112,9 +1147,8 @@
                         Durée du produit 10 à 15 ans et plus si bien entretenus.
                     </div>
                 </div>
-                
                 <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
                         Est-ce que c'est bien isolé contre la chaleur ?
                     </div>
                     <div class="faq-answer">
@@ -1122,9 +1156,8 @@
                         performant adapté aux climats chauds et humides. Résultat : confort thermique intérieur optimisé.
                     </div>
                 </div>
-                
                 <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
                         Dois-je avoir un permis de construire ?
                     </div>
                     <div class="faq-answer">
@@ -1132,9 +1165,8 @@
                         Vous n'avez rien à faire.
                     </div>
                 </div>
-                
                 <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
                         Faut-il prévoir une dalle en béton ?
                     </div>
                     <div class="faq-answer">
@@ -1142,9 +1174,8 @@
                         Aucun terrassement lourd nécessaire.
                     </div>
                 </div>
-                
                 <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
                         Est-ce possible en zone non viabilisée ?
                     </div>
                     <div class="faq-answer">
@@ -1152,9 +1183,8 @@
                         <strong>solutions autonomes</strong> (citerne, panneaux solaires, fosse, etc.).
                     </div>
                 </div>
-                
                 <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
                         Et si je veux déménager avec ma maison ?
                     </div>
                     <div class="faq-answer">
@@ -1162,9 +1192,8 @@
                         ailleurs en gardant les structures principales.
                     </div>
                 </div>
-                
                 <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
                         Combien de temps pour la livraison ?
                     </div>
                     <div class="faq-answer">
@@ -1179,33 +1208,28 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-container">
+            <div class="footer-grid">
                 <div class="footer-section">
                     <h3>MY BOX TAHITI</h3>
                     <p>Spécialiste des maisons préfabriquées extensibles en Polynésie française.</p>
                     <p>📱 WhatsApp : +689 89 78 51 66</p>
                     <p>📧 myboxtahiti@gmail.com</p>
                 </div>
-                
                 <div class="footer-section">
                     <h3>Produits</h3>
                     <ul>
-                        <li><a href="#product">FARE MITI 35m²</a></li>
-                        <li><a href="#product">Extensions modulaires</a></li>
-                        <li><a href="#product">Terrasses et aménagements</a></li>
+                        <li><a href="#calculator">FARE MITI 35m²</a></li>
+                        <li><a href="https://myboxtahiti.github.io/Kit-bureau-mybox/" target="_blank">Kit bureau avec sanitaire</a></li>
                     </ul>
                 </div>
-                
                 <div class="footer-section">
                     <h3>Services</h3>
                     <ul>
                         <li><a href="#">Étude de faisabilité</a></li>
                         <li><a href="#">Montage et installation</a></li>
-                        <li><a href="#">Service après-vente</a></li>
                         <li><a href="#">Financement</a></li>
                     </ul>
                 </div>
-                
                 <div class="footer-section">
                     <h3>Zones de Livraison</h3>
                     <ul>
@@ -1220,7 +1244,7 @@
             
             <div class="footer-bottom">
                 <p>&copy; 2025 MY BOX TAHITI. Tous droits réservés. | Maisons préfabriquées extensibles en Polynésie française</p>
-                <button onclick="openLegalModal()" style="background: none; border: none; color: #3498db; text-decoration: underline; cursor: pointer; margin-top: 10px; font-size: 0.9rem;">
+                <button onclick="showMentionsLegales()" style="background: none; border: none; color: #3498db; text-decoration: underline; cursor: pointer; margin-top: 10px; font-size: 0.9rem;">
                     📝 MENTIONS LÉGALES
                 </button>
             </div>
@@ -1237,29 +1261,21 @@
         <div class="quote-modal-content">
             <span class="quote-close" onclick="closeQuoteForm()">&times;</span>
             <h2 style="color: #333; margin-bottom: 20px; text-align: center;">📄 Générer votre devis FARE MITI</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 20px; font-size: 0.9rem;">
+                Zone sélectionnée : <strong id="selectedZoneDisplay">Aucune zone sélectionnée</strong>
+            </p>
             
             <form class="quote-form" onsubmit="generateQuote(event)">
-                <input type="text" id="firstName" placeholder="Prénom *" required>
-                <input type="text" id="lastName" placeholder="Nom *" required>
-                <input type="email" id="email" placeholder="Email *" required>
-                <input type="tel" id="phone" placeholder="Téléphone *" required>
-                
-                <select id="island" required>
-                    <option value="">Sélectionnez votre zone *</option>
-                    <option value="Tahiti">🏝️ TAHITI</option>
-                    <option value="Moorea">🏝️ MOOREA</option>
-                    <option value="Autres îles">🚢 AUTRES ÎLES (devis sur demande)</option>
-                </select>
-                
-                <input type="text" id="commune" placeholder="Commune/District *" required>
-                <small style="color: #666; font-size: 0.9rem; margin-top: -5px; display: block;">
-                    Exemples Tahiti : Papeete, Pirae, Arue, Mahina, Faa'a, Punaauia, Paea, Papara, Mataiea, Papeno'o, Tiarei, Hitia'a, Mahaena, Papeari, Vairao, Toahotu, Teahupo'o, Afaahiti, Taravao, Pueu, Tautira
-                </small>
-                
-                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 15px 0;">
-                    <strong>Prix calculé :</strong> <span id="modalPrice">2 746 736 XPF</span><br>
-                    <small id="modalPriceDetails">Prix base fixe (hors transport)</small>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                    <input type="text" id="lastName" placeholder="Nom *" required>
+                    <input type="text" id="firstName" placeholder="Prénom *" required>
                 </div>
+                
+                <input type="text" id="organisme" placeholder="Nom de l'organisme, commune, collectivité...">
+                <label style="display: block; margin-bottom: 1rem; font-size: 0.9rem; color: #666; margin-top: -5px;">Organisme public (optionnel)</label>
+                
+                <input type="tel" id="phone" placeholder="Téléphone *" required>
+                <input type="email" id="email" placeholder="Email *" required>
                 
                 <button type="submit" class="quote-submit">
                     📥 Télécharger mon devis PDF
@@ -1275,9 +1291,9 @@
             <h2 style="color: #333; margin-bottom: 20px; text-align: center;">📝 MENTIONS LÉGALES</h2>
             
             <div style="text-align: left; line-height: 1.6; color: #555;">
-                <p style="text-align: center; margin-bottom: 20px; color: #007bff;"><strong>Dernière mise à jour : juin 2025</strong></p>
+                <p style="text-align: center; margin-bottom: 20px; color: #1e3c72;"><strong>Dernière mise à jour : juin 2025</strong></p>
                 
-                <h3 style="color: #007bff; margin: 25px 0 15px 0;">1. Éditeur du site</h3>
+                <h3 style="color: #1e3c72; margin: 25px 0 15px 0;">1. Éditeur du site</h3>
                 <p><strong>Nom commercial</strong> : MY BOX TAHITI</p>
                 <p><strong>Statut</strong> : Entrepreneur individuel (personne physique)</p>
                 <p><strong>Nom du responsable</strong> : Hauata Jean-Baptiste</p>
@@ -1286,65 +1302,269 @@
                 <p><strong>Téléphone</strong> : +689 89 78 51 66</p>
                 <p><strong>N° Tahiti</strong> : 710194</p>
                 
-                <h3 style="color: #007bff; margin: 25px 0 15px 0;">2. Hébergement du site</h3>
+                <h3 style="color: #1e3c72; margin: 25px 0 15px 0;">2. Hébergement du site</h3>
                 <p>Ce site est hébergé par <strong>GitHub Pages</strong>, un service de GitHub, Inc.</p>
                 <p><strong>Adresse</strong> : 88 Colin P. Kelly Jr Street, San Francisco, CA 94107, États-Unis</p>
                 <p><strong>Site web</strong> : https://pages.github.com</p>
                 
-                <h3 style="color: #007bff; margin: 25px 0 15px 0;">3. Propriété intellectuelle</h3>
+                <h3 style="color: #1e3c72; margin: 25px 0 15px 0;">3. Propriété intellectuelle</h3>
                 <p>L'ensemble des éléments présents sur ce site (textes, images, vidéos, logos, design, structure) sont la propriété exclusive de MY BOX TAHITI, sauf mention contraire. Toute reproduction, représentation, modification, diffusion ou exploitation, totale ou partielle, sans autorisation écrite préalable est strictement interdite.</p>
                 
-                <h3 style="color: #007bff; margin: 25px 0 15px 0;">4. Données personnelles</h3>
+                <h3 style="color: #1e3c72; margin: 25px 0 15px 0;">4. Données personnelles</h3>
                 <p>Les données collectées via les formulaires sont utilisées uniquement pour traiter vos demandes et rester en contact avec vous. Conformément à la loi « Informatique et Libertés » et au RGPD, vous disposez d'un droit d'accès, de rectification, d'opposition, de suppression et de portabilité de vos données. Ces droits peuvent être exercés à l'adresse suivante : myboxtahiti@gmail.com</p>
                 
-                <h3 style="color: #007bff; margin: 25px 0 15px 0;">5. Cookies et statistiques</h3>
+                <h3 style="color: #1e3c72; margin: 25px 0 15px 0;">5. Cookies et statistiques</h3>
                 <p>Ce site utilise des cookies nécessaires à son bon fonctionnement, ainsi que des outils de mesure d'audience (comme Google Analytics). En poursuivant votre navigation, vous acceptez leur utilisation. Vous pouvez demander à tout moment la suppression de vos données anonymisées.</p>
                 
-                <h3 style="color: #007bff; margin: 25px 0 15px 0;">6. Limitation de responsabilité</h3>
+                <h3 style="color: #1e3c72; margin: 25px 0 15px 0;">6. Limitation de responsabilité</h3>
                 <p>MY BOX TAHITI décline toute responsabilité en cas de dommages directs ou indirects liés à l'accès ou à l'utilisation du site, ou à l'impossibilité d'y accéder temporairement. Le contenu est fourni à titre informatif, sans garantie d'exactitude ou d'exhaustivité.</p>
             </div>
         </div>
     </div>
 
     <script>
-        // Price Calculator - PRIX DE BASE CORRIGÉ
-        function updatePrice() {
-            const zonePicker = document.getElementById('zonePicker');
-            const priceDisplay = document.getElementById('priceDisplay');
-            const priceBreakdown = document.getElementById('priceBreakdown');
-            
-            const basePrice = 2746736; // Prix de base corrigé
-            const selectedValue = zonePicker.value;
-            
-            if (selectedValue === 'custom') {
-                priceDisplay.textContent = 'Sur devis';
-                priceBreakdown.textContent = 'Contactez-nous pour un devis personnalisé';
-            } else if (selectedValue) {
-                const totalPrice = parseInt(selectedValue);
-                const transport = totalPrice - basePrice;
-                priceDisplay.textContent = totalPrice.toLocaleString('fr-FR') + ' XPF';
-                priceBreakdown.textContent = `Base fixe: ${basePrice.toLocaleString('fr-FR')} XPF + Transport: ${transport.toLocaleString('fr-FR')} XPF`;
-            } else {
-                priceDisplay.textContent = basePrice.toLocaleString('fr-FR') + ' XPF';
-                priceBreakdown.textContent = 'Prix base fixe (hors transport)';
+        // Configuration des prix du FARE MITI
+        const prices = {
+            base: 1492338,       // Maison 20' extensible (valeur CAF + frais virement international)
+            douane: 649983,      // Formalités douanières et mise à disposition zone portuaire
+            commission: 120000,  // Commission MY BOX TAHITI
+            plots: 368000,       // 16 plots béton pour pilotis
+            permis: 51415,       // Permis de construire
+            montage: 65000,      // Montage sur site
+            transport: {
+                // Tahiti Centre
+                papeete: 180000,
+                pirae: 180000,
+                arue: 180000,
+                mahina: 180000,
+                faaa: 180000,
+                // Tahiti Côte Ouest
+                punaauia: 215000,
+                paea: 224434,
+                papara: 224434,
+                mataiea: 224434,
+                // Tahiti Côte Est
+                papenoo: 180000,
+                tiarei: 195000,
+                hitiaa: 210000,
+                mahaena: 230000,
+                // Tahiti Iti - Presqu'île
+                papeari: 245000,
+                vairao: 250000,
+                toahotu: 275000,
+                teahupoo: 285000,
+                afaahiti: 300000,
+                taravao: 310000,
+                pueu: 325000,
+                tautira: 340000,
+                // Moorea
+                moorea_centre: 335000,
+                moorea_eloigne: 395000,
+                // Autres
+                autres: 400000
             }
-            
-            // Update modal price
-            const modalPrice = document.getElementById('modalPrice');
-            const modalPriceDetails = document.getElementById('modalPriceDetails');
-            if (modalPrice && modalPriceDetails) {
-                modalPrice.textContent = priceDisplay.textContent;
-                modalPriceDetails.textContent = priceBreakdown.textContent;
-            }
+        };
+
+        // Zones qui permettent le montage (seulement Tahiti et Moorea)
+        const zoneMontage = ['papeete', 'pirae', 'faaa', 'arue', 'punaauia', 'mahina', 'paea', 'tiarei', 'papenoo', 'papara', 'hitiaa', 'mahaena', 'mataiea', 'papeari', 'taravao', 'toahotu', 'afaahiti', 'vairao', 'pueu', 'teahupoo', 'tautira', 'moorea_centre', 'moorea_eloigne'];
+
+        // Formatage des montants avec espaces
+        function formatAmount(amount) {
+            return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
         }
 
-        // Quote Modal Functions
-        function openQuoteForm() {
-            const modal = document.getElementById('quoteModal');
-            modal.style.display = 'block';
+        // Carousel functionality
+        let currentSlideIndex = 0;
+        const totalSlides = 4;
+
+        function changeSlide(direction) {
+            currentSlideIndex += direction;
             
-            // Update modal with current price
+            if (currentSlideIndex >= totalSlides) {
+                currentSlideIndex = 0;
+            } else if (currentSlideIndex < 0) {
+                currentSlideIndex = totalSlides - 1;
+            }
+            
+            updateCarousel();
+        }
+
+        function currentSlide(n) {
+            currentSlideIndex = n - 1;
+            updateCarousel();
+        }
+
+        function updateCarousel() {
+            const track = document.getElementById('carouselTrack');
+            const dots = document.querySelectorAll('.dot');
+            
+            // Déplacer le carousel
+            track.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
+            
+            // Mettre à jour les dots
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlideIndex);
+            });
+        }
+
+        // Auto-play carousel
+        setInterval(() => {
+            changeSlide(1);
+        }, 5000);
+
+        // Price Calculator
+        function updatePrice() {
+            const location = document.getElementById('location').value;
+            const montageCheckbox = document.getElementById('montage');
+            const transportCheckbox = document.getElementById('transport');
+            const permisCheckbox = document.getElementById('permis');
+            const plotsCheckbox = document.getElementById('plots');
+            
+            const montageOption = document.getElementById('montageOption');
+            const transportOption = document.getElementById('transportOption');
+            const permisOption = document.getElementById('permisOption');
+            const plotsOption = document.getElementById('plotsOption');
+            const autresIlesInfo = document.getElementById('autresIlesInfo');
+            const priceNote = document.querySelector('.price-note');
+            
+            // Réinitialiser les options
+            montageOption.style.display = 'none';
+            transportOption.style.display = 'none';
+            permisOption.style.display = 'none';
+            plotsOption.style.display = 'none';
+            autresIlesInfo.style.display = 'none';
+            
+            // Gérer l'affichage des options selon la zone
+            if (!location) {
+                const baseTotal = prices.base + prices.douane + prices.commission;
+                document.getElementById('priceAmount').textContent = formatAmount(baseTotal) + ' XPF';
+                priceNote.textContent = '(sans transport et options)';
+                updateInclusions(false, false, false, false);
+                return;
+            }
+            
+            // Afficher les options selon la zone
+            if (zoneMontage.includes(location)) {
+                montageOption.style.display = 'block';
+                transportOption.style.display = 'block';
+                permisOption.style.display = 'block';
+                plotsOption.style.display = 'block';
+            } else {
+                montageCheckbox.checked = false;
+                transportCheckbox.checked = false;
+                permisCheckbox.checked = false;
+                plotsCheckbox.checked = false;
+                
+                if (location === 'autres') {
+                    autresIlesInfo.style.display = 'block';
+                }
+            }
+            
+            // Calcul du prix total
+            const transportCost = !transportCheckbox.checked ? (prices.transport[location] || 0) : 0;
+            const montageCost = montageCheckbox.checked ? prices.montage : 0;
+            const permisCost = permisCheckbox.checked ? prices.permis : 0;
+            
+            // Plots pilotis avec surcoût Moorea
+            let plotsCost = 0;
+            if (plotsCheckbox.checked) {
+                plotsCost = prices.plots; // 368 000 XPF de base
+                if (location === 'moorea_centre' || location === 'moorea_eloigne') {
+                    plotsCost += 50000; // Surcoût Moorea : bateau + voiture + logement
+                }
+            }
+            
+            const total = prices.base + prices.douane + prices.commission + transportCost + montageCost + permisCost + plotsCost;
+            
+            // Mettre à jour le nom de la zone dans la note
+            const locationName = document.querySelector(`option[value="${location}"]`).textContent;
+            if (!transportCheckbox.checked) {
+                priceNote.textContent = `avec transport sur ${locationName}`;
+            } else {
+                priceNote.textContent = `pour ${locationName} (sans le transport)`;
+            }
+            
+            if (location === 'autres') {
+                document.getElementById('priceAmount').textContent = 'Sur devis';
+                priceNote.textContent = 'Contactez-nous pour un devis personnalisé';
+            } else {
+                document.getElementById('priceAmount').textContent = formatAmount(total) + ' XPF';
+            }
+            
+            // Mettre à jour les inclusions dynamiquement
+            updateInclusions(
+                !transportCheckbox.checked, // transport inclus si pas "sans le transport"
+                montageCheckbox.checked,    // montage inclus si coché
+                permisCheckbox.checked,     // permis inclus si coché
+                plotsCheckbox.checked       // plots inclus si coché
+            );
+        }
+
+        function updateInclusions(transportInclus, montageInclus, permisInclus, plotsInclus) {
+            // Mise à jour de la liste INCLUS
+            const inclusListContainer = document.querySelector('.inclusion-box .included').parentElement;
+            const inclusItems = inclusListContainer.querySelector('.inclusion-list');
+            
+            // Liste de base toujours incluse
+            let inclusHTML = `
+                <li class="inclusion-item included">✅ Maison complète + cuisine + salle de bain</li>
+                <li class="inclusion-item included">✅ Formalités douanières + commission</li>
+            `;
+            
+            // Ajouter les options sélectionnées
+            if (transportInclus) inclusHTML += `<li class="inclusion-item included">✅ Transport + dépotage + pose</li>`;
+            if (montageInclus) inclusHTML += `<li class="inclusion-item included">✅ Montage sur site</li>`;
+            if (permisInclus) inclusHTML += `<li class="inclusion-item included">✅ Permis de construire + formalités DCA</li>`;
+            if (plotsInclus) inclusHTML += `<li class="inclusion-item included">✅ 16 plots béton pour pilotis</li>`;
+            
+            inclusHTML += `<li class="inclusion-item included">✅ Conformité normes + suivi projet</li>`;
+            
+            inclusItems.innerHTML = inclusHTML;
+            
+            // Mise à jour de la liste NON INCLUS
+            const nonInclusListContainer = document.querySelector('.inclusion-box .not-included').parentElement;
+            const nonInclusItems = nonInclusListContainer.querySelector('.inclusion-list');
+            
+            let nonInclusHTML = `
+                <li class="inclusion-item not-included">❌ Connexion EDT (électricité)</li>
+                <li class="inclusion-item not-included">❌ Raccordement eau potable</li>
+                <li class="inclusion-item not-included">❌ Système d'assainissement</li>
+                <li class="inclusion-item not-included">❌ Terrasse extérieure</li>
+                <li class="inclusion-item not-included">❌ Puits perdus/évacuation eaux usées</li>
+            `;
+            
+            // Ajouter les options NON sélectionnées
+            if (!transportInclus) nonInclusHTML += `<li class="inclusion-item not-included">❌ Transport + dépotage + pose</li>`;
+            if (!montageInclus) nonInclusHTML += `<li class="inclusion-item not-included">❌ Montage sur site</li>`;
+            if (!permisInclus) nonInclusHTML += `<li class="inclusion-item not-included">❌ Permis de construire + formalités DCA</li>`;
+            if (!plotsInclus) nonInclusHTML += `<li class="inclusion-item not-included">❌ 16 plots béton pour pilotis</li>`;
+            
+            nonInclusItems.innerHTML = nonInclusHTML;
+        }
+
+        // Initialize price on page load
+        window.onload = function() {
             updatePrice();
+            // Initialiser les inclusions par défaut
+            updateInclusions(false, false, false, false);
+        };
+
+        // Quote Modal Functions
+        function showQuoteForm() {
+            const modal = document.getElementById('quoteModal');
+            const location = document.getElementById('location').value;
+            const selectedZoneDisplay = document.getElementById('selectedZoneDisplay');
+            
+            if (location) {
+                const locationName = document.querySelector(`option[value="${location}"]`).textContent;
+                selectedZoneDisplay.textContent = locationName;
+                selectedZoneDisplay.style.color = '#10ac84';
+            } else {
+                selectedZoneDisplay.textContent = 'Aucune zone sélectionnée';
+                selectedZoneDisplay.style.color = '#ff6b6b';
+            }
+            
+            modal.style.display = 'block';
         }
 
         function closeQuoteForm() {
@@ -1352,39 +1572,8 @@
             modal.style.display = 'none';
         }
 
-        // Close modal when clicking outside - SCROLL MOBILE GÉRÉ
-        window.onclick = function(event) {
-            const quoteModal = document.getElementById('quoteModal');
-            const legalModal = document.getElementById('legalModal');
-            
-            if (event.target === quoteModal) {
-                quoteModal.style.display = 'none';
-                document.body.classList.remove('modal-open'); // Rétablir le scroll
-            }
-            if (event.target === legalModal) {
-                legalModal.style.display = 'none';
-                document.body.classList.remove('modal-open'); // Rétablir le scroll
-            }
-        }
-        
-        // Fermeture avec la touche Escape - SCROLL MOBILE GÉRÉ
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                const quoteModal = document.getElementById('quoteModal');
-                const legalModal = document.getElementById('legalModal');
-                if (quoteModal && quoteModal.style.display === 'block') {
-                    quoteModal.style.display = 'none';
-                    document.body.classList.remove('modal-open'); // Rétablir le scroll
-                }
-                if (legalModal && legalModal.style.display === 'block') {
-                    legalModal.style.display = 'none';
-                    document.body.classList.remove('modal-open'); // Rétablir le scroll
-                }
-            }
-        });
-
         // Legal Modal Functions
-        function openLegalModal() {
+        function showMentionsLegales() {
             const modal = document.getElementById('legalModal');
             modal.style.display = 'block';
         }
@@ -1394,124 +1583,154 @@
             modal.style.display = 'none';
         }
 
-        // Generate Quote PDF - SYNCHRONISATION TRANSPORT PARFAITE
+        // Close modals when clicking outside
+        window.onclick = function(event) {
+            const quoteModal = document.getElementById('quoteModal');
+            const legalModal = document.getElementById('legalModal');
+            
+            if (event.target === quoteModal) {
+                quoteModal.style.display = 'none';
+            }
+            if (event.target === legalModal) {
+                legalModal.style.display = 'none';
+            }
+        }
+
+        // Generate Quote PDF with Web3Forms
         function generateQuote(event) {
             event.preventDefault();
             
             const firstName = document.getElementById('firstName').value;
             const lastName = document.getElementById('lastName').value;
+            const organisme = document.getElementById('organisme').value;
             const email = document.getElementById('email').value;
             const phone = document.getElementById('phone').value;
-            const island = document.getElementById('island').value;
-            const commune = document.getElementById('commune').value;
             
-            // SYNCHRONISATION EXACTE avec le calculateur
-            const zonePicker = document.getElementById('zonePicker');
-            const selectedZoneValue = zonePicker.value;
-            const basePrice = 2746736; // Prix de base SYNCHRONISÉ
+            // Récupérer les informations du calculateur
+            const location = document.getElementById('location').value || '';
+            const locationName = location ? document.querySelector(`option[value="${location}"]`).textContent : 'Non spécifiée';
             
-            let totalPriceNum;
-            let transportCost;
+            // Déterminer l'île et la commune depuis la sélection du calculateur
+            let island = 'Non spécifiée';
+            let commune = 'Non spécifiée';
             
-            // PRIORITÉ 1: Utiliser exactement le prix sélectionné dans le calculateur
-            if (selectedZoneValue && selectedZoneValue !== 'custom' && selectedZoneValue !== '') {
-                // Utiliser EXACTEMENT le même calcul que le calculateur
-                totalPriceNum = parseInt(selectedZoneValue);
-                transportCost = totalPriceNum - basePrice;
-                
-                console.log('🔄 Synchronisation avec calculateur:');
-                console.log('Prix total sélectionné:', totalPriceNum.toLocaleString('fr-FR'));
-                console.log('Prix de base:', basePrice.toLocaleString('fr-FR'));
-                console.log('Transport calculé:', transportCost.toLocaleString('fr-FR'));
-                
-            } else {
-                // PRIORITÉ 2: Si aucune zone n'est sélectionnée, utiliser les prix par défaut de l'île
-                console.log('⚠️ Aucune zone sélectionnée, utilisation prix par défaut pour:', island);
-                
-                if (island === 'Tahiti') {
-                    totalPriceNum = 2911736; // Prix par défaut Tahiti centre
-                    transportCost = 165000; // 2911736 - 2746736
-                } else if (island === 'Moorea') {
-                    totalPriceNum = 3066736; // Prix par défaut Moorea centre  
-                    transportCost = 320000; // 3066736 - 2746736
-                } else {
-                    // Autres îles - prix sur devis
-                    alert('Pour les autres îles, veuillez nous contacter directement sur WhatsApp pour un devis personnalisé.');
-                    return;
+            if (location) {
+                if (['papeete', 'pirae', 'arue', 'mahina', 'faaa', 'punaauia', 'paea', 'papara', 'mataiea', 'papenoo', 'tiarei', 'hitiaa', 'mahaena', 'papeari', 'vairao', 'toahotu', 'teahupoo', 'afaahiti', 'taravao', 'pueu', 'tautira'].includes(location)) {
+                    island = 'Tahiti';
+                    commune = locationName;
+                } else if (['moorea_centre', 'moorea_eloigne'].includes(location)) {
+                    island = 'Moorea';
+                    commune = locationName;
+                } else if (location === 'autres') {
+                    island = 'Autres îles';
+                    commune = 'À définir';
+                }
+            }
+            // Vérifier qu'une zone est sélectionnée dans le calculateur
+            if (!location) {
+                alert('⚠️ Veuillez d\'abord sélectionner votre zone dans le calculateur de prix avant de générer le devis.');
+                closeQuoteForm();
+                return;
+            }
+            
+            const transportChecked = document.getElementById('transport').checked; // "Sans le transport"
+            if (location === 'autres') {
+                alert('⚠️ Pour les autres îles, veuillez nous contacter directement via WhatsApp pour un devis personnalisé :\n\n📱 +689 89 78 51 66');
+                closeQuoteForm();
+                window.open('https://wa.me/68989785166?text=Bonjour%2C%20je%20souhaite%20un%20devis%20personnalisé%20pour%20le%20FARE%20MITI%20vers%20les%20autres%20îles', '_blank');
+                return;
+            }
+            
+            const montageChecked = document.getElementById('montage').checked;
+            const permisChecked = document.getElementById('permis').checked;
+            const plotsChecked = document.getElementById('plots').checked;
+            
+            // Calcul du prix selon les options sélectionnées
+            const transportCost = !transportChecked ? (prices.transport[location] || 0) : 0;
+            const montageCost = montageChecked ? prices.montage : 0;
+            const permisCost = permisChecked ? prices.permis : 0;
+            
+            // Plots pilotis avec surcoût Moorea
+            let plotsCost = 0;
+            if (plotsChecked) {
+                plotsCost = prices.plots; // 368 000 XPF de base
+                if (location === 'moorea_centre' || location === 'moorea_eloigne') {
+                    plotsCost += 50000; // Surcoût Moorea : bateau + voiture + logement
                 }
             }
             
-            // VÉRIFICATION: S'assurer que les calculs sont cohérents
-            const calculatedTotal = basePrice + transportCost;
-            if (calculatedTotal !== totalPriceNum) {
-                console.error('❌ ERREUR DE SYNCHRONISATION:');
-                console.error('Prix total attendu:', totalPriceNum);
-                console.error('Prix calculé (base + transport):', calculatedTotal);
-                console.error('Différence:', totalPriceNum - calculatedTotal);
-            }
+            const total = prices.base + prices.douane + prices.commission + transportCost + montageCost + permisCost + plotsCost;
             
-            // AFFICHAGE DES MONTANTS FINAUX pour vérification
-            console.log('💰 MONTANTS FINAUX DEVIS:');
-            console.log('Base fixe:', basePrice.toLocaleString('fr-FR'), 'XPF');
-            console.log('Transport:', transportCost.toLocaleString('fr-FR'), 'XPF');
-            console.log('TOTAL:', totalPriceNum.toLocaleString('fr-FR'), 'XPF');
+            // Calcul des échéances selon la nouvelle logique
+            const phase1 = prices.base + prices.commission + permisCost + plotsCost; // Kit + Commission + Permis + Plots
+            const phase2 = prices.douane; // Formalités douanières
+            const phase3 = transportCost + montageCost; // Transport + Montage
             
-            // Create PDF content with EXACT same amounts as calculator
-            const quoteDate = new Date().toLocaleDateString('fr-FR');
+            // Génération de la référence
+            const now = new Date();
+            const ref = `FAREMITI-${now.getFullYear()}${(now.getMonth()+1).toString().padStart(2,'0')}${now.getDate().toString().padStart(2,'0')}-${Math.floor(Math.random()*1000).toString().padStart(3,'0')}`;
+            const dateStr = now.toLocaleDateString('fr-FR');
+
+            // Create PDF content
+            const quoteDate = dateStr;
             const pdfContent = `
                 <!DOCTYPE html>
                 <html>
                 <head>
                     <meta charset="UTF-8">
-                    <title>Devis MY BOX TAHITI - ${firstName} ${lastName}</title>
+                    <title>Devis FARE MITI - ${firstName} ${lastName}</title>
                     <style>
                         body { font-family: Arial, sans-serif; margin: 20px; color: #333; line-height: 1.4; }
                         .header { margin-bottom: 30px; }
-                        .header h1 { color: #007bff; font-size: 24px; margin: 0; font-weight: bold; }
+                        .header h1 { color: #1e3c72; font-size: 24px; margin: 0; font-weight: bold; }
                         .header-info { margin-top: 10px; font-size: 14px; }
                         .client-section { background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 20px 0; }
-                        .client-section h3 { margin: 0 0 10px 0; color: #007bff; }
+                        .client-section h3 { margin: 0 0 10px 0; color: #1e3c72; }
                         .specs-section { margin: 20px 0; }
-                        .specs-section h3 { color: #007bff; margin-bottom: 10px; text-transform: uppercase; }
+                        .specs-section h3 { color: #1e3c72; margin-bottom: 10px; text-transform: uppercase; }
                         .price-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
-                        .price-table th { background: #007bff; color: white; padding: 12px; text-align: left; font-weight: bold; }
+                        .price-table th { background: #1e3c72; color: white; padding: 12px; text-align: left; font-weight: bold; }
                         .price-table td { border: 1px solid #ddd; padding: 10px; }
                         .price-table .total-row { background: #f8f9fa; font-weight: bold; }
+                        .format-amount { text-align: right; }
                         .phases-section { margin: 30px 0; }
-                        .phase-item { background: #f0f8ff; margin: 10px 0; padding: 15px; border-left: 4px solid #007bff; }
-                        .phase-title { font-weight: bold; color: #007bff; margin-bottom: 5px; }
-                        .phase-amount { font-weight: bold; color: #333; }
-                        .total-general { background: #007bff; color: white; padding: 15px; text-align: center; font-size: 18px; font-weight: bold; margin: 20px 0; }
+                        .phase-item { background: #f0f8ff; margin: 10px 0; padding: 15px; border-left: 4px solid #1e3c72; }
+                        .phase-title { font-weight: bold; color: #1e3c72; margin-bottom: 5px; }
+                        .total-general { background: #1e3c72; color: white; padding: 15px; text-align: center; font-size: 18px; font-weight: bold; margin: 20px 0; }
                         .timeline { background: #fff3cd; padding: 20px; border-radius: 8px; margin: 20px 0; }
                         .timeline h3 { color: #856404; margin-bottom: 15px; }
-                        .signature-section { margin-top: 40px; border-top: 2px solid #007bff; padding-top: 20px; }
+                        .signature-section { margin-top: 40px; border-top: 2px solid #1e3c72; padding-top: 20px; }
                         .non-included { background: #fff3cd; padding: 15px; border-radius: 8px; margin: 20px 0; }
                         .non-included h3 { color: #856404; margin-bottom: 10px; }
-                        .non-included ul { margin: 0; padding-left: 20px; }
+                        .tresorerie-section { background: #e8f5e8; border: 2px solid #10ac84; padding: 15px; border-radius: 8px; margin: 20px 0; }
+                        .tresorerie-section h4 { color: #10ac84; margin-bottom: 10px; }
+                        .print-btn { background: #1e3c72; color: white; border: none; padding: 15px 30px; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; margin: 20px 0; }
+                        @media print { .print-btn { display: none; } body { padding: 10px; } }
                     </style>
                 </head>
                 <body>
                     <div class="header">
-                        <h1>DEVIS MY BOX TAHITI</h1>
+                        <h1>🏠 DEVIS PROVISOIRE DU FARE MITI - MY BOX TAHITI</h1>
                         <div class="header-info">
+                            <strong>Référence :</strong> ${ref}<br>
                             <strong>Date :</strong> ${quoteDate}<br>
                             <strong>Contact :</strong> Hauata Jean-Baptiste<br>
                             <strong>WhatsApp/Téléphone :</strong> +689 89 78 51 66<br>
-                            <strong>Email :</strong> myboxtahiti@gmail.com<br>
-                            <strong>Web :</strong> https://myboxtahiti.github.io/myboxtahiti/
+                            <strong>Email :</strong> myboxtahiti@gmail.com
                         </div>
                     </div>
                     
                     <div class="client-section">
                         <h3>INFORMATIONS CLIENT</h3>
                         <strong>Client(e) :</strong> ${firstName} ${lastName}<br>
+                        ${organisme ? `<strong>Organisme :</strong> ${organisme}<br>` : ''}
                         <strong>Téléphone :</strong> ${phone}<br>
                         <strong>Email :</strong> ${email}<br>
                         <strong>Lieu :</strong> ${commune}, ${island}
                     </div>
                     
                     <div class="specs-section">
-                        <h3>MAISON PRÉFABRIQUÉE 20' EXTENSIBLE PERSONNALISÉE</h3>
+                        <h3>FARE MITI - MAISON 20' EXTENSIBLE</h3>
                         <p><strong>Spécifications :</strong></p>
                         <p>Dimensions : 5,5m × 6,45m × 2,52m (hauteur sous plafond 2,50m)<br>
                         Surface habitable : 35 m² dont 1 chambre de 11 m²<br>
@@ -1519,7 +1738,7 @@
                         Inclus : cuisine équipée, salle de bain complète, électricité 220V/50Hz</p>
                     </div>
                     
-                    <h3 style="color: #007bff; margin: 30px 0 15px 0;">DÉTAIL DES PRIX</h3>
+                    <h3 style="color: #1e3c72; margin: 30px 0 15px 0;">DÉTAIL DES PRIX</h3>
                     <table class="price-table">
                         <thead>
                             <tr>
@@ -1530,555 +1749,281 @@
                         <tbody>
                             <tr>
                                 <td>Maison 20' extensible (valeur CAF + frais virement international)</td>
-                                <td>1 492 338</td>
+                                <td class="format-amount">${formatAmount(prices.base)} XPF</td>
                             </tr>
                             <tr>
                                 <td>Formalités douanières et mise à disposition zone portuaire</td>
-                                <td>649 983</td>
+                                <td class="format-amount">${formatAmount(prices.douane)} XPF</td>
                             </tr>
                             <tr>
                                 <td>Commission MY BOX TAHITI<br><small>Correspondance fournisseur, conformité normes DCA, suivi projet</small></td>
-                                <td>120 000</td>
+                                <td class="format-amount">${formatAmount(prices.commission)} XPF</td>
                             </tr>
-                            <tr>
-                                <td>16 plots béton pour pilotis</td>
-                                <td>368 000</td>
-                            </tr>
-                            <tr>
-                                <td>Permis de construire</td>
-                                <td>51 415</td>
-                            </tr>
-                            <tr>
-                                <td>Transport ${commune} (${island}) + Dépotage + Pose</td>
-                                <td>${transportCost.toLocaleString('fr-FR')}</td>
-                            </tr>
-                            <tr>
+                            ${transportCost > 0 ? `<tr>
+                                <td>Transport vers ${commune} (${island}) + Dépotage + Pose</td>
+                                <td class="format-amount">${formatAmount(transportCost)} XPF</td>
+                            </tr>` : ''}
+                            ${montageCost > 0 ? `<tr>
                                 <td>Montage sur site</td>
-                                <td>65 000</td>
-                            </tr>
+                                <td class="format-amount">${formatAmount(montageCost)} XPF</td>
+                            </tr>` : ''}
+                            ${permisCost > 0 ? `<tr>
+                                <td>Permis de construire</td>
+                                <td class="format-amount">${formatAmount(permisCost)} XPF</td>
+                            </tr>` : ''}
+                            ${plotsCost > 0 ? `<tr>
+                                <td>16 plots béton pour pilotis${(location === 'moorea_centre' || location === 'moorea_eloigne') ? ' + frais déplacement Moorea' : ''}</td>
+                                <td class="format-amount">${formatAmount(plotsCost)} XPF</td>
+                            </tr>` : ''}
                             <tr class="total-row">
                                 <td><strong>TOTAL TTC :</strong></td>
-                                <td><strong>${totalPriceNum.toLocaleString('fr-FR')} XPF</strong></td>
+                                <td class="format-amount"><strong>${formatAmount(total)} XPF</strong></td>
                             </tr>
                         </tbody>
                     </table>
+
+                    ${organisme ? `<div style="background: #e8f5e8; border: 2px solid #10ac84; padding: 15px; border-radius: 8px; margin: 20px 0;">
+                        <h4 style="color: #10ac84; margin-bottom: 10px;">💼 OPTION ORGANISME PUBLIC</h4>
+                        <p><strong>Avance de Trésorerie sur Bon de Commande</strong><br>
+                        <em>Modalités de paiement adaptées aux organismes publics - Sur étude par email</em></p>
+                    </div>` : ''}
                     
                     <div class="non-included">
-                        <h3>PRESTATIONS NON INCLUSES (évaluation sur site)</h3>
+                        <h3>❌ PRESTATIONS NON INCLUSES ${transportChecked ? '(à évaluer sur site)' : ''}</h3>
                         <ul>
+                            ${transportChecked ? '<li>Transport vers lieu de livraison + Dépotage + Pose</li>' : ''}
                             <li>Connexion EDT (électricité)</li>
                             <li>Raccordement eau potable</li>
                             <li>Système d'assainissement</li>
-                            <li>Toiture supplémentaire</li>
-                            <li>Terrasse</li>
+                            <li>Terrasse extérieure</li>
                             <li>Puits perdus/évacuation eaux usées</li>
+                            ${!plotsChecked ? '<li>16 plots béton pour pilotis</li>' : ''}
+                            ${!montageChecked && zoneMontage.includes(location) ? '<li>Montage sur site</li>' : ''}
+                            ${!permisChecked ? '<li>Permis de construire</li>' : ''}
                         </ul>
                     </div>
                     
                     <div class="phases-section">
-                        <h3 style="color: #007bff; margin-bottom: 20px;">Synthèse des échéances proposées avec totaux</h3>
+                        <h3 style="color: #1e3c72; margin-bottom: 20px;">Synthèse des échéances proposées</h3>
                         
                         <div class="phase-item">
-                            <div class="phase-title">🔹 Phase 1 - À la signature du devis</div>
-                            <div class="phase-amount">1 612 338 XPF</div>
-                            <div style="margin-top: 5px; font-size: 14px; color: #666;">Maison extensible + commission MY BOX + frais de virement international</div>
+                            <div class="phase-title">🔹 Phase 1 – À la signature du devis</div>
+                            <div style="font-weight: bold;">${formatAmount(phase1)} XPF</div>
+                            <div style="margin-top: 5px; font-size: 14px; color: #666;">Maison extensible + commission MY BOX${permisCost > 0 ? ' + permis' : ''}${plotsCost > 0 ? ' + plots pilotis' : ''}</div>
                         </div>
                         
                         <div class="phase-item">
-                            <div class="phase-title">🔹 Phase 2 - 1 semaine avant l'arrivée du conteneur au port</div>
-                            <div class="phase-amount">649 983 XPF</div>
+                            <div class="phase-title">🔹 Phase 2 – 1 semaine avant arrivée au port</div>
+                            <div style="font-weight: bold;">${formatAmount(phase2)} XPF</div>
                             <div style="margin-top: 5px; font-size: 14px; color: #666;">Formalités douanières et mise à disposition en zone portuaire</div>
                         </div>
                         
                         <div class="phase-item">
-                            <div class="phase-title">🔹 Phase 3 - Préparation du chantier</div>
-                            <div class="phase-amount">419 415 XPF</div>
-                            <div style="margin-top: 5px; font-size: 14px; color: #666;">Plots béton pour pilotis + permis de construire</div>
-                        </div>
-                        
-                        <div class="phase-item">
-                            <div class="phase-title">🔹 Phase 4 - Avant livraison & pose sur site</div>
-                            <div class="phase-amount">${(transportCost + 65000).toLocaleString('fr-FR')} XPF</div>
-                            <div style="margin-top: 5px; font-size: 14px; color: #666;">Transport, dépotage, pose et montage sur site</div>
+                            <div class="phase-title">🔹 Phase 3 – ${(() => {
+                                let phase3Label = [];
+                                if (transportCost > 0) phase3Label.push('Transport');
+                                phase3Label.push('Dépotage');
+                                if (montageCost > 0) phase3Label.push('Montage');
+                                if (phase3 === 0) return 'Dépotage uniquement (inclus)';
+                                return phase3Label.join(' + ');
+                            })()}</div>
+                            <div style="font-weight: bold;">${phase3 === 0 ? '0' : formatAmount(phase3)} XPF</div>
+                            <div style="margin-top: 5px; font-size: 14px; color: #666;">${phase3 === 0 ? 'Aucun coût supplémentaire' : 'Livraison et finalisation'}</div>
                         </div>
                     </div>
                     
                     <div class="total-general">
-                        💵 TOTAL GÉNÉRAL TTC : ${totalPriceNum.toLocaleString('fr-FR')} XPF
+                        💵 TOTAL GÉNÉRAL TTC : ${formatAmount(total)} XPF
                     </div>
                     
                     <div class="timeline">
                         <h3>⏱️ DÉLAIS DE RÉALISATION</h3>
-                        <p><strong>Production + expédition :</strong> 4-6 semaines<br>
-                        <strong>Transit maritime :</strong> 4-5 semaines<br>
-                        <strong>Montage sur site :</strong> 2-3 jours</p>
+                        <p><strong>Production + expédition :</strong> 6-8 semaines<br>
+                        <strong>Transit maritime :</strong> 2-3 semaines<br>
+                        <strong>Montage sur site :</strong> ${montageChecked ? '2-3 jours (inclus)' : 'non inclus'}</p>
                         <p style="margin-top: 15px;"><strong>Validité du devis :</strong> 10 jours</p>
                     </div>
                     
                     <div class="signature-section">
-                        <h3 style="color: #007bff;">Bon pour validation :</h3>
-                        <p><strong>Client(e) :</strong> ${firstName} ${lastName}<br>
+                        <h3 style="color: #1e3c72;">Bon pour validation :</h3>
+                        <p><strong>Client(e) :</strong> ${firstName} ${lastName}${organisme ? `<br><em>${organisme}</em>` : ''}<br>
                         <strong>Téléphone :</strong> ${phone}<br>
                         <strong>Lieu :</strong> ${commune}, ${island}</p>
                         
-                        <div style="margin-top: 40px; display: flex; justify-content: space-between;">
+                        <div style="margin-top: 40px;">
                             <div>
                                 <p><strong>Signature client :</strong></p>
                                 <div style="border-bottom: 2px solid #333; width: 200px; margin-top: 30px;"></div>
                                 <p style="margin-top: 5px; font-size: 12px;">Lu et approuvé</p>
                             </div>
-                            <div>
-                                <p><strong>MY BOX TAHITI :</strong></p>
-                                <div style="border-bottom: 2px solid #333; width: 200px; margin-top: 30px;"></div>
-                                <p style="margin-top: 5px; font-size: 12px;">Hauata Jean-Baptiste</p>
-                            </div>
                         </div>
                     </div>
+
+                    <button class="print-btn" onclick="window.print()">🖨️ Imprimer le Devis</button>
                 </body>
                 </html>
             `;
+            
+            // Send email via Web3Forms
+            sendEmailNotification(firstName, lastName, organisme, email, phone, island, commune, total, quoteDate, ref);
             
             // Create and download PDF for client
             const blob = new Blob([pdfContent], { type: 'text/html' });
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            const fileName = `Devis_MY_BOX_TAHITI_${firstName}_${lastName}_${quoteDate.replace(/\//g, '-')}.html`;
+            const fileName = `Devis_FARE_MITI_${firstName}_${lastName}_${quoteDate.replace(/\//g, '-')}.html`;
             a.download = fileName;
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
             window.URL.revokeObjectURL(url);
             
-            // Send copy to MY BOX TAHITI email
-            sendQuoteToOwner(firstName, lastName, email, phone, island, commune, totalPriceNum, quoteDate, pdfContent);
-            
             // Close modal and show success message
             closeQuoteForm();
             alert('✅ Votre devis a été généré avec succès !\n\n📥 Téléchargement en cours...\n📧 MY BOX TAHITI a été automatiquement notifié\n📱 Vous serez contacté dans les 24h pour le suivi');
         }
 
-        // Function to send quote copy to owner - SYSTÈME SIMPLIFIÉ SANS ERREURS
-        function sendQuoteToOwner(firstName, lastName, clientEmail, phone, island, commune, totalPrice, quoteDate, pdfContent) {
-            // Préparer les données de l'email
-            const subject = `[NOUVEAU DEVIS MY BOX TAHITI] ${firstName} ${lastName} - ${commune}, ${island}`;
-            const emailBody = `🏠 NOUVEAU DEVIS GÉNÉRÉ SUR LE SITE MY BOX TAHITI
-
-📋 INFORMATIONS CLIENT :
-- Nom complet : ${firstName} ${lastName}
-- Email client : ${clientEmail}
-- Téléphone : ${phone}
-- Localisation : ${commune}, ${island}
-- Prix total calculé : ${totalPrice.toLocaleString('fr-FR')} XPF
-- Date du devis : ${quoteDate}
-- Heure de génération : ${new Date().toLocaleString('fr-FR')}
-
-🚀 ACTIONS À EFFECTUER :
-1. ✅ Contacter le client dans les 24h via WhatsApp : ${phone}
-2. ✅ Vérifier la faisabilité technique sur site
-3. ✅ Confirmer les détails du transport selon la zone
-4. ✅ Préparer le suivi commercial personnalisé
-
-📱 CONTACT CLIENT DIRECT :
-- Email : ${clientEmail}
-- WhatsApp : https://wa.me/689${phone.replace(/\D/g, '').slice(-8)}
-
-🌐 GÉNÉRÉ DEPUIS : https://myboxtahiti.github.io/myboxtahiti/
-📅 SYSTÈME MY BOX TAHITI - ${new Date().toLocaleString('fr-FR')}
-
----
-Le client a téléchargé son devis et attend votre contact.
-Vous pouvez recréer le même devis avec ces informations sur le site.`;
-
-            // Créer le lien mailto
-            const mailtoLink = `mailto:myboxtahiti@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
+        // Send Email via Web3Forms
+        function sendEmailNotification(firstName, lastName, organisme, clientEmail, phone, island, commune, totalPrice, quoteDate, ref) {
+            // Récupérer les options sélectionnées
+            const location = document.getElementById('location').value || '';
+            const transportChecked = document.getElementById('transport').checked;
+            const montageChecked = document.getElementById('montage').checked;
+            const permisChecked = document.getElementById('permis').checked;
+            const plotsChecked = document.getElementById('plots').checked;
             
-            // Ouvrir automatiquement le client email
-            try {
-                window.open(mailtoLink, '_blank');
-                console.log('✅ Email automatique ouvert pour myboxtahiti@gmail.com');
-                showSuccessNotification('📧 Email préparé automatiquement pour MY BOX TAHITI !');
-            } catch (error) {
-                console.error('Erreur ouverture email:', error);
-                showErrorNotification('⚠️ Impossible d\'ouvrir l\'email automatiquement');
-            }
+            const optionsSelected = [
+                transportChecked ? 'Sans le transport' : 'Transport inclus',
+                montageChecked ? 'Montage inclus' : 'Montage non inclus',
+                permisChecked ? 'Permis inclus' : 'Permis non inclus',
+                plotsChecked ? 'Plots pilotis inclus' : 'Plots pilotis non inclus'
+            ].join(', ');
             
-            // Créer un fichier de sauvegarde complet
-            createBackupFile(firstName, lastName, clientEmail, phone, island, commune, totalPrice, quoteDate, pdfContent);
-            
-            // Notification de suivi
-            showEmailNotification(firstName, lastName, clientEmail, phone, island, commune, totalPrice);
+            const formData = new FormData();
+            formData.append('access_key', 'ceb9dfc1-f61f-4624-b16c-c886216a95e3');
+            formData.append('subject', `🏠 Nouveau devis FARE MITI - ${ref}`);
+            formData.append('from_name', 'Site MY BOX TAHITI');
+            formData.append('message', `
+🏗️ PRODUIT COMMANDÉ
+• FARE MITI - MAISON 20' EXTENSIBLE 35m²
+• Dimensions : 5,5m × 6,45m × 2,52m
+• Surface habitable : 35 m² (chambre 11 m²)
+• Structure acier galvanisé + isolation 50mm
+
+👤 INFORMATIONS CLIENT
+• Nom : ${firstName} ${lastName}
+${organisme ? `• Organisme : ${organisme}` : '• Type : Particulier'}
+• Email : ${clientEmail}
+• Téléphone : ${phone}
+• Localisation : ${commune}, ${island}
+
+📋 DÉTAILS DU DEVIS
+• Référence : ${ref}
+• Date : ${quoteDate}
+• Prix total : ${formatAmount(totalPrice)} XPF
+
+🔧 OPTIONS SÉLECTIONNÉES
+${optionsSelected}
+
+💰 COMPOSITION DU PRIX BASE
+• Maison 20' extensible : ${formatAmount(prices.base)} XPF
+• Formalités douanières : ${formatAmount(prices.douane)} XPF
+• Commission MY BOX TAHITI : ${formatAmount(prices.commission)} XPF
+
+📄 INCLUS DANS LE FARE MITI (selon options)
+• Maison complète + cuisine + salle de bain
+• Formalités douanières + commission
+${!transportChecked ? '• Transport + dépotage + pose' : ''}
+${montageChecked ? '• Montage sur site' : ''}
+${permisChecked ? '• Permis de construire + formalités DCA' : ''}
+${plotsChecked ? '• 16 plots béton pour pilotis' : ''}
+• Conformité normes + suivi projet
+
+⚠️ NON INCLUS
+${transportChecked ? '• Transport vers lieu de livraison + Dépotage + Pose' : ''}
+• Connexion EDT (électricité)
+• Raccordement eau potable
+• Système d'assainissement
+• Terrasse extérieure
+• Puits perdus/évacuation eaux usées
+${!plotsChecked ? '• 16 plots béton pour pilotis' : ''}
+${!montageChecked && zoneMontage.includes(location) ? '• Montage sur site' : ''}
+${!permisChecked ? '• Permis de construire' : ''}
+
+⏱️ DÉLAIS
+• Production + expédition : 6-8 semaines
+• Transit maritime : 2-3 semaines
+• Montage sur site : ${montageChecked ? '2-3 jours (inclus)' : 'non inclus'}
+
+${organisme ? `💼 ORGANISME PUBLIC DÉTECTÉ
+Modalités de paiement adaptées aux organismes publics disponibles.
+Avance de trésorerie sur bon de commande possible.` : ''}
+
+Le client recevra le devis PDF détaillé.
+
+Cordialement,
+Site MY BOX TAHITI
+            `);
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    console.log('✅ Email envoyé avec succès via Web3Forms!');
+                } else {
+                    console.log('❌ Erreur Web3Forms:', data.message);
+                }
+            })
+            .catch(error => {
+                console.log('❌ Erreur lors de l\'envoi:', error);
+            });
         }
 
-        // Notifications visuelles simplifiées
-        function showSuccessNotification(message) {
-            const notification = document.createElement('div');
-            notification.style.cssText = `
-                position: fixed; top: 20px; right: 20px; z-index: 10001;
-                background: linear-gradient(135deg, #28a745, #20c997);
-                color: white; padding: 15px 20px; border-radius: 10px;
-                box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
-                font-family: Arial, sans-serif; font-weight: bold;
-                max-width: 300px; word-wrap: break-word;
+        // Video functions - NEW SIMPLE VERSION
+        function loadVideo1() {
+            const container = document.getElementById('video1');
+            container.innerHTML = `
+                <iframe width="100%" height="280" 
+                        src="https://www.youtube.com/embed/HRVD_7U3ccA?autoplay=1&rel=0" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen
+                        style="border-radius: 15px;">
+                </iframe>
             `;
-            notification.textContent = message;
-            document.body.appendChild(notification);
-            setTimeout(() => {
-                if (notification.parentNode) {
-                    notification.parentNode.removeChild(notification);
-                }
-            }, 5000);
         }
 
-        function showErrorNotification(message) {
-            const notification = document.createElement('div');
-            notification.style.cssText = `
-                position: fixed; top: 20px; right: 20px; z-index: 10001;
-                background: linear-gradient(135deg, #dc3545, #c82333);
-                color: white; padding: 15px 20px; border-radius: 10px;
-                box-shadow: 0 5px 15px rgba(220, 53, 69, 0.4);
-                font-family: Arial, sans-serif; font-weight: bold;
-                max-width: 300px; word-wrap: break-word;
+        function loadVideo2() {
+            const container = document.getElementById('video2');
+            container.innerHTML = `
+                <iframe width="100%" height="280" 
+                        src="https://www.youtube.com/embed/hM8cwt_Bd2A?autoplay=1&rel=0" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen
+                        style="border-radius: 15px;">
+                </iframe>
             `;
-            notification.textContent = message;
-            document.body.appendChild(notification);
-            setTimeout(() => {
-                if (notification.parentNode) {
-                    notification.parentNode.removeChild(notification);
-                }
-            }, 7000);
-        }
-
-        // Créer un fichier de sauvegarde pour MY BOX TAHITI - AVEC DEVIS COMPLET
-        function createBackupFile(firstName, lastName, clientEmail, phone, island, commune, totalPrice, quoteDate, pdfContent) {
-            const backupData = {
-                timestamp: new Date().toISOString(),
-                client: {
-                    nom: `${firstName} ${lastName}`,
-                    email: clientEmail,
-                    telephone: phone,
-                    localisation: `${commune}, ${island}`
-                },
-                devis: {
-                    prixTotal: totalPrice,
-                    date: quoteDate,
-                    statut: 'Nouveau - En attente de contact'
-                }
-            };
-            
-            const backupContent = `
-MY BOX TAHITI - NOUVEAU LEAD CLIENT AVEC DEVIS
-==============================================
-📅 Date/Heure: ${new Date().toLocaleString('fr-FR')}
-👤 Client: ${firstName} ${lastName}
-📧 Email: ${clientEmail}
-📱 Contact: ${phone}
-📍 Zone: ${commune}, ${island}
-💰 Prix: ${totalPrice.toLocaleString('fr-FR')} XPF
-
-🚀 ACTIONS REQUISES:
-- ✅ Contacter le client dans les 24h
-- ✅ Vérifier faisabilité sur site
-- ✅ Confirmer transport selon zone
-- ✅ Préparer suivi commercial
-
-📱 CONTACTS DIRECTS:
-- WhatsApp client: https://wa.me/689${phone.replace(/\D/g, '').slice(-8)}
-- Email client: ${clientEmail}
-
-📋 DONNÉES JSON COMPLÈTES:
-${JSON.stringify(backupData, null, 2)}
-
-📄 CONTENU DU DEVIS HTML GÉNÉRÉ:
-${'-'.repeat(50)}
-${pdfContent}
-${'-'.repeat(50)}
-
-🌐 Généré automatiquement depuis: https://myboxtahiti.github.io/myboxtahiti/
-            `;
-            
-            // Créer et télécharger le fichier de sauvegarde complet
-            const blob = new Blob([backupContent], { type: 'text/plain; charset=utf-8' });
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `MY_BOX_TAHITI_Lead_${firstName}_${lastName}_${Date.now()}.txt`;
-            a.style.display = 'none';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            window.URL.revokeObjectURL(url);
-            
-            console.log('💾 Fichier de sauvegarde complet créé avec succès');
-        }
-
-        // Show notification for manual email follow-up - AMÉLIORÉE
-        function showEmailNotification(firstName, lastName, clientEmail, phone, island, commune, totalPrice) {
-            // Formater le numéro pour WhatsApp client
-            const cleanPhone = phone.replace(/\D/g, '');
-            let clientWhatsApp = '';
-            if (cleanPhone.length >= 8) {
-                const phoneForWhatsApp = cleanPhone.length === 8 ? '689' + cleanPhone : cleanPhone;
-                clientWhatsApp = `https://wa.me/${phoneForWhatsApp}`;
-            }
-            
-            // Créer la notification popup améliorée
-            const notification = document.createElement('div');
-            notification.style.cssText = `
-                position: fixed;
-                top: 20px;
-                right: 20px;
-                background: linear-gradient(135deg, #28a745, #20c997);
-                color: white;
-                padding: 25px;
-                border-radius: 15px;
-                box-shadow: 0 8px 25px rgba(40, 167, 69, 0.4);
-                z-index: 10000;
-                max-width: 420px;
-                font-family: Arial, sans-serif;
-                border: 2px solid rgba(255,255,255,0.2);
-            `;
-            
-            notification.innerHTML = `
-                <h4 style="margin: 0 0 15px 0; font-size: 18px;">📧 Nouveau lead généré !</h4>
-                <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 8px; margin: 15px 0;">
-                    <p style="margin: 5px 0; font-size: 14px;"><strong>👤 Client :</strong> ${firstName} ${lastName}</p>
-                    <p style="margin: 5px 0; font-size: 14px;"><strong>📱 Contact :</strong> ${phone}</p>
-                    <p style="margin: 5px 0; font-size: 14px;"><strong>📧 Email :</strong> ${clientEmail}</p>
-                    <p style="margin: 5px 0; font-size: 14px;"><strong>📍 Zone :</strong> ${commune}, ${island}</p>
-                    <p style="margin: 5px 0; font-size: 14px;"><strong>💰 Montant :</strong> ${totalPrice.toLocaleString('fr-FR')} XPF</p>
-                </div>
-                
-                <div style="display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap;">
-                    <button onclick="this.parentElement.parentElement.remove(); sendWhatsAppNotification('${firstName}', '${lastName}', '${phone}', '${commune}', '${island}', ${totalPrice})" 
-                            style="background: white; color: #28a745; border: none; padding: 10px 15px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 12px; flex: 1; min-width: 120px;">
-                        📱 Notifier via WhatsApp
-                    </button>
-                    ${clientWhatsApp ? `<button onclick="window.open('${clientWhatsApp}', '_blank'); this.parentElement.parentElement.remove();" 
-                            style="background: #25D366; color: white; border: none; padding: 10px 15px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 12px; flex: 1; min-width: 120px;">
-                        💬 Contacter client
-                    </button>` : ''}
-                </div>
-                
-                <button onclick="this.parentElement.remove()" 
-                        style="background: rgba(255,255,255,0.2); color: white; border: 1px solid rgba(255,255,255,0.3); padding: 8px 15px; border-radius: 8px; margin: 10px auto 0; cursor: pointer; display: block; font-size: 12px;">
-                    ✕ Fermer
-                </button>
-            `;
-            
-            document.body.appendChild(notification);
-            
-            // Auto-remove après 15 secondes (plus long pour laisser le temps de réagir)
-            setTimeout(() => {
-                if (notification.parentElement) {
-                    notification.style.opacity = '0';
-                    notification.style.transform = 'translateX(100%)';
-                    setTimeout(() => notification.remove(), 300);
-                }
-            }, 15000);
-        }
-
-        // Function to send WhatsApp notification - AMÉLIORÉE
-        function sendWhatsAppNotification(firstName, lastName, phone, commune, island, totalPrice) {
-            // Nettoyer et formater le numéro de téléphone
-            const cleanPhone = phone.replace(/\D/g, ''); // Enlever tous les caractères non-numériques
-            let formattedPhone = cleanPhone;
-            
-            // Si le numéro commence par 689, c'est déjà au bon format
-            if (!cleanPhone.startsWith('689')) {
-                // Ajouter le code pays 689 pour la Polynésie française
-                if (cleanPhone.length === 8) {
-                    formattedPhone = '689' + cleanPhone;
-                } else if (cleanPhone.length === 11 && cleanPhone.startsWith('689')) {
-                    formattedPhone = cleanPhone;
-                }
-            }
-            
-            // Convertir totalPrice en nombre si c'est une chaîne
-            const priceNum = typeof totalPrice === 'string' ? parseInt(totalPrice.replace(/\D/g, '')) : totalPrice;
-            
-            const message = `🏠 NOUVEAU LEAD MY BOX TAHITI
-
-👤 Client: ${firstName} ${lastName}
-📱 Téléphone: ${phone}
-📍 Zone: ${commune}, ${island}
-💰 Montant devis: ${priceNum.toLocaleString('fr-FR')} XPF
-⏰ Généré: ${new Date().toLocaleString('fr-FR')}
-
-✅ Actions:
-1. Appeler le client dans les 2h
-2. Vérifier faisabilité site
-3. Confirmer détails transport
-4. Programmer visite si nécessaire
-
-🌐 Site: https://myboxtahiti.github.io/myboxtahiti/`;
-            
-            const whatsappUrl = `https://wa.me/68989785166?text=${encodeURIComponent(message)}`;
-            window.open(whatsappUrl, '_blank');
         }
 
         // FAQ Toggle
-        function toggleFaq(element) {
+        function toggleFAQ(element) {
             const answer = element.nextElementSibling;
             const isActive = answer.classList.contains('active');
             
-            // Close all other FAQs
-            document.querySelectorAll('.faq-answer').forEach(faq => {
-                faq.classList.remove('active');
+            // Fermer toutes les réponses
+            document.querySelectorAll('.faq-answer').forEach(ans => {
+                ans.classList.remove('active');
             });
             
-            // Toggle current FAQ
+            // Ouvrir celle cliquée si elle n'était pas active
             if (!isActive) {
                 answer.classList.add('active');
             }
-        }
-
-        // Carrousel functionality - AMÉLIORÉE POUR MOBILE
-        function initCarousel() {
-            const slides = document.querySelectorAll('.carousel-slide');
-            const dots = document.querySelectorAll('.dot');
-            let currentSlideIndex = 0;
-            
-            if (slides.length === 0) return;
-            
-            // Précharger les images pour mobile
-            slides.forEach((slide, index) => {
-                const img = slide.querySelector('img');
-                if (img) {
-                    // Vérifier si l'image se charge correctement
-                    const testImg = new Image();
-                    testImg.onload = function() {
-                        img.style.opacity = '1';
-                    };
-                    testImg.onerror = function() {
-                        // Si l'image ne se charge pas, activer le fallback
-                        img.onerror();
-                    };
-                    testImg.src = img.src;
-                    
-                    // Style initial pour le chargement
-                    img.style.opacity = '0.7';
-                    img.style.transition = 'opacity 0.3s ease';
-                }
-            });
-            
-            function showSlide(index) {
-                const track = document.getElementById('carouselTrack');
-                if (!track) return;
-                
-                const slideWidth = slides[0].offsetWidth;
-                track.style.transform = `translateX(-${index * slideWidth}px)`;
-                
-                // Update dots
-                dots.forEach(dot => dot.classList.remove('active'));
-                if (dots[index]) {
-                    dots[index].classList.add('active');
-                }
-                
-                currentSlideIndex = index;
-            }
-            
-            window.moveCarousel = function(direction) {
-                currentSlideIndex += direction;
-                
-                if (currentSlideIndex >= slides.length) {
-                    currentSlideIndex = 0;
-                } else if (currentSlideIndex < 0) {
-                    currentSlideIndex = slides.length - 1;
-                }
-                
-                showSlide(currentSlideIndex);
-            }
-            
-            window.currentSlide = function(index) {
-                showSlide(index - 1);
-            }
-            
-            // Auto-play carousel (pausé sur mobile pour économiser la batterie)
-            if (!window.matchMedia('(max-width: 768px)').matches) {
-                setInterval(() => {
-                    window.moveCarousel(1);
-                }, 5000);
-            }
-            
-            // Touch/swipe support amélioré pour mobile
-            let startX = 0;
-            let startY = 0;
-            let isScrolling = false;
-            const carousel = document.querySelector('.carousel-container');
-            
-            if (carousel) {
-                carousel.addEventListener('touchstart', (e) => {
-                    startX = e.touches[0].clientX;
-                    startY = e.touches[0].clientY;
-                    isScrolling = false;
-                }, { passive: true });
-                
-                carousel.addEventListener('touchmove', (e) => {
-                    const currentX = e.touches[0].clientX;
-                    const currentY = e.touches[0].clientY;
-                    const diffY = Math.abs(currentY - startY);
-                    const diffX = Math.abs(currentX - startX);
-                    
-                    // Déterminer si c'est un scroll vertical ou swipe horizontal
-                    if (diffY > diffX && diffY > 10) {
-                        isScrolling = true;
-                    }
-                }, { passive: true });
-                
-                carousel.addEventListener('touchend', (e) => {
-                    if (isScrolling) return; // Ne pas traiter si c'était un scroll
-                    
-                    const endX = e.changedTouches[0].clientX;
-                    const diffX = startX - endX;
-                    
-                    if (Math.abs(diffX) > 50) {
-                        e.preventDefault();
-                        if (diffX > 0) {
-                            window.moveCarousel(1); // Swipe left
-                        } else {
-                            window.moveCarousel(-1); // Swipe right
-                        }
-                    }
-                }, { passive: false });
-            }
-            
-            // Ajuster le carousel lors du redimensionnement de l'écran
-            window.addEventListener('resize', () => {
-                showSlide(currentSlideIndex);
-            });
-        }
-        
-        // Initialize carousel when DOM is loaded
-        document.addEventListener('DOMContentLoaded', initCarousel);
-
-        // Video play - Intégration YouTube réelle avec nouveau lien
-        function playVideo() {
-            const placeholder = document.querySelector('.video-placeholder');
-            placeholder.innerHTML = `
-                <iframe width="100%" height="450" 
-                        src="https://www.youtube.com/embed/HRVD_7U3ccA?autoplay=1&rel=0&modestbranding=1" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen
-                        style="border-radius: 15px;">
-                </iframe>
-            `;
-        }
-
-        // Second video play - Processus de fabrication
-        function playSecondVideo() {
-            const placeholders = document.querySelectorAll('.video-placeholder');
-            const secondPlaceholder = placeholders[1]; // Deuxième vidéo
-            secondPlaceholder.innerHTML = `
-                <iframe width="100%" height="450" 
-                        src="https://www.youtube.com/embed/hM8cwt_Bd2A?autoplay=1&rel=0&modestbranding=1" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen
-                        style="border-radius: 15px;">
-                </iframe>
-            `;
         }
 
         // Smooth scrolling for anchor links
